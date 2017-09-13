@@ -70,7 +70,7 @@ custom-port:
 
 # targets, run customized test scripts
 test-mocha-default:
-	${abs_npm_bin}/mocha
+	${abs_npm_bin}/mocha --opts mocha.opts
 test-desktop-chrome-zj:
 	CHROMEDRIVER_VERSION=2.30 browser=chrome macaca run --verbose --reporter macaca-reporter -d ./macaca-test/chrome_demo_01.test.js
 

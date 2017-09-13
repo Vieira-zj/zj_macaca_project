@@ -1,0 +1,2 @@
+mocha-test/
+-t 3000

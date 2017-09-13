@@ -10,16 +10,16 @@ var should = require('should');
 
 var retZero = function () {
     return 0;
-}
+};
 
 var retHello = function () {
     return 'hello';
-}
+};
 
-describe('test/demo.01.test.js', function () {
+describe('test/demo_01.test.js', function () {
 
     after(() => {
-        console.log('all after')
+        console.log('all after');
     });
 
     describe('group 1', function () {
@@ -28,7 +28,7 @@ describe('test/demo.01.test.js', function () {
         });
 
         after(() => {
-            console.log('group 1 after')
+            console.log('group 1 after');
         });
     });
 
@@ -38,7 +38,7 @@ describe('test/demo.01.test.js', function () {
         });
 
         after(() => {
-            console.log('group 2 after')
+            console.log('group 2 after');
         });
     });
 
