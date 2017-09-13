@@ -1,5 +1,5 @@
 /**
- * Macaca apis for JS:
+ * Macaca api documents for JS:
  * https://macacajs.github.io/macaca-wd/
  */
 'use strict';

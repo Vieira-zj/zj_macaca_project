@@ -1,5 +1,6 @@
 /**
- * Demo for test Should apis.
+ * Should api documents:
+ * https://shouldjs.github.io/
  * 
  */
 

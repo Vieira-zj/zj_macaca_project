@@ -1,9 +1,6 @@
 /**
- * Run command: 
- * 1) ./node_modules/mocha/bin/mocha
- * 2) make test-mocha-default
+ * Run command: make test-mocha-default
  * 
- * Run test cases in /test default.
  */
 
 var should = require('should');
