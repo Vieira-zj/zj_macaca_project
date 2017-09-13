@@ -77,9 +77,16 @@ describe('test/demo_02_should.test.js', function () {
         (10).should.be.a.Number();
         'abc'.should.be.a.String();
         [1, 2].should.be.a.Array();
+
         (() => {
             console.log('test');
         }).should.be.Function();
+
+        var tmpObj = {
+            firstName: 'zheng',
+            lastName: 'jin'
+        }
+        tmpObj.should.be.a.Object();
     });
 
     it('Should dmoe 09, match', function () {
