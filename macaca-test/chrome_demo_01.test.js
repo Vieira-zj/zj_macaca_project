@@ -1,6 +1,10 @@
 /**
+ * Macaca for nodejs:
+ * https://macacajs.github.io/nodejs
+ * 
  * Macaca api documents for JS:
  * https://macacajs.github.io/macaca-wd/
+ * 
  */
 'use strict';
 
@@ -18,7 +22,6 @@ var browser = process.env.browser || 'electron' || 'puppeteer';
 browser = browser.toLowerCase();
 
 describe('macaca-test/chrome_demo01.test.js', function () {
-
     this.timeout(5 * 60 * 1000);
 
     var driver = wd.promiseChainRemote({
@@ -31,7 +34,7 @@ describe('macaca-test/chrome_demo01.test.js', function () {
             .init({
                 platformName: 'desktop',
                 browserName: browser,
-                userAgent: `Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0 Safari/537.36 Macaca Custom UserAgent`,
+                userAgent: `Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0 Safari/537.36 Macaca Custom UserAgent`,
                 deviceScaleFactor: 2
             })
             .setWindowSize(1280, 800);
@@ -39,14 +42,15 @@ describe('macaca-test/chrome_demo01.test.js', function () {
 
     after(function () {
         opn(path.join(__dirname, '..', 'reports', 'index.html')); // test report path
+        return driver
+            .close()
+            .quit();
     });
 
     describe('Macaca demos, group 1', function () {
         const initialURL = 'https://www.baidu.com';
 
-        after(function () {
-            return driver.quit();
-        });
+        after(function () {});
 
         xit('#1, Access BaiDu', function () {
             return driver
@@ -133,7 +137,22 @@ describe('macaca-test/chrome_demo01.test.js', function () {
     });
 
     describe('Macaca demos, group 2', function () {
-        // TODO: css selector
+        const initialURL = 'https://www.baidu.com';
+
+        after(() => {});
+
+        it('#0, personal settings', function () {
+            // print env variables set from command 'macaca run'
+            console.log('chrome driver version:', process.env.CHROMEDRIVER_VERSION);
+            console.log('browser:', process.env.browser);
+
+            return driver
+                .get(initialURL)
+                .sleep(2000)
+                .waitForElementByName('tj_settingicon')
+                .click();
+        });
+
     });
 
 });

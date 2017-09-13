@@ -71,6 +71,12 @@ custom-port:
 # targets, run customized test scripts
 test-mocha-default:
 	${abs_npm_bin}/mocha --opts mocha.opts
+
+# CHROMEDRIVER_VERSION, set process.env.CHROMEDRIVER_VERSION
+# for chromedriver bin path: 
+# /usr/local/lib/node_modules/macaca-chrome/node_modules/macaca-chromedriver/exec/chromedriver2.xx
+# chromedriver_version=2.30 for Chrome v59.0
+# chromedriver_version=2.32 for Chrome v61.0
 test-desktop-chrome-zj:
 	CHROMEDRIVER_VERSION=2.30 browser=chrome macaca run --verbose --reporter macaca-reporter -d ./macaca-test/chrome_demo_01.test.js
 
