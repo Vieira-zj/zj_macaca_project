@@ -52,7 +52,7 @@ describe('macaca-test/chrome_demo01.test.js', function () {
 
         after(function () {});
 
-        xit('#1, Access BaiDu', function () {
+        xit('#1, access BaiDu', function () {
             return driver
                 .get(initialURL)
                 // get request url
@@ -141,16 +141,43 @@ describe('macaca-test/chrome_demo01.test.js', function () {
 
         after(() => {});
 
-        it('#0, personal settings', function () {
+        it('#0, error message on user login dialog', function () {
             // print env variables set from command 'macaca run'
             console.log('chrome driver version:', process.env.CHROMEDRIVER_VERSION);
             console.log('browser:', process.env.browser);
 
             return driver
                 .get(initialURL)
+                // click login
+                .waitForElementByCssSelector('div#u1 > a[name=tj_login]')
+                .click()
                 .sleep(2000)
-                .waitForElementByName('tj_settingicon')
-                .click();
+                .waitForElementByCssSelector('div#passport-login-pop-dialog')
+                .isDisplayed()
+                .then(value => console.log('login dialog show:', value ? 'pass' : 'fail'))
+                // input user name
+                .elementByCssSelector('input[name=userName]')
+                .sendKeys('zheng jin test')
+                // input password and clear
+                .elementByCssSelector('input[name=password]')
+                .sendKeys('123456')
+                .sleep(1000)
+                .clear()
+                .sleep(1000)
+                // click login button
+                .execute(`
+                    var element = document.querySelector('div#passport-login-pop-dialog input[type=submit]');
+                    return element.value;`)
+                .then(value => console.log('click on button:', value))
+                .elementByCssSelector('div#passport-login-pop-dialog input[type=submit]')
+                .click()
+                // verify error message
+                .waitForElementByCssSelector('div#passport-login-pop-dialog #TANGRAM__PSP_10__error')
+                .isDisplayed()
+                .then(value => console.log('error message show:', value ? 'pass' : 'fail'))
+                .elementByCssSelector('#TANGRAM__PSP_10__error')
+                .text()
+                .then(value => console.log('error message text:', value));
         });
 
     });
