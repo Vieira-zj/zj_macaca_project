@@ -44,9 +44,9 @@ describe('macaca-test/chrome_demo01.test.js', function () {
 
     after(function () {
         opn(path.join(__dirname, '..', 'reports', 'index.html')); // test report path
-        // return driver
-        //     .close()
-        //     .quit();
+        return driver
+            .close()
+            .quit();
     });
 
     describe('Macaca demos, group 1', function () {
@@ -92,7 +92,7 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                 .waitForElementById('su', timeOut, interval)
                 .click()
                 // get text of 1st search result
-                .waitForElementByTagName('em')
+                .waitForElementByTagName('em', timeout, interval)
                 .text()
                 .then(value => console.log('1st result text:', value))
                 // get count of all tags "em"
@@ -129,12 +129,25 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                     return uiElement.innerText;`)
                 .then(value => console.log('link text by JS return:', value))
                 // get link text
-                .waitForElementById('setf')
+                .waitForElementById('setf', timeOut, interval)
                 .text()
                 .then(value => console.log('link text by Macaca:', value));
             // .elementById('su')
             // .getProperty('value') // error in web, only for mobile
             // .then(value => console.log('search button text:', value));
+        });
+
+        it('#4, change text by keycode', function () {
+            return driver
+                .get(initialURL)
+                // input search string
+                .waitForElementById('kw')
+                .sendKeys('Macacaa')
+                .sleep(1000)
+                // delete last character
+                .keys(testConsts.keyCodes.Shift + testConsts.keyCodes.ArrowLeft)
+                .sleep(1000)
+                .keys(testConsts.keyCodes.Backspace)
         });
     });
 

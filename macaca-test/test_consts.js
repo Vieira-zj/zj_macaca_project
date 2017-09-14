@@ -12,9 +12,10 @@ const keyCodes = {
   ArrowUp: '\uE013',
   ArrowRight: '\uE014',
   ArrowDown: '\uE015',
+  // keycode Delete is invalid on Mac
   Delete: '\uE05D',
 }
 
- module.exports = {
-   keyCodes
- }
+module.exports = {
+  keyCodes
+}
