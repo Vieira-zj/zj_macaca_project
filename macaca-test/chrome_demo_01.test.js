@@ -177,7 +177,7 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                 .then(value => console.log('error message show:', value ? 'pass' : 'fail'))
                 .elementByCssSelector('#TANGRAM__PSP_10__error')
                 .text()
-                .then(value => console.log('error message text:', value));
+                .then(value => console.log(`error message text: ${value}`));
         });
 
     });

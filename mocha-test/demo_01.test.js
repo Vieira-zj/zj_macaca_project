@@ -14,7 +14,9 @@ var retHello = function () {
 };
 
 describe('test/demo_01.test.js', function () {
-
+    this.timeout(3 * 1000);  // as cmd option -t
+    this.slow(1000);  // as cmd option -s
+    
     after(() => {
         console.log('all after');
     });

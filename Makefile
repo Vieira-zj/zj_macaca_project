@@ -68,11 +68,17 @@ custom-port:
 	${npm_bin}/macaca doctor
 	MACACA_SERVER_PORT=${custom_port} browser=electron ${npm_bin}/macaca run --no-window --verbose -d ./macaca-test/desktop-browser-sample.test.js -p ${custom_port}
 
-# targets, run customized test scripts
+# Customized Targets
+# run command: 
+# $ user_name=zhengjin make test-echo-env-var
+test-echo-env-var:
+	@echo "Env variable test, user name: $(user_name)"
+
+# unit test
 test-mocha-default:
 	${abs_npm_bin}/mocha --opts mocha.opts
 
-# CHROMEDRIVER_VERSION, set process.env.CHROMEDRIVER_VERSION
+# CHROMEDRIVER_VERSION (default 2.20), set process.env.CHROMEDRIVER_VERSION
 # for chromedriver bin path: 
 # /usr/local/lib/node_modules/macaca-chrome/node_modules/macaca-chromedriver/exec/chromedriver2.xx
 # chromedriver_version=2.30 for Chrome v59.0
