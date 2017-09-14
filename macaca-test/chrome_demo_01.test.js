@@ -18,6 +18,8 @@ require('./wd-extend')(wd, false);
 
 const diffImage = require('./utils.js').diffImage;
 
+const testConsts = require('./test_consts');
+
 var browser = process.env.browser || 'electron' || 'puppeteer';
 browser = browser.toLowerCase();
 
@@ -42,9 +44,9 @@ describe('macaca-test/chrome_demo01.test.js', function () {
 
     after(function () {
         opn(path.join(__dirname, '..', 'reports', 'index.html')); // test report path
-        return driver
-            .close()
-            .quit();
+        // return driver
+        //     .close()
+        //     .quit();
     });
 
     describe('Macaca demos, group 1', function () {
@@ -136,12 +138,49 @@ describe('macaca-test/chrome_demo01.test.js', function () {
         });
     });
 
-    describe('Macaca demos, group 2', function () {
+    describe.skip('Macaca demos, group 2', function () {
         const initialURL = 'https://www.baidu.com';
 
         after(() => {});
 
-        it('#0, error message on user login dialog', function () {
+        it('#0, do login by keycode', function () {
+            return driver
+                .get(initialURL)
+                // check text for setting link
+                .waitForElementByCssSelector('div#u1 > a[name=tj_settingicon]')
+                .text()
+                .then(value => console.log('setting text:', value))
+                // open login dialog
+                .elementByCssSelector('div#u1 > a[name=tj_login]')
+                .click()
+                .sleep(2000)
+                .waitForElementByCssSelector('div#passport-login-pop-dialog')
+                .isDisplayed()
+                .then(value => console.log('login dialog show:', value))
+                // input user incorrect name
+                .elementByCssSelector('input[name=userName]')
+                .sendKeys('zheng jin tesat')
+                .sleep(1000)
+                // change user name
+                .keys(testConsts.keyCodes.ArrowLeft)
+                .sleep(1000)
+                .keys(testConsts.keyCodes.Backspace)
+                .sleep(1000)
+                // tab to input password
+                // use keys() instead of sendKeys()
+                // sendKeys(), send keys to current ui element (user name)
+                // keys(), just send keys without context
+                .keys(testConsts.keyCodes.Tab)
+                .sleep(1000)
+                .keys('123456')
+                .sleep(1000)
+                .keys(testConsts.keyCodes.Enter)
+                .waitForElementByCssSelector('div#passport-login-pop-dialog span#TANGRAM__PSP_10__error')
+                .isDisplayed()
+                .then(value => console.log('error message is show:', value));
+        });
+
+        it('#1, check error message on user login dialog', function () {
             // print env variables set from command 'macaca run'
             console.log('chrome driver version:', process.env.CHROMEDRIVER_VERSION);
             console.log('browser:', process.env.browser);

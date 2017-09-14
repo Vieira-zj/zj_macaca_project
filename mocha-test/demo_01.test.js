@@ -22,6 +22,8 @@ describe('test/demo_01.test.js', function () {
     });
 
     describe('group 1', function () {
+        this.timeout(500);
+
         it('test case 1', function () {
             retZero().should.be.equal(0);
         });
