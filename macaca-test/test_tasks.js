@@ -3,13 +3,15 @@
  * 
  */
 
+const uiObjects = require('./test_uiobjects');
+
 const openBaiduLoginDialog = function (driver) {
   // click login and wait for dialog
   return driver
-    .waitForElementByCssSelector('div#u1 > a[name=tj_login]')
+    .waitForElementByCssSelector(uiObjects.baiduMainPage.selectorLoginLink)
     .click()
     .sleep(2000)
-    .waitForElementByCssSelector('div#passport-login-pop-dialog')
+    .waitForElementByCssSelector(uiObjects.loginDialog.selectorDialogMain)
     .isDisplayed()
     .then(value => console.log('login dialog show:', value ? 'pass' : 'fail'))
     .sleep(1000);

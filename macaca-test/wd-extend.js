@@ -163,7 +163,7 @@ module.exports = (wd, isIOS) => {
       });
   });
 
-  // customized common methods
+  // customized by zj
   wd.addPromiseChainMethod('openBaiduLoginDialog', function () {
     return this
       // click login and wait for dialog
