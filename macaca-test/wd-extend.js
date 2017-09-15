@@ -5,6 +5,7 @@ const _ = require('macaca-utils');
 const KEY_MAP = require('webdriver-keycode');
 const appendToContext = require('macaca-reporter').appendToContext;
 
+const testConsts = require('./test_consts');
 const testTasks = require('./test_tasks');
 
 // npm package wrapper sample: https://github.com/macaca-sample/webdriver-client
@@ -164,7 +165,7 @@ module.exports = (wd, isIOS) => {
   });
 
   // customized by zj
-  // utils
+  // COMMON UTILS
   wd.addPromiseChainMethod('clickAndWait', function (wait = 1000) {
     return this.click().sleep(wait);
   });
@@ -175,7 +176,13 @@ module.exports = (wd, isIOS) => {
     return this.keys(keys).sleep(wait);
   });
 
-  // common tasks
+  wd.addPromiseChainMethod('waitForElementByIdByDefault', function (id) {
+    return this.waitForElementById(id,
+      testConsts.waitTime.timeOutForSearch,
+      testConsts.waitTime.intervalForSearch);
+  });
+
+  // UI TASKS
   wd.addPromiseChainMethod('openBaiduLoginDialog', function () {
     return this
       // click login and wait for dialog

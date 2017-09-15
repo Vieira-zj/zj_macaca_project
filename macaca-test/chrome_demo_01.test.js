@@ -81,19 +81,16 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                 });
         });
 
-        const timeOut = 3000;
-        const interval = 200;
-
         xit('#2, do search Macaca', function () {
             return driver
                 .get(initialURL)
                 // input and search
-                .waitForElementById('kw', timeOut, interval)
+                .waitForElementByIdByDefault('kw')
                 .sendKeys('Macaca')
-                .waitForElementById('su', timeOut, interval)
-                .click()
+                .waitForElementByIdByDefault('su')
+                .clickAndWait()
                 // get text of 1st search result
-                .waitForElementByTagName('em', timeout, interval)
+                .waitForElementByTagName('em')
                 .text()
                 .then(value => console.log('1st result text:', value))
                 // get count of all tags "em"
@@ -130,7 +127,7 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                     return uiElement.innerText;`)
                 .then(value => console.log('link text by JS return:', value))
                 // get link text
-                .waitForElementById('setf', timeOut, interval)
+                .waitForElementByIdByDefault('setf')
                 .text()
                 .then(value => console.log('link text by Macaca:', value));
             // .elementById('su')
@@ -250,7 +247,7 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                 .then(value => console.log('login dialog title:', value));
         });
 
-        it('#2, wait after each action', function () {
+        xit('#2, wait after each action', function () {
             return driver
                 .get(initialURL)
                 .waitForElementById('kw')
