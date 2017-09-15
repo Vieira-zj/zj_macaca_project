@@ -247,14 +247,45 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                 .then(value => console.log('login dialog title:', value));
         });
 
-        it('#2, wait after each action', function () {
+        xit('#2, wait after each action', function () {
             return driver
                 .get(initialURL)
-                .waitForElementById('kw')
+                .waitForElementByIdByDefault('kw')
                 .sendkeysAndWait('Macaca', 3 * testConsts.timeUnit.second)
                 .sendkeysAndWait(' framework')
                 .waitForElementById('su')
                 .clickAndWait();
+        });
+
+        it('#3, verification by diff image', function () {
+            return driver
+                .get(initialURL)
+                .sleep(testConsts.waitTime.shortWait)
+                // .customSaveScreenshot(this) // save error baseline
+                .sleep(testConsts.waitTime.shortWait)
+                .openBaiduLoginDialog()
+                // .customSaveScreenshot(this) // save origin baseline
+                .takeScreenshot()
+                .then(imgData => {
+                    const screenshotFolder = path.resolve(__dirname, '../screenshots');
+                    const originImgPath = path.join(screenshotFolder, 'origin.png');
+                    fs.exists(originImgPath, function (exists) {
+                        exists.should.be.ok('origin image exist.');
+                    }); // Warn: sync function
+
+                    const newImg = new Buffer(imgData, 'base64');
+                    fs.writeFileSync(path.join(screenshotFolder, 'new.png'), newImg.toString('binary'), 'binary');
+
+                    const diffImgPath = path.join(screenshotFolder, 'diff.png');
+                    return diffImage(originImgPath, newImg, 0.1, diffImgPath);
+                })
+                .then(result => {
+                    result.should.be.true('image diff.');
+                })
+                .catch(e => {
+                    console.error(e);
+                });
+
         });
     });
 

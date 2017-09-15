@@ -6,10 +6,8 @@
 var testPath = function () {
     const path = require('path');
 
-    let pathFrom = '/Users/zhengjin/WorkSpaces';
-    let pathTo = 'nodejs_workspace/zj_js_automation'
-    console.log('path join:', path.join(pathFrom, pathTo));
-    console.log('path resolve:', path.resolve(pathFrom, pathTo));
+    console.log(__dirname);
+    console.log(path.resolve(__dirname, '../screenshot'));
 }
 
 if (require.main === module) {

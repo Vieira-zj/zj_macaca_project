@@ -11,7 +11,7 @@ describe('test/demo_02_should.test.js', function () {
 
     it('Should demo 01, equal', function () {
         (10).should.be.eql(10);
-        (10).should.be.eql(11, 'verify number equal');
+        (10).should.be.eql(11, 'verify number equal.');
         ('10').should.not.be.eql(10);
 
         (10).should.be.equal(10);
@@ -71,6 +71,7 @@ describe('test/demo_02_should.test.js', function () {
         assert.ok(true);
 
         (true).should.be.ok();
+        (false).should.be.true('verify boolean true.');
         (false).should.be.false();
     });
 
