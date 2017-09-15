@@ -45,9 +45,9 @@ describe('macaca-test/chrome_demo01.test.js', function () {
     after(function () {
         // open browser to show the test report
         // opn(path.join(__dirname, '..', 'reports', 'index.html'));
-        // return driver
-        //     .close()
-        //     .quit();
+        return driver
+            .close()
+            .quit();
     });
 
     describe('Macaca demos, group 1', function () {

@@ -11,6 +11,7 @@ describe('test/demo_02_should.test.js', function () {
 
     it('Should demo 01, equal', function () {
         (10).should.be.eql(10);
+        (10).should.be.eql(11, 'verify number equal');
         ('10').should.not.be.eql(10);
 
         (10).should.be.equal(10);
