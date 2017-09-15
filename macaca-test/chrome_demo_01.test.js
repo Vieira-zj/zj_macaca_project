@@ -241,13 +241,23 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                 });
         });
 
-        it('#1, call custom tasks', function () {
+        xit('#1, call custom tasks', function () {
             return driver
                 .get(initialURL)
                 .customOpenBaiduLoginDialog()
                 .waitForElementByCssSelector('span#TANGRAM__PSP_4__titleText')
                 .text()
                 .then(value => console.log('login dialog title:', value));
+        });
+
+        it('#2, wait after each action', function () {
+            return driver
+                .get(initialURL)
+                .waitForElementById('kw')
+                .sendkeysAndWait('Macaca', 3000)
+                .sendkeysAndWait(' framework')
+                .waitForElementById('su')
+                .clickAndWait();
         });
     });
 

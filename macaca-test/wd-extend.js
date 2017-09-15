@@ -164,6 +164,18 @@ module.exports = (wd, isIOS) => {
   });
 
   // customized by zj
+  // utils
+  wd.addPromiseChainMethod('clickAndWait', function (wait = 1000) {
+    return this.click().sleep(wait);
+  });
+
+  wd.addPromiseChainMethod('sendkeysAndWait', function (keys, wait = 1000) {
+    // Note: error: sendKeys is not a function, and use keys() instead of sendKeys()
+    // return this.sendKeys(keys).sleep(wait);
+    return this.keys(keys).sleep(wait);
+  });
+
+  // common tasks
   wd.addPromiseChainMethod('openBaiduLoginDialog', function () {
     return this
       // click login and wait for dialog
