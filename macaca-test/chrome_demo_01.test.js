@@ -43,10 +43,11 @@ describe('macaca-test/chrome_demo01.test.js', function () {
     });
 
     after(function () {
-        opn(path.join(__dirname, '..', 'reports', 'index.html')); // test report path
-        return driver
-            .close()
-            .quit();
+        // open browser to show the test report
+        // opn(path.join(__dirname, '..', 'reports', 'index.html'));
+        // return driver
+        //     .close()
+        //     .quit();
     });
 
     describe('Macaca demos, group 1', function () {
@@ -137,7 +138,7 @@ describe('macaca-test/chrome_demo01.test.js', function () {
             // .then(value => console.log('search button text:', value));
         });
 
-        it('#4, change text by keycode', function () {
+        xit('#4, change text by keycode', function () {
             return driver
                 .get(initialURL)
                 // input search string
@@ -151,12 +152,12 @@ describe('macaca-test/chrome_demo01.test.js', function () {
         });
     });
 
-    describe.skip('Macaca demos, group 2', function () {
+    describe('Macaca demos, group 2', function () {
         const initialURL = 'https://www.baidu.com';
 
         after(() => {});
 
-        it('#0, do login by keycode', function () {
+        xit('#0, do login by keycode', function () {
             return driver
                 .get(initialURL)
                 // check text for setting link
@@ -164,12 +165,7 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                 .text()
                 .then(value => console.log('setting text:', value))
                 // open login dialog
-                .elementByCssSelector('div#u1 > a[name=tj_login]')
-                .click()
-                .sleep(2000)
-                .waitForElementByCssSelector('div#passport-login-pop-dialog')
-                .isDisplayed()
-                .then(value => console.log('login dialog show:', value))
+                .openBaiduLoginDialog()
                 // input user incorrect name
                 .elementByCssSelector('input[name=userName]')
                 .sendKeys('zheng jin tesat')
@@ -193,20 +189,14 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                 .then(value => console.log('error message is show:', value));
         });
 
-        it('#1, check error message on user login dialog', function () {
+        xit('#1, check error message on user login dialog', function () {
             // print env variables set from command 'macaca run'
             console.log('chrome driver version:', process.env.CHROMEDRIVER_VERSION);
             console.log('browser:', process.env.browser);
 
             return driver
                 .get(initialURL)
-                // click login
-                .waitForElementByCssSelector('div#u1 > a[name=tj_login]')
-                .click()
-                .sleep(2000)
-                .waitForElementByCssSelector('div#passport-login-pop-dialog')
-                .isDisplayed()
-                .then(value => console.log('login dialog show:', value ? 'pass' : 'fail'))
+                .openBaiduLoginDialog()
                 // input user name
                 .elementByCssSelector('input[name=userName]')
                 .sendKeys('zheng jin test')
@@ -230,6 +220,26 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                 .elementByCssSelector('#TANGRAM__PSP_10__error')
                 .text()
                 .then(value => console.log(`error message text: ${value}`));
+        });
+    });
+
+    describe('Macaca demos, gropu 3', function () {
+        const initialURL = 'https://www.baidu.com';
+
+        it('#0, call custom methods', function () {
+            return driver
+                .get(initialURL)
+                .openBaiduLoginDialog()
+                .sleep(2000)
+                // verify auto login checkbox status
+                .waitForElementByCssSelector('div#passport-login-pop-dialog input[name=memberPass]')
+                .execute(`
+                var element = document.querySelector('div#passport-login-pop-dialog input[name=memberPass]');
+                return element.checked;`)
+                .then(value => {
+                    console.log('auto login checkbox checked:', value);
+                    value.should.be.ok();
+                })
         });
 
     });

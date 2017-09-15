@@ -8,7 +8,7 @@ const appendToContext = require('macaca-reporter').appendToContext;
 // npm package wrapper sample: https://github.com/macaca-sample/webdriver-client
 
 module.exports = (wd, isIOS) => {
-  wd.addPromiseChainMethod('customback', function() {
+  wd.addPromiseChainMethod('customback', function () {
     if (isIOS) {
       return this
         .waitForElementByName('list')
@@ -21,7 +21,7 @@ module.exports = (wd, isIOS) => {
       .sleep(3000);
   });
 
-  wd.addPromiseChainMethod('appLogin', function(username, password) {
+  wd.addPromiseChainMethod('appLogin', function (username, password) {
     if (isIOS) {
       return this
         .waitForElementByXPath('//XCUIElementTypeTextField[1]')
@@ -39,7 +39,7 @@ module.exports = (wd, isIOS) => {
 
     return this
       .waitForElementsByClassName('android.widget.EditText', {}, 120000)
-      .then(function(els) {
+      .then(function (els) {
         return els[0];
       })
       .clear()
@@ -51,7 +51,7 @@ module.exports = (wd, isIOS) => {
       })
       .sleep(1000)
       .waitForElementsByClassName('android.widget.EditText')
-      .then(function(els) {
+      .then(function (els) {
         return els[1];
       })
       .clear()
@@ -64,7 +64,7 @@ module.exports = (wd, isIOS) => {
       .sleep(5000);
   });
 
-  wd.addPromiseChainMethod('changeToNativeContext', function() {
+  wd.addPromiseChainMethod('changeToNativeContext', function () {
     return this
       .contexts()
       .then(arr => {
@@ -73,7 +73,7 @@ module.exports = (wd, isIOS) => {
       });
   });
 
-  wd.addPromiseChainMethod('changeToWebviewContext', function() {
+  wd.addPromiseChainMethod('changeToWebviewContext', function () {
     if (isIOS) {
       return this
         .contexts()
@@ -99,7 +99,7 @@ module.exports = (wd, isIOS) => {
       .sleep(1000);
   });
 
-  wd.addPromiseChainMethod('testGetProperty', function() {
+  wd.addPromiseChainMethod('testGetProperty', function () {
     if (isIOS) {
       return this
         .waitForElementByName('list')
@@ -149,7 +149,7 @@ module.exports = (wd, isIOS) => {
       });
   });
 
-  wd.addPromiseChainMethod('customSaveScreenshot', function(context) {
+  wd.addPromiseChainMethod('customSaveScreenshot', function (context) {
     const filepath = path.join(__dirname, '..', 'screenshots', `${_.uuid()}.png`);
     const reportspath = path.join(__dirname, '..', 'reports');
     _.mkdir(path.dirname(filepath));
@@ -159,6 +159,18 @@ module.exports = (wd, isIOS) => {
       .then(() => {
         appendToContext(context, `${path.relative(reportspath, filepath)}`);
       });
+  });
+
+  // customized common methods
+  wd.addPromiseChainMethod('openBaiduLoginDialog', function () {
+    return this
+      // click login and wait for dialog
+      .waitForElementByCssSelector('div#u1 > a[name=tj_login]')
+      .click()
+      .sleep(2000)
+      .waitForElementByCssSelector('div#passport-login-pop-dialog')
+      .isDisplayed()
+      .then(value => console.log('login dialog show:', value ? 'pass' : 'fail'))
   });
 
 };
