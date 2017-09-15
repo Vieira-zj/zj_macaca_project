@@ -5,6 +5,8 @@ const _ = require('macaca-utils');
 const KEY_MAP = require('webdriver-keycode');
 const appendToContext = require('macaca-reporter').appendToContext;
 
+const testTasks = require('./test_tasks');
+
 // npm package wrapper sample: https://github.com/macaca-sample/webdriver-client
 
 module.exports = (wd, isIOS) => {
@@ -171,6 +173,11 @@ module.exports = (wd, isIOS) => {
       .waitForElementByCssSelector('div#passport-login-pop-dialog')
       .isDisplayed()
       .then(value => console.log('login dialog show:', value ? 'pass' : 'fail'))
+      .sleep(1000);
+  });
+
+  wd.addPromiseChainMethod('customOpenBaiduLoginDialog', function () {
+    return testTasks.openBaiduLoginDialog(this);
   });
 
 };

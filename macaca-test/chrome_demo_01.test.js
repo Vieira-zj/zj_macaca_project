@@ -148,7 +148,7 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                 // delete last character
                 .keys(testConsts.keyCodes.Shift + testConsts.keyCodes.ArrowLeft)
                 .sleep(1000)
-                .keys(testConsts.keyCodes.Backspace)
+                .keys(testConsts.keyCodes.Backspace);
         });
     });
 
@@ -226,11 +226,10 @@ describe('macaca-test/chrome_demo01.test.js', function () {
     describe('Macaca demos, gropu 3', function () {
         const initialURL = 'https://www.baidu.com';
 
-        it('#0, call custom methods', function () {
+        xit('#0, call custom methods', function () {
             return driver
                 .get(initialURL)
                 .openBaiduLoginDialog()
-                .sleep(2000)
                 // verify auto login checkbox status
                 .waitForElementByCssSelector('div#passport-login-pop-dialog input[name=memberPass]')
                 .execute(`
@@ -239,9 +238,17 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                 .then(value => {
                     console.log('auto login checkbox checked:', value);
                     value.should.be.ok();
-                })
+                });
         });
 
+        it('#1, call custom tasks', function () {
+            return driver
+                .get(initialURL)
+                .customOpenBaiduLoginDialog()
+                .waitForElementByCssSelector('span#TANGRAM__PSP_4__titleText')
+                .text()
+                .then(value => console.log('login dialog title:', value));
+        });
     });
 
 });

@@ -14,7 +14,7 @@ const keyCodes = {
   ArrowDown: '\uE015',
   // keycode Delete is invalid on Mac
   Delete: '\uE05D',
-}
+};
 
 module.exports = {
   keyCodes
