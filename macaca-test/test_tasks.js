@@ -3,6 +3,7 @@
  * 
  */
 
+const testConsts = require('./test_consts');
 const uiObjects = require('./test_uiobjects');
 
 const openBaiduLoginDialog = function (driver) {
@@ -10,11 +11,11 @@ const openBaiduLoginDialog = function (driver) {
   return driver
     .waitForElementByCssSelector(uiObjects.baiduMainPage.selectorLoginLink)
     .click()
-    .sleep(2000)
+    .sleep(testConsts.waitTime.shortWait)
     .waitForElementByCssSelector(uiObjects.loginDialog.selectorDialogMain)
     .isDisplayed()
     .then(value => console.log('login dialog show:', value ? 'pass' : 'fail'))
-    .sleep(1000);
+    .sleep(testConsts.waitTime.shortWait);
 };
 
 module.exports = {

@@ -166,11 +166,11 @@ module.exports = (wd, isIOS) => {
 
   // customized by zj
   // COMMON UTILS
-  wd.addPromiseChainMethod('clickAndWait', function (wait = 1000) {
+  wd.addPromiseChainMethod('clickAndWait', function (wait = testConsts.waitTime.shortWait) {
     return this.click().sleep(wait);
   });
 
-  wd.addPromiseChainMethod('sendkeysAndWait', function (keys, wait = 1000) {
+  wd.addPromiseChainMethod('sendkeysAndWait', function (keys, wait = testConsts.waitTime.shortWait) {
     // Note: error: sendKeys is not a function, and use keys() instead of sendKeys()
     // return this.sendKeys(keys).sleep(wait);
     return this.keys(keys).sleep(wait);
@@ -188,11 +188,11 @@ module.exports = (wd, isIOS) => {
       // click login and wait for dialog
       .waitForElementByCssSelector('div#u1 > a[name=tj_login]')
       .click()
-      .sleep(2000)
+      .sleep(testConsts.waitTime.shortWait)
       .waitForElementByCssSelector('div#passport-login-pop-dialog')
       .isDisplayed()
       .then(value => console.log('login dialog show:', value ? 'pass' : 'fail'))
-      .sleep(1000);
+      .sleep(testConsts.waitTime.shortWait);
   });
 
   wd.addPromiseChainMethod('customOpenBaiduLoginDialog', function () {

@@ -43,7 +43,7 @@ describe('macaca-test/chrome_demo01.test.js', function () {
     });
 
     after(function () {
-        // open browser to show the test report
+        // open browser to show the test report after all done
         // opn(path.join(__dirname, '..', 'reports', 'index.html'));
         return driver
             .close()
@@ -77,7 +77,7 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                             console.log(attr);
                         }
                     }
-                    console.log(JSON.stringify(status, null, '    '));
+                    console.log(JSON.stringify(status, null, '  '));
                 });
         });
 
@@ -247,11 +247,11 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                 .then(value => console.log('login dialog title:', value));
         });
 
-        xit('#2, wait after each action', function () {
+        it('#2, wait after each action', function () {
             return driver
                 .get(initialURL)
                 .waitForElementById('kw')
-                .sendkeysAndWait('Macaca', 3000)
+                .sendkeysAndWait('Macaca', 3 * testConsts.timeUnit.second)
                 .sendkeysAndWait(' framework')
                 .waitForElementById('su')
                 .clickAndWait();
