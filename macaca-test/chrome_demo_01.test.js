@@ -82,11 +82,13 @@ describe('macaca-test/chrome_demo01.test.js', function () {
         });
 
         xit('#2, do search Macaca', function () {
+            const testKeyword = 'Macaca';
+
             return driver
                 .get(initialURL)
                 // input and search
                 .waitForElementByIdByDefault('kw')
-                .sendKeys('Macaca')
+                .sendKeys(testKeyword)
                 .waitForElementByIdByDefault('su')
                 .clickAndWait()
                 // get text of 1st search result
@@ -106,7 +108,7 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                 .execute(`
                     var links = document.getElementsByTagName('em');
                     for (var i = 0, length = links.length; i < length; i++) {
-                        if (links[i].innerText === 'Macaca') {
+                        if (links[i].innerText === '${testKeyword}') {
                             return true;
                         }
                     }
@@ -247,7 +249,7 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                 .then(value => console.log('login dialog title:', value));
         });
 
-        it('#2, wait after each action', function () {
+        xit('#2, wait after each action', function () {
             return driver
                 .get(initialURL)
                 .waitForElementByIdByDefault('kw')
