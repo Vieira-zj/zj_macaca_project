@@ -19,6 +19,8 @@ const testConsts = require('./test_consts');
 
 var browser = process.env.browser || 'electron' || 'puppeteer';
 browser = browser.toLowerCase();
+// browser close after all test cases done
+var browserClose = process.env.BROWSER_CLOSE === 'false' ? false : true;
 
 describe('macaca-test/chrome_demo02.test.js', function () {
   this.timeout(5 * testConsts.timeUnit.minute);
@@ -42,9 +44,10 @@ describe('macaca-test/chrome_demo02.test.js', function () {
   after(function () {
     // open browser to show the test report after all done
     // opn(path.join(__dirname, '..', 'reports', 'index.html'));
-    return driver
-      .close()
-      .quit();
+    if (browserClose) {
+      return driver.close().quit();
+    }
+    return driver;
   });
 
   describe('Macaca api test demo for waitForElement()', function () {
@@ -85,7 +88,7 @@ describe('macaca-test/chrome_demo02.test.js', function () {
         .then(value => console.log('1st result text:', value));
     });
 
-    it('#2, waitForElement() by wd.asserters=textInclude', function () {
+    xit('#2, waitForElement() by wd.asserters=textInclude', function () {
       return driver
         .get(initUrl)
         .customOpenBaiduLoginDialog()
@@ -109,6 +112,31 @@ describe('macaca-test/chrome_demo02.test.js', function () {
         .waitForElementByTagName('em', wd.asserters.jsCondition(jsConditionExpr), timeOut, interval)
         .text()
         .then(value => console.log('1st search result:', value));
+    });
+  });
+
+  describe('Macaca test demo, group 1', function () {
+    const initUrl = 'https://www.baidu.com';
+    const settingBtnSelector = 'div#u1>a[name="tj_settingicon"]';
+    const searchSettingMenuItemSelector = 'div.bdpfmenu a.setpref';
+
+    it('#0, mouse hover over for dyn element', function () {
+      return driver
+        .get(initUrl)
+        .waitForElementByCssSelectorByDefault(settingBtnSelector)
+        .isDisplayed()
+        .then(value => {
+          console.log('Setting button is displayed:', value);
+          value.should.be.ok();
+        })
+        .MouseOverOnElementByCssSelector(settingBtnSelector)
+        .waitForElementByCssSelectorByDefault(searchSettingMenuItemSelector)
+        .isDisplayed()
+        .then(value => {
+          console.log('Search setting menu item is displayed:', value);
+          value.should.be.ok();
+        })
+        .MouseOverOnElementByCssSelector(searchSettingMenuItemSelector);
     });
 
   });

@@ -22,6 +22,7 @@ const testConsts = require('./test_consts');
 
 var browser = process.env.browser || 'electron' || 'puppeteer';
 browser = browser.toLowerCase();
+var browserClose = process.env.BROWSER_CLOSE === 'false' ? false : true;
 
 describe('macaca-test/chrome_demo01.test.js', function () {
     this.timeout(5 * 60 * 1000);
@@ -45,9 +46,12 @@ describe('macaca-test/chrome_demo01.test.js', function () {
     after(function () {
         // open browser to show the test report after all done
         // opn(path.join(__dirname, '..', 'reports', 'index.html'));
-        return driver
-            .close()
-            .quit();
+        if (browserClose) {
+            return driver
+                .close()
+                .quit();
+        }
+        return driver;
     });
 
     describe('Macaca demos, group 1', function () {

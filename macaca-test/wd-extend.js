@@ -177,10 +177,32 @@ module.exports = (wd, isIOS) => {
   });
 
   wd.addPromiseChainMethod('waitForElementByIdByDefault', function (id) {
-    return this.waitForElementById(id,
+    return this.waitForElementById(
+      id,
       wd.asserters.isDisplayed,
       testConsts.waitTime.timeOutForSearch,
       testConsts.waitTime.intervalForSearch);
+  });
+
+  wd.addPromiseChainMethod('waitForElementByCssSelectorByDefault', function (id) {
+    return this.waitForElementByCssSelector(
+      id,
+      wd.asserters.isDisplayed,
+      testConsts.waitTime.timeOutForSearch,
+      testConsts.waitTime.intervalForSearch);
+  });
+
+  wd.addPromiseChainMethod('MouseOverOnElementByCssSelector', function (cssSelector) {
+    return this
+      .execute(
+        `
+        var element = document.querySelector('${cssSelector}');
+        var event = document.createEvent('MouseEvent');
+        event.initMouseEvent('mouseover', true, true);
+        element.dispatchEvent(event);
+        `
+      )
+      .sleep(testConsts.timeUnit.second);
   });
 
   // UI TASKS
