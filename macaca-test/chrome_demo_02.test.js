@@ -2,7 +2,6 @@
  * Macaca test demos.
  * 
  */
-
 'use strict';
 
 require('should');
@@ -17,11 +16,6 @@ const diffImage = require('./utils.js').diffImage;
 
 const testConsts = require('./test_consts');
 
-var browser = process.env.browser || 'electron' || 'puppeteer';
-browser = browser.toLowerCase();
-// browser close after all test cases done
-var browserClose = process.env.BROWSER_CLOSE === 'false' ? false : true;
-
 describe('macaca-test/chrome_demo02.test.js', function () {
   this.timeout(5 * testConsts.timeUnit.minute);
 
@@ -34,7 +28,7 @@ describe('macaca-test/chrome_demo02.test.js', function () {
     return driver
       .init({
         platformName: 'desktop',
-        browserName: browser,
+        browserName: testConsts.envVars.browser,
         userAgent: `Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0 Safari/537.36 Macaca Custom UserAgent`,
         deviceScaleFactor: 2
       })
@@ -44,7 +38,7 @@ describe('macaca-test/chrome_demo02.test.js', function () {
   after(function () {
     // open browser to show the test report after all done
     // opn(path.join(__dirname, '..', 'reports', 'index.html'));
-    if (browserClose) {
+    if (testConsts.envVars.browserClose) {
       return driver.close().quit();
     }
     return driver;
@@ -121,19 +115,22 @@ describe('macaca-test/chrome_demo02.test.js', function () {
     const searchSettingMenuItemSelector = 'div.bdpfmenu a.setpref';
 
     it('#0, mouse hover over for dyn element', function () {
+      console.log('testing browser:', testConsts.envVars.browser);
+      console.log('is browser close after done:', testConsts.envVars.browserClose);
+
       return driver
         .get(initUrl)
         .waitForElementByCssSelectorByDefault(settingBtnSelector)
         .isDisplayed()
         .then(value => {
-          console.log('Setting button is displayed:', value);
+          console.log('setting button is displayed:', value);
           value.should.be.ok();
         })
         .MouseOverOnElementByCssSelector(settingBtnSelector)
         .waitForElementByCssSelectorByDefault(searchSettingMenuItemSelector)
         .isDisplayed()
         .then(value => {
-          console.log('Search setting menu item is displayed:', value);
+          console.log('search setting menu item is displayed:', value);
           value.should.be.ok();
         })
         .MouseOverOnElementByCssSelector(searchSettingMenuItemSelector);

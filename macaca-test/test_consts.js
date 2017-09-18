@@ -1,6 +1,33 @@
 /**
  * const varabiles for testing.
  */
+'use strict';
+
+/**
+ * PRIVATE
+ */
+var getBrowser = function () {
+  let browser = process.env.browser || 'electron' || 'puppeteer';
+  return browser.toLowerCase();
+}
+
+var getBrowserClose = function () {
+  if (process.env.BROWSER_CLOSE) {
+    if (process.env.BROWSER_CLOSE === 'false') {
+      return false;
+    }
+  }
+  return true;
+}
+
+/**
+ * PUBLIC
+ */
+const envVars = {
+  browser: getBrowser(),
+  // browser close after all test cases done, default as true
+  browserClose: getBrowserClose(),
+}
 
 // Note: prefer use: const KEY_MAP = require('webdriver-keycode')
 const keyCodes = {
@@ -32,6 +59,7 @@ const waitTime = {
 }
 
 module.exports = {
+  envVars,
   keyCodes,
   timeUnit,
   waitTime,

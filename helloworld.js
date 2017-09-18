@@ -15,9 +15,24 @@ var testPath = function () {
     console.log('path.resolve:', path.resolve(__dirname, '../logs', '/bar/bae'));
 }
 
+var testObject = function () {
+    let tmpBoolean = true;
+
+    let testObject = {
+        testBoolean1: tmpBoolean ? 'pass' : 'failed',
+        testBoolean2: function () {
+            var ret = tmpBoolean ? 'pass' : 'failed';
+            return ret.toUpperCase();
+        }
+    }
+    console.log('Object boolean1 value:', testObject.testBoolean1);
+    console.log('Object boolean2 value:', testObject.testBoolean2());
+}
+
 if (require.main === module) {
     let name = 'zheng jin';
     console.log(`hello world, ${name}`);
 
     testPath();
+    testObject();
 }
