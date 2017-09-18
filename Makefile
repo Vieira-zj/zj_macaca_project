@@ -78,12 +78,17 @@ test-echo-env-var:
 test-mocha-default:
 	${abs_npm_bin}/mocha --opts mocha.opts
 
+# macaca cli:
+# https://macacajs.github.io/cli-usage
+
 # CHROMEDRIVER_VERSION (default 2.20), set process.env.CHROMEDRIVER_VERSION
 # for chromedriver bin path: 
 # /usr/local/lib/node_modules/macaca-chrome/node_modules/macaca-chromedriver/exec/chromedriver2.xx
 # chromedriver_version=2.30 for Chrome v59.0
 # chromedriver_version=2.32 for Chrome v61.0
-test-desktop-chrome-zj:
+test-desktop-chrome-single-custom:
 	CHROMEDRIVER_VERSION=2.30 browser=chrome macaca run --verbose --reporter macaca-reporter -d ./macaca-test/chrome_demo_02.test.js
+test-desktop-chrome-all-custom:
+	CHROMEDRIVER_VERSION=2.30 browser=chrome macaca run --verbose --reporter macaca-simple-reportor -d ./macaca-test/
 
 .PHONY: test test-ios  # fix the conflict with same file name
