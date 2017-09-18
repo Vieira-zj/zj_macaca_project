@@ -247,7 +247,7 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                 .then(value => console.log('login dialog title:', value));
         });
 
-        xit('#2, wait after each action', function () {
+        it('#2, wait after each action', function () {
             return driver
                 .get(initialURL)
                 .waitForElementByIdByDefault('kw')
@@ -257,7 +257,7 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                 .clickAndWait();
         });
 
-        it('#3, verification by diff image', function () {
+        xit('#3, verification by diff image', function () {
             return driver
                 .get(initialURL)
                 .sleep(testConsts.waitTime.shortWait)

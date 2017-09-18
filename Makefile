@@ -84,6 +84,6 @@ test-mocha-default:
 # chromedriver_version=2.30 for Chrome v59.0
 # chromedriver_version=2.32 for Chrome v61.0
 test-desktop-chrome-zj:
-	CHROMEDRIVER_VERSION=2.30 browser=chrome macaca run --verbose --reporter macaca-reporter -d ./macaca-test/chrome_demo_01.test.js
+	CHROMEDRIVER_VERSION=2.30 browser=chrome macaca run --verbose --reporter macaca-reporter -d ./macaca-test/chrome_demo_02.test.js
 
 .PHONY: test test-ios  # fix the conflict with same file name

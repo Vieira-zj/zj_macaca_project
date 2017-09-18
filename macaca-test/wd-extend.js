@@ -178,6 +178,7 @@ module.exports = (wd, isIOS) => {
 
   wd.addPromiseChainMethod('waitForElementByIdByDefault', function (id) {
     return this.waitForElementById(id,
+      wd.asserters.isDisplayed,
       testConsts.waitTime.timeOutForSearch,
       testConsts.waitTime.intervalForSearch);
   });
