@@ -114,7 +114,7 @@ describe('macaca-test/chrome_demo02.test.js', function () {
     const settingBtnSelector = 'div#u1>a[name="tj_settingicon"]';
     const searchSettingMenuItemSelector = 'div.bdpfmenu a.setpref';
 
-    xit('#0, mouse hover over for dyn element', function () {
+    it('#0, mouse hover over for dyn element, and click', function () {
       console.log('testing browser:', testConsts.envVars.browser);
       console.log('is browser close after done:', testConsts.envVars.browserClose);
 
@@ -133,12 +133,16 @@ describe('macaca-test/chrome_demo02.test.js', function () {
           console.log('search setting menu item is displayed:', value);
           value.should.be.ok();
         })
-        .MouseOverOnElementByCssSelector(searchSettingMenuItemSelector);
+        .sleep(testConsts.waitTime.shortWait)
+        .MouseClickOnElementByCssSelector(searchSettingMenuItemSelector)
+        .sleep(testConsts.waitTime.shortWait)
+        .getElementInnerTextByCssSelector('ul.pftab_hd>li:nth-child(1)')
+        .then(value => console.log('setting text cn:', value));
     });
   });
 
   describe('Macaca test demo, group 2', function () {
-    it('#0, set env variable', function () {
+    xit('#0, set env variable', function () {
       if (process.env.INIT_URL) {
         console.log('env variable INIT_URL from chrome_demo_01.test.js');
       } else {
@@ -148,12 +152,12 @@ describe('macaca-test/chrome_demo02.test.js', function () {
 
       return driver
         .get('https://www.sogou.com')
-        .sleep(testConsts.timeUnit.second)
+        .sleep(testConsts.waitTime.shortWait)
         .url()
         .then(value => console.log('url:', value));
     });
 
-    it('#1, use env variable', function () {
+    xit('#1, use env variable', function () {
       return driver
         .get(process.env.INIT_URL)
         .url()

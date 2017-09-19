@@ -12,7 +12,7 @@ let testGroup1 = function (driver) {
     it('#0, test case 01', function () {
       return driver
         .get('https://www.baidu.com')
-        .sleep(testConsts.timeUnit.second)
+        .sleep(testConsts.waitTime.shortWait)
         .title()
         .then(value => console.log('page title:', value));
     });
@@ -20,7 +20,7 @@ let testGroup1 = function (driver) {
     it('#1, test case 02', function () {
       return driver
         .get('https://www.sogou.com')
-        .sleep(testConsts.timeUnit.second)
+        .sleep(testConsts.waitTime.shortWait)
         .title()
         .then(value => console.log('page title:', value));
     });

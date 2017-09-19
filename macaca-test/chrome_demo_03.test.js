@@ -10,7 +10,7 @@ let testCases = []
 let testCase01 = function (driver) {
   return driver
     .get('https://www.baidu.com')
-    .sleep(testConsts.timeUnit.second)
+    .sleep(testConsts.waitTime.shortWait)
     .title()
     .then(value => console.log('page title:', value));
 }
@@ -19,7 +19,7 @@ testCases.push(testCase01);
 let testCase02 = function (driver) {
   return driver
     .get('https://www.sogou.com')
-    .sleep(testConsts.timeUnit.second)
+    .sleep(testConsts.waitTime.shortWait)
     .title()
     .then(value => console.log('page title:', value));
 }

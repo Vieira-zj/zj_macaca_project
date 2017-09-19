@@ -202,7 +202,27 @@ module.exports = (wd, isIOS) => {
         element.dispatchEvent(event);
         `
       )
-      .sleep(testConsts.timeUnit.second);
+      .sleep(testConsts.waitTime.shortWait);
+  });
+
+  wd.addPromiseChainMethod('MouseClickOnElementByCssSelector', function (cssSelector) {
+    return this
+      .execute(
+        `
+        var element = document.querySelector('${cssSelector}');
+        var event = document.createEvent('MouseEvents');
+        event.initMouseEvent('click', true, true);
+        element.dispatchEvent(event);
+        `
+      )
+      .sleep(testConsts.waitTime.shortWait);
+  });
+
+  wd.addPromiseChainMethod('getElementInnerTextByCssSelector', function (cssSelector) {
+    return this.execute(`
+      var element = document.querySelector('${cssSelector}');
+      return element.innerText;  
+    `);
   });
 
   // UI TASKS
