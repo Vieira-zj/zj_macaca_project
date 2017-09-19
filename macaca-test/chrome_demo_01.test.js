@@ -29,6 +29,11 @@ describe('macaca-test/chrome_demo01.test.js', function () {
     });
 
     before(() => {
+        // set env variable "url"
+        if (!process.env.INIT_URL) {
+            process.env.INIT_URL = 'https://www.baidu.com';
+        }
+    
         return driver
             .init({
                 platformName: 'desktop',
@@ -68,7 +73,7 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                 .then(function (title) {
                     console.log('title:', title);
                 })
-                // get status
+                // get server status
                 .status()
                 .then(function (status) {
                     console.log('status properties:');

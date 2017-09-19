@@ -114,7 +114,7 @@ describe('macaca-test/chrome_demo02.test.js', function () {
     const settingBtnSelector = 'div#u1>a[name="tj_settingicon"]';
     const searchSettingMenuItemSelector = 'div.bdpfmenu a.setpref';
 
-    it('#0, mouse hover over for dyn element', function () {
+    xit('#0, mouse hover over for dyn element', function () {
       console.log('testing browser:', testConsts.envVars.browser);
       console.log('is browser close after done:', testConsts.envVars.browserClose);
 
@@ -134,6 +134,32 @@ describe('macaca-test/chrome_demo02.test.js', function () {
           value.should.be.ok();
         })
         .MouseOverOnElementByCssSelector(searchSettingMenuItemSelector);
+    });
+  });
+
+  describe('Macaca test demo, group 2', function() {
+    it('#0, set env variable', function() {
+      if (process.env.INIT_URL) {
+        console.log('env variable INIT_URL from chrome_demo_01.test.js');
+      } else {
+        console.log('set env variable INIT_URL');
+        process.env.INIT_URL = 'https://www.baidu.com';
+      }
+      
+      return driver
+        .get('https://www.sogou.com')
+        .sleep(testConsts.timeUnit.second)
+        .url()
+        .then(value => console.log('url:', value));
+    });
+
+    it('#1, use env variable', function() {
+      return driver
+        .get(process.env.INIT_URL)
+        .url()
+        .then(value => console.log('env url:', value))
+        .title()
+        .then(value => console.log('title:', value));
     });
 
   });

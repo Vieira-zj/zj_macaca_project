@@ -45,7 +45,7 @@ describe('macaca-test/desktop-browser-sample.test.js', function() {
     opn(path.join(__dirname, '..', 'reports', 'index.html'));  // test report path
   });
 
-  describe('macaca desktop sample', function() {
+  describe.skip('macaca desktop sample', function() {
 
     it('#0 should be ok', function() {
       const url = path.join(__dirname, './pages/desktop-sample.html');
