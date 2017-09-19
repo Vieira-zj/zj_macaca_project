@@ -44,8 +44,9 @@ let initDriver = function () {
 }
 
 let macacaTestCases = function (testCases) {
-  describe('Macaca test cases from macaca_tc_template.test.js', function () {
+  describe('Macaca test cases from macaca_tc_template.js', function () {
     this.timeout(5 * testConsts.timeUnit.minute);
+    this.slow(testConsts.timeUnit.minute);
 
     var driver = initDriver();
 
@@ -67,23 +68,27 @@ let macacaTestCases = function (testCases) {
 };
 
 let macacaTestGroups = function (testGroups) {
-  this.timeout(5 * testConsts.timeUnit.minute);
+  describe('Macaca test groups from macaca_tc_template.js', function () {
+    this.timeout(5 * testConsts.timeUnit.minute);
+    this.slow(testConsts.timeUnit.minute);
 
-  var driver = initDriver();
+    var driver = initDriver();
 
-  before(() => {
-    return fnBeforeAll(driver);
+    before(() => {
+      return fnBeforeAll(driver);
+    });
+
+    after(function () {
+      return fnAfterAll(driver);
+    });
+
+    for (let i = 0, length = testGroups.length; i < length; i++) {
+      testGroups[i](driver);
+    }
   });
-
-  after(function () {
-    return fnAfterAll(driver);
-  });
-
-  for (let i = 0, length = testGroups.length; i < length; i++) {
-    testGroups(driver);
-  }
 }
 
 module.exports = {
   macacaTestCases,
+  macacaTestGroups,
 }
