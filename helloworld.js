@@ -2,6 +2,12 @@
  * Hello world demo.
  * 
  */
+'use strict';
+
+let testPrintVar = function () {
+    let name = 'zheng jin';
+    console.log(`hello world, ${name}`);
+};
 
 let testPath = function () {
     const path = require('path');
@@ -13,9 +19,9 @@ let testPath = function () {
     // path.resolve() process the sequence of paths from right to left, 
     // with each subsequent path prepended until an absolute path is constructed.
     console.log('path.resolve:', path.resolve(__dirname, '../logs', '/bar/bae'));
-}
+};
 
-let testObject = function testObject () {
+let testObject = function testObject() {
     let tmpBoolean = true;
 
     let testObject = {
@@ -27,18 +33,41 @@ let testObject = function testObject () {
     }
     console.log('Object boolean1 value:', testObject.testBoolean1);
     console.log('Object boolean2 value:', testObject.testBoolean2());
-}
+};
 
-let testFnName = function(fn) {
+let testFnName = function (fn) {
     console.log('funcion name:', fn.name);
     console.log('funcion name:', arguments[0].name);
-}
+};
+
+let fnCaller = function (fn) {
+    console.log('hello', fn());
+};
+let fnCallBack1 = function (text) {
+    return text;
+};
+let testCallBack = function () {
+    // must be within the same context
+    let fnCallBack2 = function () {
+        return nameText;
+    };
+
+    const nameText = 'zhengjin';
+
+    // #1, call by anonymous function
+    fnCaller(function () {
+        return nameText;
+    });
+    // #2, call by function
+    fnCaller(() => fnCallBack1(nameText));
+    // #3, call by function variable
+    fnCaller(fnCallBack2);
+};
 
 if (require.main === module) {
-    let name = 'zheng jin';
-    console.log(`hello world, ${name}`);
-
+    // testPrintVar();
     // testPath();
     // testObject();
-    testFnName(testPath);
+    // testFnName(testPath);
+    testCallBack();
 }

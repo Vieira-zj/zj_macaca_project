@@ -1,5 +1,5 @@
 /**
- * Macaca test case template.
+ * Template for macaca test cases and test groups.
  * 
  */
 'use strict';
