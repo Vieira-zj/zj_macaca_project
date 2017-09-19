@@ -33,7 +33,7 @@ describe('macaca-test/chrome_demo01.test.js', function () {
         if (!process.env.INIT_URL) {
             process.env.INIT_URL = 'https://www.baidu.com';
         }
-    
+
         return driver
             .init({
                 platformName: 'desktop',

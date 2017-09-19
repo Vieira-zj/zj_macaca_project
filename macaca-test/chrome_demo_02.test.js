@@ -137,15 +137,15 @@ describe('macaca-test/chrome_demo02.test.js', function () {
     });
   });
 
-  describe('Macaca test demo, group 2', function() {
-    it('#0, set env variable', function() {
+  describe('Macaca test demo, group 2', function () {
+    it('#0, set env variable', function () {
       if (process.env.INIT_URL) {
         console.log('env variable INIT_URL from chrome_demo_01.test.js');
       } else {
         console.log('set env variable INIT_URL');
         process.env.INIT_URL = 'https://www.baidu.com';
       }
-      
+
       return driver
         .get('https://www.sogou.com')
         .sleep(testConsts.timeUnit.second)
@@ -153,7 +153,7 @@ describe('macaca-test/chrome_demo02.test.js', function () {
         .then(value => console.log('url:', value));
     });
 
-    it('#1, use env variable', function() {
+    it('#1, use env variable', function () {
       return driver
         .get(process.env.INIT_URL)
         .url()

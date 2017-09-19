@@ -3,7 +3,7 @@
  * 
  */
 
-var testPath = function () {
+let testPath = function () {
     const path = require('path');
 
     // path.join concatenates all given path segments together 
@@ -15,13 +15,13 @@ var testPath = function () {
     console.log('path.resolve:', path.resolve(__dirname, '../logs', '/bar/bae'));
 }
 
-var testObject = function () {
+let testObject = function testObject () {
     let tmpBoolean = true;
 
     let testObject = {
         testBoolean1: tmpBoolean ? 'pass' : 'failed',
         testBoolean2: function () {
-            var ret = tmpBoolean ? 'pass' : 'failed';
+            let ret = tmpBoolean ? 'pass' : 'failed';
             return ret.toUpperCase();
         }
     }
@@ -29,10 +29,16 @@ var testObject = function () {
     console.log('Object boolean2 value:', testObject.testBoolean2());
 }
 
+let testFnName = function(fn) {
+    console.log('funcion name:', fn.name);
+    console.log('funcion name:', arguments[0].name);
+}
+
 if (require.main === module) {
     let name = 'zheng jin';
     console.log(`hello world, ${name}`);
 
-    testPath();
-    testObject();
+    // testPath();
+    // testObject();
+    testFnName(testPath);
 }
