@@ -292,7 +292,6 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                 .catch(e => {
                     console.error(e);
                 });
-
         });
     });
 
