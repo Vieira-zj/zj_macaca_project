@@ -64,10 +64,18 @@ let testCallBack = function () {
     fnCaller(fnCallBack2);
 };
 
+let testJsonLoad = function () {
+    // auto convert json string (in file) to json object
+    let loadJson = require('./package.json');
+    console.log('load json:', typeof loadJson);
+    console.log('project description:', loadJson.description);
+}
+
 if (require.main === module) {
     // testPrintVar();
     // testPath();
     // testObject();
     // testFnName(testPath);
-    testCallBack();
+    // testCallBack();
+    testJsonLoad();
 }
