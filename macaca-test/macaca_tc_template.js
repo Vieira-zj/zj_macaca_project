@@ -43,7 +43,7 @@ let initDriver = function () {
   });
 }
 
-let macacaTestCases = function (testCases) {
+let macacaTestCases = function (testCases, isTcWithDesc = true) {
   describe('Macaca test cases from macaca_tc_template.js', function () {
     this.timeout(5 * testConsts.timeUnit.minute);
     this.slow(testConsts.timeUnit.minute);
@@ -60,9 +60,14 @@ let macacaTestCases = function (testCases) {
 
     for (let i = 0, length = testCases.length; i < length; i++) {
       let tc = testCases[i];
-      it(`run test case => ${tc.name}`, function () {
-        return tc(driver);
-      });
+      if (isTcWithDesc) {
+        tc(driver);
+      } else {
+        // use default description
+        it(`run test case => ${tc.name}`, function () {
+          return tc(driver);
+        });
+      }
     }
   });
 };

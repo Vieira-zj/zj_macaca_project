@@ -5,7 +5,8 @@
 const testConsts = require('./test_consts');
 const runner = require('./macaca_tc_template');
 
-let testCases = []
+// tc without description
+let testCasesGroup1 = []
 
 let testCase01 = function (driver) {
   return driver
@@ -14,7 +15,7 @@ let testCase01 = function (driver) {
     .title()
     .then(value => console.log('page title:', value));
 }
-testCases.push(testCase01);
+testCasesGroup1.push(testCase01);
 
 let testCase02 = function (driver) {
   return driver
@@ -23,6 +24,30 @@ let testCase02 = function (driver) {
     .title()
     .then(value => console.log('page title:', value));
 }
-testCases.push(testCase02);
+testCasesGroup1.push(testCase02);
 
-runner.macacaTestCases(testCases);
+// tc with description
+let testCasesGroup2 = []
+
+let testCase03 = function (driver) {
+  it('#3, open strikingly page', function () {
+    return driver
+      .get('https://www.qa.strikingly.com/')
+      .title()
+      .then(value => console.log('page title:', value));
+  });
+}
+testCasesGroup2.push(testCase03);
+
+let testCase04 = function (driver) {
+  it('#3, open strikingly sxl page', function () {
+    return driver
+      .get('https://www.qa.sxl.cn/s#/')
+      .title()
+      .then(value => console.log('page title:', value));
+  });
+}
+testCasesGroup2.push(testCase04);
+
+runner.macacaTestCases(testCasesGroup1, false);
+runner.macacaTestCases(testCasesGroup2);

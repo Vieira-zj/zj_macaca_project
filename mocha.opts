@@ -1,2 +1,2 @@
-mocha-test/
+mocha-test/demo_01.test.js
 -t 3000

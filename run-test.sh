@@ -1,5 +1,8 @@
-# run single test case
-make test-desktop-chrome-single-custom
+# run mocha test
+make test-mocha-default
 
-# run all test cases in specified folder
+# run macaca single test case
+#make test-desktop-chrome-single-custom
+
+# run all macaca test cases in specified folder
 #make test-desktop-chrome-all-custom
