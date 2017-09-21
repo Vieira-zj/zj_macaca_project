@@ -225,6 +225,20 @@ module.exports = (wd, isIOS) => {
     `);
   });
 
+  // do not support method overload
+  // 2nd method will override 1st one
+  wd.addPromiseChainMethod('helloMessage', function () {
+    console.log('call helloMessage without args');
+    console.log('hello');
+    return this;
+  });
+
+  wd.addPromiseChainMethod('helloMessage', function (text) {
+    console.log('call helloMessage with args');
+    console.log('hello', text);
+    return this;
+  });
+
   // UI TASKS
   wd.addPromiseChainMethod('openBaiduLoginDialog', function () {
     return this

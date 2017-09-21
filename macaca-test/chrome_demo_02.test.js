@@ -114,7 +114,7 @@ describe('macaca-test/chrome_demo02.test.js', function () {
     const settingBtnSelector = 'div#u1>a[name="tj_settingicon"]';
     const searchSettingMenuItemSelector = 'div.bdpfmenu a.setpref';
 
-    it('#0, mouse hover over for dyn element, and click', function () {
+    xit('#0, mouse hover over for dyn element, and click', function () {
       console.log('testing browser:', testConsts.envVars.browser);
       console.log('is browser close after done:', testConsts.envVars.browserClose);
 
@@ -166,6 +166,12 @@ describe('macaca-test/chrome_demo02.test.js', function () {
         .then(value => console.log('title:', value));
     });
 
+    it('#2, call overload extend method', function () {
+      // do not support
+      return driver
+        .helloMessage()
+        .helloMessage('zhengjin');
+    });
   });
 
 });

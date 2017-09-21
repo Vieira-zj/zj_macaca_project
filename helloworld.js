@@ -71,11 +71,25 @@ let testJsonLoad = function () {
     console.log('project description:', loadJson.description);
 }
 
+let testFnParams = function () {
+    let tmpFn = function (firstName, lastName) {
+        if (lastName) {
+            console.log('hello', firstName, lastName);
+            return;
+        }
+        console.log('hello', firstName);
+    }
+
+    tmpFn('henry');
+    tmpFn('zheng', 'jin');
+}
+
 if (require.main === module) {
     // testPrintVar();
     // testPath();
     // testObject();
     // testFnName(testPath);
     // testCallBack();
-    testJsonLoad();
+    // testJsonLoad();
+    testFnParams();
 }
