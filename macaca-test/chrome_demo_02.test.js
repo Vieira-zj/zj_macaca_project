@@ -167,10 +167,10 @@ describe('macaca-test/chrome_demo02.test.js', function () {
     });
 
     it('#2, call overload extend method', function () {
-      // do not support
+      // do not support method overload
       return driver
-        .helloMessage()
-        .helloMessage('zhengjin');
+        .helloMessageWithoutArgs()
+        .helloMessageWithArgs('zhengjin');
     });
   });
 

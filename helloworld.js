@@ -84,6 +84,18 @@ let testFnParams = function () {
     tmpFn('zheng', 'jin');
 }
 
+let testAddFn = function () {
+    let tmpObj = {
+        name: 'zheng jin',
+        title: 'tester'
+    }
+    tmpObj['toMessage'] = function () {
+        console.log(`Message: ${this.name}'s title is ${this.title}`);
+    }
+
+    tmpObj.toMessage();
+}
+
 if (require.main === module) {
     // testPrintVar();
     // testPath();
@@ -91,5 +103,6 @@ if (require.main === module) {
     // testFnName(testPath);
     // testCallBack();
     // testJsonLoad();
-    testFnParams();
+    // testFnParams();
+    testAddFn();
 }

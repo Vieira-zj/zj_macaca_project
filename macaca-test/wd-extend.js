@@ -225,17 +225,20 @@ module.exports = (wd, isIOS) => {
     `);
   });
 
-  // do not support method overload
-  // 2nd method will override 1st one
-  wd.addPromiseChainMethod('helloMessage', function () {
+  // do not support method overload, 2nd method will override 1st one, 
+  // and use different method name
+  wd.addPromiseChainMethod('helloMessageWithoutArgs', function () {
     console.log('call helloMessage without args');
-    console.log('hello');
-    return this;
+    return this.helloMessageWithArgs();
   });
 
-  wd.addPromiseChainMethod('helloMessage', function (text) {
+  wd.addPromiseChainMethod('helloMessageWithArgs', function (text) {
     console.log('call helloMessage with args');
-    console.log('hello', text);
+    if (text) {
+      console.log('hello', text);
+    } else {
+      console.log('hello guest');
+    }
     return this;
   });
 
