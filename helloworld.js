@@ -69,7 +69,7 @@ let testJsonLoad = function () {
     let loadJson = require('./package.json');
     console.log('load json:', typeof loadJson);
     console.log('project description:', loadJson.description);
-}
+};
 
 let testFnParams = function () {
     let tmpFn = function (firstName, lastName) {
@@ -82,7 +82,7 @@ let testFnParams = function () {
 
     tmpFn('henry');
     tmpFn('zheng', 'jin');
-}
+};
 
 let testAddFn = function () {
     let tmpObj = {
@@ -94,7 +94,39 @@ let testAddFn = function () {
     }
 
     tmpObj.toMessage();
-}
+};
+
+let testObjectDestruct = function () {
+    // must match the properties' name in object
+    let getFullName = function ({
+        firstName,
+        lastName
+    }) {
+        console.log(`hello, ${firstName} ${lastName}`);
+    };
+
+    let tmpName = {
+        national: 'China',
+        firstName: 'zheng',
+        lastName: 'jin',
+        age: 30
+    };
+    getFullName(tmpName);
+};
+
+let testArrayDestruct = function () {
+    // match the order in array
+    let tmpArr = ['JS', 'Python', 'Java'];
+    const [first, second] = tmpArr;
+    console.log(`program: ${first}, ${second}`);
+};
+
+let testArgsJoin = function () {
+    let argsJoin = function (...args) {
+        console.log(args.join(' '));
+    };
+    argsJoin('hello', 'world', 'zheng', 'jin');
+};
 
 if (require.main === module) {
     // testPrintVar();
@@ -104,5 +136,9 @@ if (require.main === module) {
     // testCallBack();
     // testJsonLoad();
     // testFnParams();
-    testAddFn();
+    // testAddFn();
+
+    // testObjectDestruct();
+    // testArrayDestruct();
+    testArgsJoin();
 }
