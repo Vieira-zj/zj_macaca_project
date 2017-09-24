@@ -131,3 +131,21 @@ make test-desktop-chrome-single-custom
 # ((total+=i))
 # done
 # echo 'total: '${total}
+
+
+# #10
+# name='zheng jin'
+# echo 'hello ${name}' # print string
+# echo "hello ${name}" # print string with varibale
+
+
+# #11, reg expr
+# strlist='testcheck dabletest checktest'
+# for str in $strlist
+# do
+#   # if [[ $str =~ test$ ]]
+#   if [[ ! $str =~ check$ ]]
+#   then
+#     echo $str
+#   fi
+# done

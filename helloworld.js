@@ -128,6 +128,15 @@ let testArgsJoin = function () {
     argsJoin('hello', 'world', 'zheng', 'jin');
 };
 
+let testSelfRunFun = function () {
+    (function () {
+        console.log('self run function without name.');
+    })();
+    (function selfRun() {
+        console.log('self run function with name.');
+    })();
+};
+
 if (require.main === module) {
     // testPrintVar();
     // testPath();
@@ -140,5 +149,7 @@ if (require.main === module) {
 
     // testObjectDestruct();
     // testArrayDestruct();
-    testArgsJoin();
+    // testArgsJoin();
+
+    testSelfRunFun();
 }
