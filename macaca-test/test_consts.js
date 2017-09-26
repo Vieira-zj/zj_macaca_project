@@ -40,8 +40,8 @@ const keyCodes = {
   ArrowUp: '\uE013',
   ArrowRight: '\uE014',
   ArrowDown: '\uE015',
-  // keycode Delete is invalid on Mac
-  Delete: '\uE05D',
+  Delete: '\uE017',
+  Command: '\uE03D',
 };
 
 const timeUnit = {

@@ -226,7 +226,7 @@ module.exports = (wd, isIOS) => {
   });
 
   // do not support method overload, 2nd method will override 1st one, 
-  // and use different method name
+  // and use different method name instead
   wd.addPromiseChainMethod('helloMessageWithoutArgs', function () {
     console.log('call helloMessage without args');
     return this.helloMessageWithArgs();

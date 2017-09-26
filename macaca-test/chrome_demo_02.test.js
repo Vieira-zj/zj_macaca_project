@@ -142,36 +142,46 @@ describe('macaca-test/chrome_demo02.test.js', function () {
   });
 
   describe('Macaca test demo, group 2', function () {
-    xit('#0, set env variable', function () {
+    const url = 'https://www.baidu.com';
+
+    xit('#0, set and get env variable', function () {
       if (process.env.INIT_URL) {
         console.log('env variable INIT_URL from chrome_demo_01.test.js');
       } else {
         console.log('set env variable INIT_URL');
-        process.env.INIT_URL = 'https://www.baidu.com';
+        process.env.INIT_URL = url;
       }
 
       return driver
-        .get('https://www.sogou.com')
-        .sleep(testConsts.waitTime.shortWait)
-        .url()
-        .then(value => console.log('url:', value));
-    });
-
-    xit('#1, use env variable', function () {
-      return driver
         .get(process.env.INIT_URL)
+        .sleep(testConsts.waitTime.shortWait)
         .url()
         .then(value => console.log('env url:', value))
         .title()
         .then(value => console.log('title:', value));
     });
 
-    it('#2, call overload extend method', function () {
-      // do not support method overload
+    xit('#1, call overload extend method', function () {
       return driver
         .helloMessageWithoutArgs()
         .helloMessageWithArgs('zhengjin');
     });
+
+    it('#2, read external test data', function () {
+      // json object
+      const testdata = require('../testdata/testdata_01');
+
+      return driver
+        .get(url)
+        .waitForElementByIdByDefault('kw')
+        .sendkeysAndWait(testdata.searchKey1)
+        .waitForElementByIdByDefault('su')
+        .clickAndWait()
+        .waitForElementByIdByDefault('kw')
+        .clear()
+        .sendkeysAndWait(testdata.searchKey2);
+    });
+
   });
 
 });

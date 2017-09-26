@@ -148,11 +148,13 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                 // input search string
                 .waitForElementById('kw')
                 .sendKeys('Macacaa')
-                .sleep(1000)
+                .sleep(testConsts.waitTime.shortWait)
                 // delete last character
                 .keys(testConsts.keyCodes.Shift + testConsts.keyCodes.ArrowLeft)
-                .sleep(1000)
-                .keys(testConsts.keyCodes.Backspace);
+                .sleep(testConsts.waitTime.shortWait)
+                .keys(testConsts.keyCodes.Backspace)
+                .sleep(testConsts.waitTime.shortWait)
+                .keys(testConsts.keyCodes.Command + 'KeyA'); // useless
         });
     });
 
@@ -188,7 +190,9 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                 .keys('123456')
                 .sleep(1000)
                 .keys(testConsts.keyCodes.Enter)
-                .waitForElementByCssSelector('div#passport-login-pop-dialog span#TANGRAM__PSP_10__error')
+                .waitForElementByCssSelector(
+                    'div#passport-login-pop-dialog span#TANGRAM__PSP_10__error'
+                )
                 .isDisplayed()
                 .then(value => console.log('error message is show:', value));
         });
@@ -212,13 +216,16 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                 .sleep(1000)
                 // click login button
                 .execute(`
-                    var element = document.querySelector('div#passport-login-pop-dialog input[type=submit]');
+                    var element = document.querySelector(
+                        'div#passport-login-pop-dialog input[type=submit]');
                     return element.value;`)
                 .then(value => console.log('click on button:', value))
                 .elementByCssSelector('div#passport-login-pop-dialog input[type=submit]')
                 .click()
                 // verify error message
-                .waitForElementByCssSelector('div#passport-login-pop-dialog #TANGRAM__PSP_10__error')
+                .waitForElementByCssSelector(
+                    'div#passport-login-pop-dialog #TANGRAM__PSP_10__error'
+                )
                 .isDisplayed()
                 .then(value => console.log('error message show:', value ? 'pass' : 'fail'))
                 .elementByCssSelector('#TANGRAM__PSP_10__error')
@@ -235,9 +242,12 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                 .get(initialURL)
                 .openBaiduLoginDialog()
                 // verify auto login checkbox status
-                .waitForElementByCssSelector('div#passport-login-pop-dialog input[name=memberPass]')
+                .waitForElementByCssSelector(
+                    'div#passport-login-pop-dialog input[name=memberPass]'
+                )
                 .execute(`
-                var element = document.querySelector('div#passport-login-pop-dialog input[name=memberPass]');
+                var element = document.querySelector(
+                    'div#passport-login-pop-dialog input[name=memberPass]');
                 return element.checked;`)
                 .then(value => {
                     console.log('auto login checkbox checked:', value);
@@ -281,7 +291,10 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                     }); // Warn: sync function
 
                     const newImg = new Buffer(imgData, 'base64');
-                    fs.writeFileSync(path.join(screenshotFolder, 'new.png'), newImg.toString('binary'), 'binary');
+                    fs.writeFileSync(
+                        path.join(screenshotFolder, 'new.png'),
+                        newImg.toString('binary'), 'binary'
+                    );
 
                     const diffImgPath = path.join(screenshotFolder, 'diff.png');
                     return diffImage(originImgPath, newImg, 0.1, diffImgPath);
