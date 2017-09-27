@@ -1,5 +1,6 @@
 /**
  * Create macaca test cases and run by template.
+ * As write by test case, it cannot add hook functions, like: before(), beforeEach()
  * 
  */
 const testConsts = require('./test_consts');
@@ -25,6 +26,7 @@ let testCase02 = function (driver) {
     .then(value => console.log('page title:', value));
 }
 testCasesGroup1.push(testCase02);
+
 
 // tc with description
 let testCasesGroup2 = []
