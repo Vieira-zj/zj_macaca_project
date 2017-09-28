@@ -1,17 +1,18 @@
 #!/bin/bash
 
 target=""
+default="test-desktop-chrome-single-custom"
 # run mocha test
 if [ $1 == "mo" ]; then
   target="test-mocha-default"
 # run macaca single test case
 elif [ $1 == "ma" ]; then
-  target="test-desktop-chrome-single-custom"
+  target=${default}
 # run all macaca test cases in specified folder
 elif [ $1 == "all" ]; then
   target="test-desktop-chrome-all-custom"
 else
-  target="test-desktop-chrome-single-custom"
+  target=${default}
 fi
 echo "run target: "${target}
 make ${target}
