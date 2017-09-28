@@ -161,13 +161,15 @@ describe('macaca-test/chrome_demo02.test.js', function () {
         .then(value => console.log('title:', value));
     });
 
-    xit('#1, call overload extend method', function () {
+    it('#1, call overload extend method', function () {
       return driver
         .helloMessageWithoutArgs()
-        .helloMessageWithArgs('zhengjin');
+        .helloMessageWithArgs('zhengjin')
+        .then(() => console.log('test1'))
+        .then(() => console.log('test2'));
     });
 
-    it('#2, read external test data', function () {
+    xit('#2, read external test data', function () {
       // json object
       const testdata = require('../testdata/testdata_01');
 

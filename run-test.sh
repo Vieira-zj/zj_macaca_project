@@ -1,14 +1,20 @@
 #!/bin/bash
 
+target=""
 # run mocha test
-#make test-mocha-default
-
+if [ $1 == "mo" ]; then
+  target="test-mocha-default"
 # run macaca single test case
-make test-desktop-chrome-single-custom
-
+elif [ $1 == "ma" ]; then
+  target="test-desktop-chrome-single-custom"
 # run all macaca test cases in specified folder
-#make test-desktop-chrome-all-custom
-
+elif [ $1 == "all" ]; then
+  target="test-desktop-chrome-all-custom"
+else
+  target="test-desktop-chrome-single-custom"
+fi
+echo "run target: "${target}
+make ${target}
 
 
 # SHELL SCRIPT SAMPELS
