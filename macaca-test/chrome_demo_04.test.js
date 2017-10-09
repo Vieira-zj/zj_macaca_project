@@ -38,6 +38,8 @@ let testGroup2 = function (driver) {
     after(() => console.log('End: run test group 2'));
 
     it('#2, test case 03', function () {
+      console.log('driver session id:', driver.sessionID);
+
       return driver
         .get('https://www.qa.strikingly.com')
         .execute('return document.title')
@@ -50,7 +52,9 @@ let testGroup2 = function (driver) {
       return driver
         .get('https://www.qa.sxl.cn/s#')
         .execute(`return ${jsGetTitle}`)
-        .then(value => console.log('page title:', value));
+        .then(value => console.log('page title:', value))
+        .getSessionId()
+        .then(value => console.log('session id:', value));
     });
   });
 }
