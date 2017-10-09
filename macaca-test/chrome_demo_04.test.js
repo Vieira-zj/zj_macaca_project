@@ -40,14 +40,16 @@ let testGroup2 = function (driver) {
     it('#2, test case 03', function () {
       return driver
         .get('https://www.qa.strikingly.com')
-        .title()
+        .execute('return document.title')
         .then(value => console.log('page title:', value));
     });
 
     it('#3, test case 04', function () {
+      const jsGetTitle = 'document.title';
+
       return driver
         .get('https://www.qa.sxl.cn/s#')
-        .title()
+        .execute(`return ${jsGetTitle}`)
         .then(value => console.log('page title:', value));
     });
   });
