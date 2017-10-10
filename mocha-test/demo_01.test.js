@@ -1,5 +1,7 @@
 /**
- * Run command: make test-mocha-default
+ * Run command: 
+ * 1) make test-mocha-default
+ * 2) npm test
  * 
  */
 

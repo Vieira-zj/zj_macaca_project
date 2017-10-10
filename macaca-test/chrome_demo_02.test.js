@@ -170,8 +170,7 @@ describe('macaca-test/chrome_demo02.test.js', function () {
     });
 
     xit('#2, read external test data', function () {
-      // json object
-      const testdata = require('../testdata/testdata_01');
+      const testdata = require('../testdata/testdata_01'); // json object
 
       return driver
         .get(url)
