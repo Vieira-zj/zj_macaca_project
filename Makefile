@@ -1,12 +1,12 @@
 git_version = `git branch 2>/dev/null | sed -e '/^[^*]/d'-e's/* \(.*\)/\1/'`
 npm_bin= `npm bin`
-abs_npm_bin=./node_modules/.bin
+cur_npm_bin=./node_modules/.bin
 custom_port = `${npm_bin}/detect-port 3458 -s`
 
-all: test  # run target "test" instead
+all: test # run target "test" instead
 install:
 	@npm i  # run command without print command
-test:  # print usage
+test: # print usage
 	@echo ""
 	@echo "make test-ios               Test sample for iOS"
 	@echo "make test-android           Test sample for Android"
@@ -69,14 +69,21 @@ custom-port:
 	MACACA_SERVER_PORT=${custom_port} browser=electron ${npm_bin}/macaca run --no-window --verbose -d ./macaca-test/desktop-browser-sample.test.js -p ${custom_port}
 
 # Customized Targets
+test-helloworld:
+	@echo "Hello world"
+test-precondition:
+	@echo "This is a precondition"
+test-default: test-helloworld test-precondition
+	@echo "This is test default"
+
 # run command: 
-# $ user_name=zhengjin make test-echo-env-var
-test-echo-env-var:
+# $ user_name=zhengjin make test-env-var
+test-env-var:
 	@echo "Env variable test, user name: $(user_name)"
 
 # unit test
 test-mocha-default:
-	${abs_npm_bin}/mocha --opts mocha.opts
+	${cur_npm_bin}/mocha --opts mocha.opts
 
 # macaca cli:
 # https://macacajs.github.io/cli-usage
@@ -92,4 +99,4 @@ test-desktop-chrome-single-custom:
 test-desktop-chrome-all-custom:
 	CHROMEDRIVER_VERSION=2.30 browser=chrome macaca run --verbose --reporter macaca-simple-reportor -d ./macaca-test/
 
-.PHONY: test test-ios  # fix the conflict with same file name
+.PHONY: test test-ios # fix the conflict with same file name
