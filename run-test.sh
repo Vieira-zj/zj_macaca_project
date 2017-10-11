@@ -143,7 +143,7 @@ make ${target}
 # #10
 # name='zheng jin'
 # echo 'hello ${name}' # print string
-# echo "hello ${name}" # print string with varibale
+# echo "hello ${name}" # print varibale
 
 
 # #11, reg expr
@@ -156,3 +156,25 @@ make ${target}
 #     echo $str
 #   fi
 # done
+
+# #12, function
+# function fSum()
+# {
+#   echo "args: $1,$2"
+#   return $(($1+$2))
+# }
+# fSum 5 7
+# echo "results: $?"
+
+# function cpBackup() {
+#   if [ -f $1 ];then
+#     cp $1 ~/Documents/zj_files_backups/
+#     echo "copied success"
+#     return 0
+#   else
+#     echo "invalid file: $1"
+#     return -1
+#   fi
+# }
+# cpBackup ~/Documents/vim_test.log
+# echo "results: $?"
