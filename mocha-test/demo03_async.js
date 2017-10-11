@@ -50,14 +50,14 @@ const asyncByPromise = function () {
     .then(asyncFn)
     .then(asyncFn)
     .then(asyncFn)
-    .catch(reason => console.warn(reason));
+    .catch(reason => console.warn(reason)); // end with catch block
 };
 
 const asyncByAwait = function () {
   let asyncFn = function (wait) {
     return new Promise(function (resolve, reject) {
       if (wait < 1000) {
-        reject('wait time less than 1000ms!');
+        reject('wait time less than 1000ms!'); // throws error
       }
 
       setTimeout(function () {
@@ -69,6 +69,7 @@ const asyncByAwait = function () {
 
   async function asyncTest() {
     try {
+      // functions invoked in try catch block
       let timeout = await asyncFn(3000);
       timeout = await asyncFn(timeout);
       timeout = await asyncFn(timeout);
