@@ -77,3 +77,17 @@ describe('test/demo_01.test.js, part 2', function () {
         });
     });
 });
+
+describe('test/demo_01.test.js, part 3', function () {
+    // for async fn in mocha, we should pass a callback fn "done",
+    // and call the done() in async fn to tell mocha that when async fn finished.
+    it('test case 7, async function', function (done) {
+        setTimeout(function () {
+            console.log('async function in mocha.');
+            done();
+        }, 2000);
+    });
+
+    // For async tests and hooks, ensure "done()" is called; 
+    // if returning a Promise, ensure it resolves.
+});

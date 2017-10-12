@@ -91,7 +91,7 @@ describe('test/demo_02_should.test.js', function () {
         tmpObj.should.be.a.Object();
     });
 
-    it('Should dmoe 09, match', function () {
+    it('Should dmoe 09, match and multiple asserts', function () {
         'abc'.should.be.a.String().and.not.empty().and.match(/^ab/);
     });
 
