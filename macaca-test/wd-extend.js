@@ -192,6 +192,14 @@ module.exports = (wd, isIOS) => {
       testConsts.waitTime.intervalForSearch);
   });
 
+  wd.addPromiseChainMethod('waitForElementsByCssSelectorByDefault', function (id) {
+    return this.waitForElementsByCssSelector(
+      id,
+      wd.asserters.isDisplayed,
+      testConsts.waitTime.timeOutForSearch,
+      testConsts.waitTime.intervalForSearch);
+  });
+
   wd.addPromiseChainMethod('MouseOverOnElementByCssSelector', function (cssSelector) {
     return this
       .execute(
@@ -240,6 +248,19 @@ module.exports = (wd, isIOS) => {
       console.log('hello guest');
     }
     return this;
+  });
+
+  wd.addPromiseChainMethod('sleepByPromise', function (wait) {
+    return new Promise(function (resolve, reject) {
+      if (wait < 1000) {
+        reject('invalid wait time');
+      }
+
+      setTimeout(function () {
+        console.log(`wait for ${wait} ms`);
+        resolve(true);
+      }, wait);
+    });
   });
 
   // UI TASKS

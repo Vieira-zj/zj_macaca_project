@@ -30,7 +30,7 @@ let testGroup1 = function (driver) {
     });
   });
 };
-testGroups.push(testGroup1);
+// testGroups.push(testGroup1);
 
 let testGroup2 = function (driver) {
   describe('Macaca test group 2', function () {
@@ -57,7 +57,47 @@ let testGroup2 = function (driver) {
         .then(value => console.log('session id:', value));
     });
   });
-}
-testGroups.push(testGroup2);
+};
+// testGroups.push(testGroup2);
+
+let testGroup3 = function (driver) {
+  describe('Macaca test group 3', function () {
+    const url = 'https://www.qa.sxl.cn/s#';
+    const timeOut = 10 * testConsts.timeUnit.second;
+    const interval = 500;
+
+    xit('#4, test case 05, waitForElements', function () {
+      return driver
+        .get(url)
+        .waitForElementsByCssSelector('input[type="text"]')
+        .then(function (els) {
+          console.log('element input count:', els.length);
+          return els[0];
+        })
+        // .clear()
+        .sendKeys('strikingly');
+      // cannot use clear() and sendKeys() together, 
+      // because after clear() the context is changed.
+    });
+
+    it('#5, test case 06, promise', function () {
+      return driver
+        .get(url)
+        .title()
+        .then(title => console.log('page title:', title))
+        .sleepByPromise(testConsts.waitTime.wait)
+        .then(val => console.log('sleep:', val))
+        .waitForElementsByCssSelector('input[type="text"]')
+        .then(function (els) {
+          console.log('element input count:', els.length);
+          return els[0];
+        })
+        .sendKeys('strikingly')
+        .catch(reason => console.error(reason));
+    });
+
+  });
+};
+testGroups.push(testGroup3);
 
 runner.macacaTestGroups(testGroups);

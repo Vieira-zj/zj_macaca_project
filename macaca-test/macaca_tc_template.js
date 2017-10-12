@@ -17,13 +17,15 @@ const diffImage = require('./utils.js').diffImage;
 const testConsts = require('./test_consts');
 
 let fnBeforeAll = function (driver) {
+  const desiredCapabilities = {
+    platformName: 'desktop',
+    browserName: testConsts.envVars.browser,
+    userAgent: 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0 Safari/537.36 Macaca Custom UserAgent',
+    deviceScaleFactor: 2
+  }
+
   return driver
-    .init({
-      platformName: 'desktop',
-      browserName: testConsts.envVars.browser,
-      userAgent: `Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0 Safari/537.36 Macaca Custom UserAgent`,
-      deviceScaleFactor: 2
-    })
+    .init(desiredCapabilities)
     .setWindowSize(1280, 800);
 }
 
