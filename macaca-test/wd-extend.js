@@ -250,6 +250,13 @@ module.exports = (wd, isIOS) => {
     return this;
   });
 
+  // TEST
+  // chain method test
+  wd.addPromiseChainMethod('returnHelloMessage', function () {
+    return 'hello world';
+  });
+
+  // chain method by promise
   wd.addPromiseChainMethod('sleepByPromise', function (wait) {
     return new Promise(function (resolve, reject) {
       if (wait < 1000) {

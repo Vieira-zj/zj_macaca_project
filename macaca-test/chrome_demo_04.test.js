@@ -74,28 +74,41 @@ let testGroup3 = function (driver) {
           console.log('element input count:', els.length);
           return els[0];
         })
-        // .clear()
+        // multiple actions on element
+        .sendKeys('test')
+        .sleep(testConsts.waitTime.shortWait)
+        .clear()
         .sendKeys('strikingly');
-      // cannot use clear() and sendKeys() together, 
-      // because after clear() the context is changed.
     });
 
-    it('#5, test case 06, promise', function () {
+    xit('#5, test case 06, chain method by promise', function () {
+      return driver
+        .get(url)
+        .sleepByPromise(testConsts.waitTime.shortWait)
+        .then(function (val) {
+          console.log('sleep:', val);
+          val.should.be.true('FAIL, sleep by promise');
+        })
+        .waitForElementsByCssSelector('input[type="text"]')
+        .then(function (els) {
+          console.log('element input count:', els.length);
+          els[0].sendKeys('strikingly');
+        })
+        .title()
+        .then(title => console.log('page title:', title))
+        .catch(reason => console.error(reason));
+    });
+
+    it('#6, test case 07, chain method', function () {
       return driver
         .get(url)
         .title()
         .then(title => console.log('page title:', title))
-        .sleepByPromise(testConsts.waitTime.wait)
-        .then(val => console.log('sleep:', val))
-        .waitForElementsByCssSelector('input[type="text"]')
-        .then(function (els) {
-          console.log('element input count:', els.length);
-          return els[0];
-        })
-        .sendKeys('strikingly')
-        .catch(reason => console.error(reason));
+        .returnHelloMessage()
+        .then(val => console.log('message:', val))
+        .waitForElementByCssSelector('input[class="submit s-btn"]')
+        .click();
     });
-
   });
 };
 testGroups.push(testGroup3);
