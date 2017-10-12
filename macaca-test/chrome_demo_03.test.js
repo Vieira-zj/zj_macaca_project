@@ -7,7 +7,7 @@ const testConsts = require('./test_consts');
 const runner = require('./macaca_tc_template');
 
 // tc without description
-let testCasesGroup1 = []
+let testCasesGroup1 = [];
 
 let testCase01 = function (driver) {
   return driver
@@ -15,7 +15,7 @@ let testCase01 = function (driver) {
     .sleep(testConsts.waitTime.shortWait)
     .title()
     .then(value => console.log('page title:', value));
-}
+};
 testCasesGroup1.push(testCase01);
 
 let testCase02 = function (driver) {
@@ -24,12 +24,12 @@ let testCase02 = function (driver) {
     .sleep(testConsts.waitTime.shortWait)
     .title()
     .then(value => console.log('page title:', value));
-}
+};
 testCasesGroup1.push(testCase02);
 
 
 // tc with description
-let testCasesGroup2 = []
+let testCasesGroup2 = [];
 
 let testCase03 = function (driver) {
   it('#3, open strikingly page', function () {
@@ -38,18 +38,72 @@ let testCase03 = function (driver) {
       .title()
       .then(value => console.log('page title:', value));
   });
-}
-testCasesGroup2.push(testCase03);
+};
+// testCasesGroup2.push(testCase03);
 
 let testCase04 = function (driver) {
-  it('#3, open strikingly sxl page', function () {
+  it('#4, open strikingly sxl page', function () {
     return driver
       .get('https://www.qa.sxl.cn/s#/')
       .title()
       .then(value => console.log('page title:', value));
   });
-}
-testCasesGroup2.push(testCase04);
+};
+// testCasesGroup2.push(testCase04);
 
-runner.macacaTestCases(testCasesGroup1, false);
+let testCase05 = function (driver) {
+  it('#5, JQuery test demo 01', function () {
+    return driver
+      .get('https://www.baidu.com')
+      // get element property
+      .execute(`return $('input#su').attr('value');`)
+      .then(val => console.log('search button text:', val))
+      // get element inner text
+      .execute(`return $('a#setf').text();`)
+      .then(val => console.log('link text:', val))
+      // set element css property
+      .execute(`$('a#setf').css({ color: 'red', background: 'black' });`)
+      .sleep(testConsts.waitTime.shortWait)
+      // check changed color
+      .elementByCssSelector('a#setf')
+      .getComputedCss('color')
+      .then(val => console.log('css color:', val))
+      // collection in JQuery
+      .execute(`$('p#lh>a').each(function(i){this.style.backgroundColor=['#ccc','#fff'][i%2]});`)
+  });
+};
+// testCasesGroup2.push(testCase05);
+
+let testCase06 = function (driver) {
+  it('#6, JQuery test demo 02', function () {
+    return driver
+      .get('https://www.baidu.com')
+      // action: mouseover and click
+      .execute(`$('a[name="tj_settingicon"]').mouseover();`)
+      .sleep(testConsts.waitTime.shortWait)
+      .execute(`$('a.setpref').click();`)
+      .sleep(testConsts.waitTime.shortWait)
+      // input text in textbox
+      .execute(`$('input#kw').val('macaca');`);
+  });
+};
+// testCasesGroup2.push(testCase06);
+
+let testCase07 = function (driver) {
+  it('#7, getComputedCss', function () {
+    const cssSelector = 'a#setf'
+
+    return driver
+      .get('https://www.baidu.com')
+      .waitForElementByCssSelector(cssSelector)
+      .text()
+      .then(val => console.log('link text:', val))
+      .elementByCssSelector(cssSelector)
+      .getComputedCss('color')
+      .then(val => console.log('css color:', val));
+  });
+};
+testCasesGroup2.push(testCase07);
+
+// runner.macacaTestCases(testCasesGroup1, false);
 runner.macacaTestCases(testCasesGroup2);
