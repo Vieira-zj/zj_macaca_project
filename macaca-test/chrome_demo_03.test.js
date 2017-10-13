@@ -105,5 +105,5 @@ let testCase07 = function (driver) {
 };
 testCasesGroup2.push(testCase07);
 
-// runner.macacaTestCases(testCasesGroup1, false);
+runner.macacaTestCases(testCasesGroup1, false);
 runner.macacaTestCases(testCasesGroup2);

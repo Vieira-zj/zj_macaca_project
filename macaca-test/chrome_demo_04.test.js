@@ -30,7 +30,7 @@ let testGroup1 = function (driver) {
     });
   });
 };
-// testGroups.push(testGroup1);
+testGroups.push(testGroup1);
 
 let testGroup2 = function (driver) {
   describe('Macaca test group 2', function () {
@@ -58,7 +58,7 @@ let testGroup2 = function (driver) {
     });
   });
 };
-// testGroups.push(testGroup2);
+testGroups.push(testGroup2);
 
 let testGroup3 = function (driver) {
   describe('Macaca test group 3', function () {

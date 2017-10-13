@@ -1,5 +1,5 @@
 /**
- * Template for macaca test cases and test groups.
+ * Template to run macaca test cases and test groups.
  * 
  */
 'use strict';
@@ -9,14 +9,19 @@ const fs = require('fs');
 const opn = require('opn');
 const path = require('path');
 const wd = require('macaca-wd');
-
 require('./wd-extend')(wd, false);
-
 const diffImage = require('./utils.js').diffImage;
 
 const testConsts = require('./test_consts');
 
-let fnBeforeAll = function (driver) {
+let buildDriver = function () {
+  return wd.promiseChainRemote({
+    host: 'localhost',
+    port: process.env.MACACA_SERVER_PORT || 3456
+  });
+};
+
+let initDriver = function (driver) {
   const desiredCapabilities = {
     platformName: 'desktop',
     browserName: testConsts.envVars.browser,
@@ -27,37 +32,30 @@ let fnBeforeAll = function (driver) {
   return driver
     .init(desiredCapabilities)
     .setWindowSize(1280, 800);
-}
+};
 
-let fnAfterAll = function (driver) {
+let quitDriver = function (driver) {
   // open browser to show the test report after all done
   // opn(path.join(__dirname, '..', 'reports', 'index.html'));
   if (testConsts.envVars.browserClose) {
     return driver.close().quit();
   }
   return driver;
-}
-
-let initDriver = function () {
-  return wd.promiseChainRemote({
-    host: 'localhost',
-    port: process.env.MACACA_SERVER_PORT || 3456
-  });
-}
+};
 
 let macacaTestCases = function (testCases, isTcWithDesc = true) {
   describe('Macaca test cases from macaca_tc_template.js', function () {
     this.timeout(5 * testConsts.timeUnit.minute);
     this.slow(testConsts.timeUnit.minute);
 
-    var driver = initDriver();
+    var driver = buildDriver();
 
-    before(() => {
-      return fnBeforeAll(driver);
+    // run each tc in new session
+    beforeEach(() => {
+      return initDriver(driver);
     });
-
-    after(function () {
-      return fnAfterAll(driver);
+    afterEach(() => {
+      return quitDriver(driver);
     });
 
     for (let i = 0, length = testCases.length; i < length; i++) {
@@ -65,7 +63,7 @@ let macacaTestCases = function (testCases, isTcWithDesc = true) {
       if (isTcWithDesc) {
         tc(driver);
       } else {
-        // use default description
+        // use default tc description
         it(`run test case => ${tc.name}`, function () {
           return tc(driver);
         });
@@ -79,21 +77,20 @@ let macacaTestGroups = function (testGroups) {
     this.timeout(5 * testConsts.timeUnit.minute);
     this.slow(testConsts.timeUnit.minute);
 
-    var driver = initDriver();
+    var driver = buildDriver();
 
-    before(() => {
-      return fnBeforeAll(driver);
+    beforeEach(() => {
+      return initDriver(driver);
     });
-
-    after(function () {
-      return fnAfterAll(driver);
+    afterEach(() => {
+      return quitDriver(driver);
     });
 
     for (let i = 0, length = testGroups.length; i < length; i++) {
       testGroups[i](driver);
     }
   });
-}
+};
 
 module.exports = {
   macacaTestCases,

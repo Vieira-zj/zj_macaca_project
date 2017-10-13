@@ -23,6 +23,8 @@ describe('test/demo_01.test.js, part 1', function () {
         console.log('all after, part1');
     });
 
+    afterEach(() => console.log('all aftereach, part1'));
+
     describe('group 1', function () {
         this.timeout(500);
 
