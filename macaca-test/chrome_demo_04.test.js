@@ -115,9 +115,9 @@ testGroups.push(testGroup3);
 
 let testGroups2 = []
 
-testGroup4 = function (driver) {
+let testGroup4 = function (driver) {
   describe('Macaca test group 4', function () {
-    url = 'https://www.baidu.com';
+    const url = 'https://www.baidu.com';
 
     it('#7, test case 08, window handles', function () {
       return driver
