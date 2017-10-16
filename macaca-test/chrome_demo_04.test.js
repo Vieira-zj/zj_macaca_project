@@ -113,4 +113,31 @@ let testGroup3 = function (driver) {
 };
 testGroups.push(testGroup3);
 
-runner.macacaTestGroups(testGroups);
+let testGroups2 = []
+
+testGroup4 = function (driver) {
+  describe('Macaca test group 4', function () {
+    url = 'https://www.baidu.com';
+
+    it('#7, test case 08, window handles', function () {
+      return driver
+        .get(url)
+        .title()
+        .then(title => console.log('page title:', title))
+        .windowHandles()
+        .then(windows => {
+          console.log('widnow handles count:', windows.length);
+          windows.forEach(function (el, idx) {
+            console.log(`window handle at index ${idx}: ${el}`);
+          });
+        })
+        .windowHandle()
+        .then(window => console.log('current window handle:', window));
+    });
+  });
+};
+testGroups2.push(testGroup4);
+
+
+// runner.macacaTestGroups(testGroups);
+runner.macacaTestGroups(testGroups2);
