@@ -10,7 +10,7 @@ class TestApi {
       name: 'test1'
     };
     this.friends = [this.user, this.user, this.user];
-    this.photo = 'not a real photo'
+    this.photo = 'not a real photo';
   }
 
   getUser() {
