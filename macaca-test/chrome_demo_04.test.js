@@ -134,6 +134,47 @@ testGroup4 = function (driver) {
         .windowHandle()
         .then(window => console.log('current window handle:', window));
     });
+
+    xit('#8, test case 09, iframe in sxl', function () {
+      return driver
+        .get('https://www.qa.sxl.cn/s/login')
+        // login
+        .waitForElementByCssSelectorByDefault('div.input>input#user_email')
+        .sendKeys('autoqa_sxl_mp_blog_27@sxl.cn')
+        .elementByCssSelector('div.input>input#user_password')
+        .sendKeys('testtest')
+        .elementByCssSelector('div[class="submit center"]>input[class="submit s-btn"]')
+        .click()
+        // navigate to preview iframe
+        .waitForElementByCssSelectorByDefault('a[class="my-miniprogram s-link"]')
+        .click()
+        .waitForElementByCssSelectorByDefault('ul.pages>li:first-child a.s-btn')
+        .click()
+        .waitForElementByCssSelectorByDefault('div.preview-iframe')
+        .click()
+        // check preview iframe
+        .sleep(testConsts.waitTime.wait)
+        .windowHandles()
+        .then(windows => {
+          console.log('widnow handles count:', windows.length);
+          if (windows.length > 1) {
+            windows.forEach(function (el, idx) {
+              console.log(`window handle at index ${idx}: ${el}`);
+            });
+          }
+        })
+        .elementByCssSelector('div.preview-iframe')
+        .isDisplayed()
+        .then(show => console.log('iframe div is displayed:', show))
+        .elementsByCssSelector('div.wx-scroll-view span')
+        .then(els => {
+          console.log('span count:', els.length); // 0
+        })
+        // exit preview
+        .elementByCssSelector('div.preview-button button[class="s-btn gray"]')
+        .click()
+        .sleep(testConsts.waitTime.shortWait);
+    });
   });
 };
 testGroups2.push(testGroup4);
