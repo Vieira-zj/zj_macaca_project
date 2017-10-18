@@ -38,6 +38,7 @@ var androidOpts = {
   platformName: 'Android',
   autoAcceptAlerts: false,
   isWaitActivity: true,
+  androidProcess: 'com.github.android_app_bootstrap',
   //reuse: 3,
   //udid: '',
   //package: 'com.github.android_app_bootstrap',
@@ -73,7 +74,7 @@ describe('macaca-test/mobile-app-sample.test.js', function() {
   });
 
   after(function() {
-    opn(path.join(__dirname, '..', 'reports', 'index.html'));
+    // opn(path.join(__dirname, '..', 'reports', 'index.html'));
 
     return driver
       .sleep(1000)

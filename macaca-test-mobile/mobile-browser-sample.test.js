@@ -49,7 +49,7 @@ describe('macaca-test/mobile-browser-sample.test.js', function() {
 
   describe('macaca mobile sample', function() {
 
-    return;
+    // return;
 
     before(function() {
       return driver

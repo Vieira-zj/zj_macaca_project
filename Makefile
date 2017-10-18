@@ -99,4 +99,7 @@ test-desktop-chrome-single-custom:
 test-desktop-chrome-all-custom:
 	CHROMEDRIVER_VERSION=2.30 browser=chrome macaca run --verbose --reporter macaca-simple-reportor -d ./macaca-test-web/
 
+test-android-custom:
+	CHROMEDRIVER_VERSION=2.32 platform=android macaca run --verbose -d ./macaca-test-mobile/mobile-app-sample.test.js
+
 .PHONY: test test-ios # fix the conflict with same file name
