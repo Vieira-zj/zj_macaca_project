@@ -1,0 +1,2082 @@
+Running with gitlab-ci-multi-runner 9.5.0 (413da38)
+  on ruby-runner (7ab88aba)
+Using Docker executor with image reg.i.strikingly.com/strikingly_build ...
+Starting service postgres:9.3 ...
+Pulling docker image postgres:9.3 ...
+Using docker image postgres:9.3 ID=sha256:ffce5b1cb222bde8af46650eb548897a1e39e3fa067bdc7f7bccf5b271c589c5 for postgres service...
+Starting service redis:latest ...
+Pulling docker image redis:latest ...
+Using docker image redis:latest ID=sha256:1fb7b6c8c0d0713640c99dc75f7f39849cb9fc5619c1ba4ff6da286e6af759ee for redis service...
+Waiting for services to be up and running...
+Using docker image sha256:b027e43c3c93a9360a5fb8e750af368ba0ab428f2e86b73afaa157c522163057 for predefined container...
+Pulling docker image reg.i.strikingly.com/strikingly_build ...
+Using docker image reg.i.strikingly.com/strikingly_build ID=sha256:e3f7643277683d2454d268a5e59f736b7bfdcdef68f5e8c8e99e9bc0c6065c65 for build container...
+Running on runner-7ab88aba-project-13-concurrent-0 via 695f47428692...
+Fetching changes...
+Removing config/database.yml
+Removing coverage/
+Removing fe/manifests/
+Removing log/
+Removing vendor/ruby/
+HEAD is now at 3fc406a wmp: redirect to associated apps
+From https://cd.i.strikingly.com/strikingly/Bobcat
+ x [deleted]         (none)     -> origin/fix-fancybox-youtube
+   3b6e88b..3b2c0b8  change-gon-data -> origin/change-gon-data
+   55c402f..52329a5  develop    -> origin/develop
+ + c709069...ac9961c develop-teng -> origin/develop-teng  (forced update)
+   cfc97fc..b55c484  docker-yanglei-nomal -> origin/docker-yanglei-nomal
+   448a8b8..6900ceb  fe-monorepo -> origin/fe-monorepo
+ + 5e04735...053e0bc feature-connect-mp -> origin/feature-connect-mp  (forced update)
+   1e4a331..5392c7d  iconbg-bugfix-zerozou -> origin/iconbg-bugfix-zerozou
+ + 5f88387...a38be34 optimize-editor -> origin/optimize-editor  (forced update)
+ * [new branch]      revert-7d09fd68 -> origin/revert-7d09fd68
+   bde46c6..5ba60da  weitie-comment-approve-api -> origin/weitie-comment-approve-api
+ * [new tag]         CIrelease-20171020-0347 -> CIrelease-20171020-0347
+Auto packing the repository in background for optimum performance.
+See "git help gc" for manual housekeeping.
+Checking out f019cf71 as QA-Regression...
+Skipping Git submodules setup
+$ ./script/ci/gitlab/test_script.sh
+Synchronizing submodule url for 'QA-Automation'
+From https://cd.i.strikingly.com/qa-engineering/QA-Automation
+ + ea90d05...184a18d Q3-domain-tests -> origin/Q3-domain-tests  (forced update)
+ + 9d0506d...9fc3bd1 addHawkAuto -> origin/addHawkAuto  (forced update)
+Submodule path 'QA-Automation': checked out 'dfcfb9cd6707d48d2820b7b9fbfa3613350591c2'
+yarn cache v1.2.1
+warning package.json: No license field
+warning ../package.json: No license field
+success Cleared cache.
+Done in 0.21s.
+yarn install v1.2.1
+warning package.json: No license field
+warning ../package.json: No license field
+warning npm-shrinkwrap.json found. This will not be updated or respected. See https://yarnpkg.com/en/docs/migrating-from-npm for more information.
+warning qa-automation@1.0.0: No license field
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+info fsevents@1.1.1: The platform "linux" is incompatible with this module.
+info "fsevents@1.1.1" is an optional dependency and failed compatibility check. Excluding it from installation.
+[3/4] Linking dependencies...
+[4/4] Building fresh packages...
+Done in 40.10s.
+***********************************************
+--- Starting macaca Web test                   ---
+***********************************************
++ MAX_CONCURRENCY=10
+++ npm bin
+npm info it worked if it ends with ok
+npm info using npm@4.0.2
+npm info using node@v6.9.1
+npm info ok 
++ platform='Windows 7'
++ /builds/strikingly/Bobcat/QA-Automation/node_modules/.bin/mocha-parallel-tests --reporter spec --max-parallel 10 --retry 1 ./WebTests/Onboarding/ --verbose
+
+https://www.facebook.com/strikingly
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/dc7e632459a34b1c85ff53341786f729?auth=06ade27897a612210e7ace758a85b6b8
+------------------------------------------------------------------------
+
+  [Regression Test] [SP-01-Support-Widget] Onboarding
+    ✓ Support widget : SP-01-002, SP-01-003 - Watch video and help center Validations (12218ms)
+    ✓ Support widget : SP-01-004, SP-01-006, SP-01-007, SP-01-008, SP-01-009, SP-01-010 - Offline  (15483ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/6ebe0ef4bb1e4d74b6a3f8e7fb103d14?auth=4d0d3b4b2158ec63f7f8d3d483cf6f08
+------------------------------------------------------------------------
+
+  [Regression Test] [LD-01-Onboarding Links] Onboadring
+    Onboarding - Landing Page
+      ✓ Landing Page : LD-01-002 - Terms of Service link (4951ms)
+      ✓ Landing Page : LD-01-003 - Privacy policy link (4200ms)
+      ✓ Landing Page : LD-01-004 - LEARN MORE link (3803ms)
+      ✓ Landing Page : LD-01-005 - It shows "SIGN UP" button when at sections there is no sign up form ,LD-01-006-It wont show "SIGN UP" button when at sections there has sign up form (1820ms)
+      ✓ Landing Page : LD-01-007-View More Customer (4286ms)
+      ✓ LD-01-007-"Sign up" link and Support widget Validation from Login Page (6384ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/a1449706ed874c0a83e9a6a779938a7c?auth=f69d794974ef8db3b10046ddf8d779b9
+------------------------------------------------------------------------
+
+  [Regression Test] [LD-02-Footer] [LD-03-Language] Onboadring
+    Onboading-Footer and Language selector
+      ✓ Footer:LD-02-001 to LD-02-011 (42816ms)
+      ✓ Language selector:LD-03-001,LD-03-002,LD-03-003,LD-03-004,LD-03-005,LD-03-006,LD-03-007 (39981ms)
+
+
+  10 passing (1m)
+
+++ npm bin
+npm info it worked if it ends with ok
+npm info using npm@4.0.2
+npm info using node@v6.9.1
+npm info ok 
++ platform='Windows 7'
++ /builds/strikingly/Bobcat/QA-Automation/node_modules/.bin/mocha-parallel-tests --reporter spec --max-parallel 10 --retry 1 ./WebTests/SmokeTest/Dashboard/DB-10-Dashboard-Unpublish-Publish-DeleteSite.test.js ./WebTests/SmokeTest/Dashboard/DC-07-Discover-CreateNewSiteByTemplate.test.js ./WebTests/SmokeTest/Dashboard/MA-05-Account-Edit-Save-Profile.test.js ./WebTests/SmokeTest/Dashboard/TC-06-PricingAndUpgrade.test.js ./WebTests/SmokeTest/Ecommerce/SSS-01-Stripe-Buyer-Seller.test.js ./WebTests/SmokeTest/Ecommerce/SSS-02-Paypal-Buyer-Seller.test.js ./WebTests/SmokeTest/Editor-Basic/CP-01-Editor-basic-previewMode.test.js ./WebTests/SmokeTest/Editor-Basic/CP-02-Editor-basic-gallery.test.js ./WebTests/SmokeTest/Editor-Basic/CP-03-Editor-basic-button.test.js ./WebTests/SmokeTest/Editor-Basic/CP-04-Editor-basic-gallery.test.js ./WebTests/SmokeTest/Editor-Basic/CP-09-Editor-basic-SignUp.test.js ./WebTests/SmokeTest/Editor-Basic/ES-06-FeatureListing.test.js ./WebTests/SmokeTest/Editor-Basic/SSS-01-Simple-Store.test.js ./WebTests/SmokeTest/Editor-Basic/ST-01-Style.test.js ./WebTests/SmokeTest/Editor-Basic/ST-02-Paypal-Refund.test.js ./WebTests/SmokeTest/Editor-Basic/SV-01-Editor-basic-Saving.test.js ./WebTests/SmokeTest/Editor-Setting/SE-02-Settings-Domain.test.js ./WebTests/SmokeTest/Onboarding/LG-01-Login.test.js ./WebTests/SmokeTest/Onboarding/SP-01-12-Support-Widget.test.js ./WebTests/SmokeTest/Onboarding/SP-01-Support-Widget.test.js ./WebTests/SmokeTest/Onboarding/SU-01-Signup.test.js ./WebTests/SmokeTest/Onboarding/SU-01-TakeTheTour.test.js --verbose
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/25dd27e658734c35ba00562c68180c1e?auth=dcf6c279af0b38f193f6250fcef291c3
+------------------------------------------------------------------------
+
+  [Smoke Test] [PR-01-Preview suite] Editor-basic
+    ✓ Preview : PR-01-002,PR-01-004,PR-01-003 - Check page is show in tablet view/mobile view/desktop view (35912ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/1dc8cdf7ede94eca967a62eb870621e9?auth=48b0eac4938ae255f98c711c0647eedf
+------------------------------------------------------------------------
+
+  [Smoke Test] [MA-01-Accounts] Dashboard
+    ✓ Existing free User login (11588ms)
+    Dashboard - Accounts P1 test suite starts
+      ✓ Accounts : MA-005,006,007 - Can access my accounts & Edit & Save Profile-other (21802ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/a11cbd13e2724dfea35464354a8e7417?auth=a1fa7894ff886ed9d2b927942bb5f5f5
+------------------------------------------------------------------------
+
+  [Smoke Test] [DB-01-Dashboard] Dashboard
+    ✓ Existing free User login (10749ms)
+    Dashboard - Dashboard test suite P1 test suite starts
+      ✓ Dashboard : DB-01-011 & DB-01-012 - Can unpublish/publish site (17159ms)
+      ✓ Dashboard : DB-01-010 - Can delete site (7454ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/cedf09a4676a42629c4e1148c0d8766a?auth=6e357da74f2b3d1f1fb65d04b4f89485
+------------------------------------------------------------------------
+
+  [Smoke Test] [CP-03-Gallery] Editor-Basic
+    ✓ Existing Free User login (10392ms)
+    Editor-Basic - Gallery P1 test suite starts
+      ✓ Gallery : CP-04-001 - Add Video (Gallery) (51303ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/33df25c5eb284373bb4a245da608cd25?auth=2e768a810d7b4a248a88181df7dec84b
+------------------------------------------------------------------------
+
+  [Smoke Test] [CP-05-Button] Editor-Basic
+    ✓ Existing free User login (10776ms)
+    Editor Basic - Button
+      ✓ Background : CP-11-001,CP-11-019 - Change background (10397ms)
+      ✓ Button : CP-05-001,002,003 - Can set web address to button (26467ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/35bb217bc7f646488f815e7f3d192520?auth=f2a829ecc64f41c3e55a8f55f9cf3c9a
+------------------------------------------------------------------------
+
+  [Smoke test] [PP-01-001 - Pricing and Upgrade] Dashboard
+    ✓ Existing free User login (8758ms)
+    ✓ Pricing and Upgrade : PP-01-001, PP-01-011, PP-01-012, PP-01-033, PP-01-035 - Upgrade, Cancellation test case for pricing and upgrade (33752ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/6c3eed3f34d54c42b4ed78b484b4fa69?auth=2dc39746ec3ac9b5b5346acd0dc7b821
+------------------------------------------------------------------------
+
+  [Smoke Test] [SU-01-Create new site & DC-01-Discover] Dashboard
+    ✓ Existing free User login (9939ms)
+    Dashboard - Discover P1 test suite starts
+      ✓ Discover : DC-01-001,DC-01-007,DC-01-008,DC-01-009 - Click "Create new site by select template" button will lead you to site editor with this template (28245ms)
+      ✓ Create new site : SU-01-002,SU-01-006,PU-01-001,PU-01-002 - Create new site & Publish  (37388ms)
+
+TestAutomation@gmail.com
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/97d3f252875c4e8caa938718747f2195?auth=ea4500196a88a7992323dc2440ab88f0
+------------------------------------------------------------------------
+
+  [Smoke Test] [CP-09-Sign up] Editor-Basic
+    ✓ Existing free User login (8713ms)
+    Editor-Basic - Component-Form Fields(sign up)
+      ✓ Sign up : CP-09-001 - Can submit Email/Name on showing page (14999ms)
+      ✓ Sign up : CP-09-03 - Can see the submission in form manager (5987ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/49352947bca84bd58b129984a9b8d840?auth=4c32de294cbdc6b1ed227203006330c7
+------------------------------------------------------------------------
+
+  [Smoke Test] [ES-06-Feature Listing] Editor-Basic
+    ✓ Existing Free User login (9806ms)
+    ✓ Feature Listing : ES-06-002 - "Can add item" in feature listing section (21531ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/0084ce92da0d40af910e3c69fcc826fd?auth=4ba58f4fa1410f702b6d2fd0cb9a2e16
+------------------------------------------------------------------------
+
+  [Smoke Test] [CP-03-Gallery] Editor-Basic
+    ✓ Existing Free User login (8176ms)
+    Editor-Basic - Gallery P1 test suite starts
+      ✓ Gallery : CP-03-001, CP-03-005, CP-03-009, CP-03-010 - Add images-preview site,live site (Gallery) (49929ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/c77fbf6f1022451da6fcd1e6f0aeaadc?auth=715f9fa2706330692addfe8e111f0152
+------------------------------------------------------------------------
+
+  [Smoke Test] [ST-01-Change Template] Editor-Basic
+    ✓ Existing free User login (8975ms)
+    Editor Basic - Editor-Style - Change template
+      ✓ Change template : ST-01-001, 002, 003, 004 - Change to template "Showcase" (8104ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/93f49eaddab14df6bdbf135c28384015?auth=955d986588836914946555c43fd240d7
+------------------------------------------------------------------------
+
+  [Smoke Test] [Simple Store- Paypal - Seller/Buyer]
+    ✓ SSS-04-003 - SimpleStore - Connect Paypal (26307ms)
+    ✓ SSS-02-013 - SimpleStore - Paypal - Buy Product,complete pending and Refund order (101501ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/d4612eb33f5d4793815e7148f8843c5c?auth=23865c7f88dd6dfe6fa43bf3a5857234
+------------------------------------------------------------------------
+
+  [Smoke Test] [Simple Store- Stripe - Seller/Buyer]
+    ✓ SSS-04-001,002 - SimpleStore - Connect Stripe (42320ms)
+    ✓ SSS-02-010,SSS-02-011 - SimpleStore - Stripe - Buy Product,complete pending and Refund order (86821ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/8d8a03fedd5d49c6b1f05577e43b827e?auth=d951122f80ab82fd4c25a5e894eb47c8
+------------------------------------------------------------------------
+
+  [Smoke Test] [LG-01-Login] OnBoarding, part2
+    ✓ Forgot password:FP-01-001,002-Access "Forgot Password" & "send reset password instructions"  (13569ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/598e7a02e9134cbeb5da034b0f338423?auth=262f2f38811d7912e860c7ddcfc2bf5e
+------------------------------------------------------------------------
+
+  [Smoke Test] [SSS-01-Simple Store] Editor-Basic
+    ✓ Existing Free User login (9840ms)
+    Smoke test - Editor-basic - SimpleStore P1 test suite starts
+      ✓ SimpleStore : SSS-01-003, SSS-01-008, 009 - Add Product Details and Change Product Name (27894ms)
+      ✓ SimpleStore : SSS-01-007 - "Delete product" from store section (11089ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/ade90483ec4a460b95256a3eb323bff5?auth=c79e08b0846d48ee0d85cccf5e0d38b4
+------------------------------------------------------------------------
+
+  [Smoke Test] [SV-01-Saving] Editor-Basic
+    ✓ Existing Free User login (8797ms)
+    ✓ Saving : SV-01-001, SV-01-002 ,CP-01-001 - Can save the change for site (38044ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/ea3ec0a5509948f8a967283bbb351867?auth=56223b744189c64feaea5bcedc891dcd
+------------------------------------------------------------------------
+
+  [Smoke test] [SE-02-Settings-Domain]-Editor Settings
+    ✓ Existing free User login (9136ms)
+    ✓ Domain:SE-02-055, 056 - Can change permalink for the site (33419ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/cf18672c1fe848d9aa09955cf311288c?auth=2bdaf5854105ee6fa78018c4235dd122
+------------------------------------------------------------------------
+
+  [Smoke Test] [LG-01-Login] OnBoarding, part1
+    ✓ Login:LG-01-001,LG-01-004-Login in with FREE account successfully (14046ms)
+    ✓ Login:LG-01-002,LG-01-004-Login in with Limited account successfully (10800ms)
+    ✓ Login:LG-01-003,LG-01-004-Login in with PRO account successfully (9972ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/0c1f4f79cc7c45c68ba86c5264d2e01b?auth=f76e021e5280aac9397c9ee7bb452fdf
+------------------------------------------------------------------------
+
+  [Smoke Test] [SU-01-Signup] OnBoarding
+    ✓ Signup: SU-01-001,SU-01-002,SU-01-006 - Onboarding-Signup-Access Landing page (36829ms)
+
+[../../../../../WebTests/SmokeTest/Onboarding/SU-01-TakeTheTour.test.js]:[0] try #1 failed: [ 'HI, THERE!',
+  'SITE SECTIONS',
+  'ADD STORE, BLOG, AND MORE',
+  'CUSTOMIZE',
+  'PUBLISH TO GO LIVE',
+  'GET HELP' ] deepEqual [ 'HI, THERE!',
+  'SITE SECTIONS',
+  'ADD STORE, BLOG, AND MORE',
+  'CUSTOMIZE',
+  'PUBLISH TO GO LIVE',
+  'GET HELP',
+  'SITE C
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/7e7f351b0d5c4728bca0707a85369bac?auth=73a4313e62fd159f0c125095b29c041e
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/6e5ed6c9f798484fb4770b180ea158d2?auth=ab01dd37db49d286c903d92f86ca593c
+------------------------------------------------------------------------
+
+  [Smoke Test] [SP-01-12-Support-Widget] Onboarding
+    ✓ Existing free User login (19730ms)
+    Onboarding - Support Widget
+      ✓ Support-Widget : SP-01-012 - Online (35817ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/1a4bca2da0c24c22a622af9eb6a07895?auth=6026407c11ed112c5d745d6a6f62b366
+------------------------------------------------------------------------
+
+  [Smoke Test] [SP-01-Support-Widget] Onboarding
+    ✓ Existing free User login (11128ms)
+    Onboarding - Support Widget
+      ✓ Support-Widget : SP-01-001, 004, 005, 011 - Online (24876ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/9795706293574138b2efa2c7526265d4?auth=1c0f19d9e7607ef2dfe8ccce009201e4
+------------------------------------------------------------------------
+
+  [Smoke Test] [SU-01-Signup] OnBoarding
+    1) Signup: SU-01-003,SU-01-004 - "Take the tour!" & Click "Get started!" will go back to Site editor
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/216c490e86de46188570fbb111b7a082?auth=518c99aff0b99f7a456121fc05414c4c
+------------------------------------------------------------------------
+
+  [Smoke Test] [SSS-04-Simple Store] Editor-Basic
+    ✓ Existing Free User login (8617ms)
+    SimpleStore Paypal-Refund
+      ✓ SimpleStore : ST-01-001,SSS-04-003 - Single Buy Product Paypal (113796ms)
+      ✓ SimpleStore : SSS-02-007, SSS-02-008- can refund from pending using paypal  (22042ms)
+
+
+  48 passing (4m)
+  1 failing
+
+  1) [Smoke Test] [SU-01-Signup] OnBoarding Signup: SU-01-003,SU-01-004 - "Take the tour!" & Click "Get started!" will go back to Site editor:
+
+      AssertionError: [ 'HI, THERE!',
+  'SITE SECTIONS',
+  'ADD STORE, BLOG, AND MORE',
+  'CUSTOMIZE',
+  'PUBLISH TO GO LIVE',
+  'GET HELP' ] deepEqual [ 'HI, THERE!',
+  'SITE SECTIONS',
+  'ADD STORE, BLOG, AND MORE',
+  'CUSTOMIZE',
+  'PUBLISH TO GO LIVE',
+  'GET HELP',
+  'SITE C
+      + expected - actual
+
+         "ADD STORE, BLOG, AND MORE"
+         "CUSTOMIZE"
+         "PUBLISH TO GO LIVE"
+         "GET HELP"
+      +  "SITE CONTENT"
+       ]
+      
+      at WebTests/SmokeTest/Onboarding/SU-01-TakeTheTour.test.js:85:28
+      at _fulfilled (node_modules/q/q.js:834:54)
+      at self.promiseDispatch.done (node_modules/q/q.js:863:30)
+      at Promise.promise.promiseDispatch (node_modules/q/q.js:796:13)
+      at node_modules/q/q.js:604:44
+      at runSingle (node_modules/q/q.js:137:13)
+      at flush (node_modules/q/q.js:125:13)
+      at _combinedTickCallback (internal/process/next_tick.js:67:7)
+      at process._tickCallback (internal/process/next_tick.js:98:9)
+
+
+
+++ npm bin
+npm info it worked if it ends with ok
+npm info using npm@4.0.2
+npm info using node@v6.9.1
+npm info ok 
++ platform='Windows 7'
++ /builds/strikingly/Bobcat/QA-Automation/node_modules/.bin/mocha-parallel-tests --reporter spec --max-parallel 10 --retry 1 ./WebTests/CI-Automation --verbose
+
+[../../../../../WebTests/CI-Automation/CI-01-03-Editor-Basic-AddSection.test.js]:[0] try #1 failed: [element.click()] Error response status: 10, StaleElementReference - An element command failed because the referenced element is no longer attached to the DOM. Selenium error: stale element reference: element is not attached to the page document
+  (Session info: chrome=60.0.3112.78)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64)
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/4989e83ab5d74276ab5b35dfbee5e308?auth=6276ec8c0ddeabcdb324ab897c4b68a1
+------------------------------------------------------------------------
+
+  [CI-Automation] [SL-01-026-Share your site] Editor-Basic
+    ✓ Existing Pro User login (8912ms)
+    Editor Basic - Share your Site Popup
+      ✓ Share your site : SL-01-026,027 - Share your Site Popup: Register Domain and Close Pop-Up (7496ms)
+
+[../../../../../WebTests/CI-Automation/MP-01-001-Add-Multiple-Pages.test.js]:[0] try #1 failed: FAIL: Hero Section is not added
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/14da482aa913401392dee9dc164f150b?auth=45d9cafc53a850fd42807c0bf690a400
+------------------------------------------------------------------------
+
+  [CI-Automation] [SL-01-017-Live URL] Editor-Basic
+    ✓ Existing free User login (11097ms)
+    [Editor Panel] [Live URL]
+      ✓ Left Pane : SL-01-017,018,019,020 - Live URL (Site is published ) (16609ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/1fc9ffcff49b42c1973159f1771f6a8f?auth=cdde6a5cb0f543f215b5f051142caa81
+------------------------------------------------------------------------
+
+  [CI-Automation] [SL-01-Section list] Editor-Basic
+    ✓ Existing free User login (9054ms)
+    [Editor Panel] [Section list]
+      ✓ Section list : SL-01-046,047,048- Can add "Make Your Own" section（pro user） (20749ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/e98ea5018c4649d78478934de6814738?auth=732baa10012c561563add1bb70d8b509
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/d6dbb95230a74014a5f861ab887c7958?auth=948e1bc68faf1ed41d3c518118b3da3f
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/46a99440299d49e39cf7a43a1313210b?auth=d132c849e5c387387d9370c6da396296
+------------------------------------------------------------------------
+
+  [CI-Automation] [PU-01-008-Publish] Editor-Basic
+    ✓ Existing Free User login (8801ms)
+    ✓ Publish : PU-01-008 - Pro section cannot be seen on live site for Limited/Free User (21956ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/3c04554e9bde44289222201386214660?auth=f5ba129b4f7e035e8920b28f33784d1e
+------------------------------------------------------------------------
+
+  [CI-Automation] [EL-01 - Change Text Fonts] Site-Editor
+    ✓ Existing free User login (8791ms)
+    Site Editor Panel - Change text font, size
+      ✓ Site-Editor : ST-01-065, ST-01-066, ST-01-067 - SE-CHFNT Change Fonts (39753ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/3f23534c952f468abeea740deccf8d59?auth=a791f6eb0169e02be11ce3a4af49c947
+------------------------------------------------------------------------
+
+  [CI-Automation] [EB-01-001- Undo Redo Button] Site-Editor
+    ✓ Existing free User login (8950ms)
+    Site Editor Panel - Undo/Redo Button
+      ✓ Site-Editor : EB-01-001 - Site Editor Panel (8812ms)
+      ✓ Site-Editor :EB-01-003 - Undo/Redo Button on Site Editor (10952ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/9a5fb147e8f34303a3d2383c51166678?auth=805b849250f3238cb691a86b97fdf208
+------------------------------------------------------------------------
+
+  [CI-Automation] [SL-01-Section list] Editor-Basic
+    ✓ Existing Pro User login (9427ms)
+    [Editor Panel] [Section list]
+      ✓ Section list : SL-01-005,006 - Can add "App Store & HTML" section (App Store & HTML, Title, Button) (9458ms)
+      ✓ Section list : SL-01-057,058 - Can dupulicate section in section list (Duplicate, Reorder and Upgrade Button) (4076ms)
+      1) Section list : SL-01-049 - Will "Hero" section be Deleted and Added from the section list )
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/15cc8f24c25440d5bf4d94d198c054ed?auth=4d7bc21cb66136ef557924ceb88a9e3e
+------------------------------------------------------------------------
+
+  [CI Automation] [MP-01-001-Add Multiple Pages] Editor-Setting
+    ✓ Existing Pro User login (20835ms)
+    Editor Setting - Multiple Pages
+      ✓ Multiple Pages: MP-01-001 - Add Multiple Pages in Editor Page (5227ms)
+      2) Multiple Pages: MP-01-024, MP-01-025 - Add Sections in Multiple Pages
+      ✓ Multiple Pages: MP-01-026, MP-01-027 - View Multiple pages in Preview and Live Pages (22040ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/64eaa57021444801a35e50124921661c?auth=56aafed296e9820a6a8ee70ace54f200
+------------------------------------------------------------------------
+
+  [CI-Automation] [SimpleStore : Multiple Buy product] Editor-Basic
+    ✓ Existing Free User login (9995ms)
+    SimpleStore Multiple Buy product
+      ✓ SimpleStore :Add Product  (34598ms)
+      ✓ SimpleStore :Add Product  (13390ms)
+      ✓ SimpleStore :Add Product  (15256ms)
+      ✓ SimpleStore :Add Product  (14537ms)
+      ✓ SimpleStore : ST-02-018,ST-02-019,ST-02-020-Multiple Buy product Layout B by Paypal (92226ms)
+
+[../../../../../WebTests/CI-Automation/BL-07-Editor-Basic-BlogShowingPage.test.js]:[0] try #1 failed: Timeout of 180000ms exceeded. For async tests and hooks, ensure "done()" is called; if returning a Promise, ensure it resolves.
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/3f215a589d2a49a39944d894c7cf009e?auth=d34d44c5939da90501bbd92f9005b142
+------------------------------------------------------------------------
+[../../../../../WebTests/CI-Automation/EB-01-Editor-Basic-Language-Change.test.js]:[0] try #1 failed: Timeout of 180000ms exceeded. For async tests and hooks, ensure "done()" is called; if returning a Promise, ensure it resolves.
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/2acf250f1cb44df9aca81fda837b71d5?auth=5ee8494d1d27b70fd8585722ca72152a
+------------------------------------------------------------------------
+[../../../../../WebTests/CI-Automation/ST-01-Editor-External-Links.test.js]:[0] try #1 failed: Timeout of 180000ms exceeded. For async tests and hooks, ensure "done()" is called; if returning a Promise, ensure it resolves.
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/1479281b7a224d53a9b4c266b95d62eb?auth=a68fb8149ee298549bd242c6eb34eb55
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/ab852146970a4fc0895a2d94296f2b69?auth=0bb7e8a1cd1870519808c72cecf0e6b8
+------------------------------------------------------------------------
+
+  [CI-Automation] [BL-01-Blog Showing page] Simple-blog
+    ✓ Existing free User login (8768ms)
+    ✓ Blog Showing page : BL-07-001,002,003 - Add new blog & Showing page (69730ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/c47a809ec7b9471a9fd6cacd0372430b?auth=0d8043abcc0ef74416e824f0fe64aaee
+------------------------------------------------------------------------
+
+  [CI-Automation] [Editor Style:Change template] Editor-Basic
+    ✓ Existing Free user login (9416ms)
+    Editor-Style - Change template
+      ✓ Change template : ST-01-005, ST-01-006, ST-01-007, ST-01-008, ST-01-054 - Change to Bright template and Color Scheme  (18377ms)
+      ✓ Change template : ST-01-021, ST-01-022, ST-01-023, ST-01-024, ST-01-058 - Change to Coffee template and Color Scheme (17212ms)
+      ✓ Change template : ST-01-013, ST-01-014, ST-01-015, ST-01-016, ST-01-056 - Change to Clean template and Color Scheme (16269ms)
+      ✓ Change template : ST-01-017, ST-01-018, ST-01-019, ST-01-020, ST-01-057 - Change to Minimal template and Color Scheme (17631ms)
+      ✓ Change template : ST-01-009, ST-01-010, ST-01-011, ST-01-012, ST-01-055 - Change to Fresh template and Color Scheme (16864ms)
+      ✓ Change template : ST-01-033, ST-01-034, ST-01-035, ST-01-036, ST-01-061 - Change to Light Deck template and Color Scheme (17568ms)
+      ✓ Change template : ST-01-037, ST-01-038, ST-01-039, ST-01-040, ST-01-062 - Change to Profile template and Color Scheme (17384ms)
+      ✓ Change template : ST-01-025, ST-01-026, ST-01-027, ST-01-028, ST-01-059 - Change to Persona template and Color Scheme (18549ms)
+      ✓ Change template : ST-01-029, ST-01-030, ST-01-031, ST-01-032, ST-01-060 - Change to Perspective template and Color Scheme (16872ms)
+      ✓ Change template : ST-01-041, ST-01-042, ST-01-043, ST-01-044, ST-01-063 - Change to Sleek template and Color Scheme (18331ms)
+      ✓ Change template : ST-01-053 - Change Showcase template color theme (17138ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/1a72c8d46b2c487ea14bc6a67ba9388f?auth=8998c235353adc8d2fbe046d62c37af5
+------------------------------------------------------------------------
+
+  [CI-Automation] [EB-01-Language Change] Editor-Basic
+    3) Editor Language :  EB-01-006 - Changing Site Language on Site Editor
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/2a00c3ddebec49a696cea4a7bd74dcee?auth=0b0a7b06f9b32596e8500b502a94165e
+------------------------------------------------------------------------
+
+  [CI-Automation] [EL-01 - External Links] Site-Editor
+    ✓ Existing free User login (8755ms)
+    Site Editor Panel - Add/Change, Delete External Link
+      4) Site-Editor :SL-01-011, SL-01-012, SL-01-013, SL-01-014 - External Links: Add/Change Name-External Link
+      5) "before each" hook for "Site-Editor : SL-01-015 -Delete External link"
+
+
+  40 passing (8m)
+  5 failing
+
+  1) [CI-Automation] [SL-01-Section list] Editor-Basic [Editor Panel] [Section list] Section list : SL-01-049 - Will "Hero" section be Deleted and Added from the section list ):
+     Error: [element.click()] Error response status: 10, StaleElementReference - An element command failed because the referenced element is no longer attached to the DOM. Selenium error: stale element reference: element is not attached to the page document
+  (Session info: chrome=60.0.3112.78)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64)
+      at exports.newError (node_modules/macaca-wd/wd/lib/utils.js:139:13)
+      at node_modules/macaca-wd/wd/lib/callbacks.js:33:23
+      at node_modules/macaca-wd/wd/lib/webdriver.js:179:5
+      at Request._callback (node_modules/macaca-wd/wd/lib/http-utils.js:87:7)
+      at Request.self.callback (node_modules/macaca-wd/node_modules/request/request.js:368:22)
+      at Request.<anonymous> (node_modules/macaca-wd/node_modules/request/request.js:1219:14)
+
+  2) [CI Automation] [MP-01-001-Add Multiple Pages] Editor-Setting Editor Setting - Multiple Pages Multiple Pages: MP-01-024, MP-01-025 - Add Sections in Multiple Pages:
+
+      AssertionError: FAIL: Hero Section is not added
+      + expected - actual
+
+      -false
+      +true
+      
+      at WebTests/CI-Automation/MP-01-001-Add-Multiple-Pages.test.js:206:22
+      at _fulfilled (node_modules/q/q.js:834:54)
+      at self.promiseDispatch.done (node_modules/q/q.js:863:30)
+      at Promise.promise.promiseDispatch (node_modules/q/q.js:796:13)
+      at node_modules/q/q.js:604:44
+      at runSingle (node_modules/q/q.js:137:13)
+      at flush (node_modules/q/q.js:125:13)
+      at _combinedTickCallback (internal/process/next_tick.js:67:7)
+      at process._tickCallback (internal/process/next_tick.js:98:9)
+
+  3) [CI-Automation] [EB-01-Language Change] Editor-Basic Editor Language :  EB-01-006 - Changing Site Language on Site Editor:
+     Error: Timeout of 180000ms exceeded. For async tests and hooks, ensure "done()" is called; if returning a Promise, ensure it resolves.
+  
+
+  4) [CI-Automation] [EL-01 - External Links] Site-Editor Site Editor Panel - Add/Change, Delete External Link Site-Editor :SL-01-011, SL-01-012, SL-01-013, SL-01-014 - External Links: Add/Change Name-External Link:
+     Error: Timeout of 180000ms exceeded. For async tests and hooks, ensure "done()" is called; if returning a Promise, ensure it resolves.
+  
+
+  5) [CI-Automation] [EL-01 - External Links] Site-Editor Site Editor Panel - Add/Change, Delete External Link "before each" hook for "Site-Editor : SL-01-015 -Delete External link":
+     Error: [get("https://www.qa.strikingly.com/t/go?scmd=user_top_edit_page&locale=en&ci=1")] Unexpected data in simpleCallback.
+      at exports.newError (node_modules/macaca-wd/wd/lib/utils.js:139:13)
+      at node_modules/macaca-wd/wd/lib/callbacks.js:42:12
+      at node_modules/macaca-wd/wd/lib/webdriver.js:179:5
+      at Request._callback (node_modules/macaca-wd/wd/lib/http-utils.js:87:7)
+      at Request.self.callback (node_modules/macaca-wd/node_modules/request/request.js:368:22)
+      at Request.<anonymous> (node_modules/macaca-wd/node_modules/request/request.js:1219:14)
+
+
+
+++ npm bin
+npm info it worked if it ends with ok
+npm info using npm@4.0.2
+npm info using node@v6.9.1
+npm info ok 
++ platform='Windows 7'
++ /builds/strikingly/Bobcat/QA-Automation/node_modules/.bin/mocha-parallel-tests --reporter spec --max-parallel 10 --retry 1 ./WebTests/Dashboard/ --verbose
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/3ae42b5d2f0a4039afae42e9c8ec68b0?auth=520adbbb723d096a50d2982becef5b38
+------------------------------------------------------------------------
+
+  [Regression Test] [DB-01-004-Blog Manager] Dashboard
+    ✓ Blog Manager: DB-01-004 - Check Blog Manager from clicking on "BLOG" button on Dashboard (24257ms)
+
+[../../../../../WebTests/Dashboard/DB-01-005-Store-Manager.test.js]:[0] try #1 failed: [waitForElementByCssSelector(".s-ecommerce-buy .buy-panel.confirm .confirm .title",{"asserter":{}},45000,1000)] Element condition wasn't satisfied!
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/8ef018785408469eab4118e039ffec3d?auth=a51ad214c661de8c6667ef9c68b434ae
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/ea6438d6ffb5497cac8f8190469c3fae?auth=a8181419eff5e6baa0cdee8eaf91bf0c
+------------------------------------------------------------------------
+
+  [Regression Test] [LS-01-Language switcher] Dashboard
+    ✓ Existing Free User login (13357ms)
+    Dashboard - Language switcher P1 test suite starts
+      ✓ Language switcher : LS-01-001 - Change language to FR (6917ms)
+      ✓ Language switcher : LS-01-004 - Change language to ES (6840ms)
+      ✓ Language switcher : LS-01-005 - Change language to 日（Japanese） (6815ms)
+      ✓ Language switcher : LS-01-006 - Change language to 简（Simplify Chinese） (6894ms)
+      ✓ Language switcher : LS-01-007 - Change language to 繁（Traditional Chinese） (7067ms)
+      ✓ Language switcher : LS-02-003 - Change language to EN (6864ms)
+
+[../../../../../WebTests/Dashboard/TC-01-Dashboard.test.js]:[0] try #1 failed: [waitForElementByCssSelector("#header-container [class=\"nav-left\"] [href=\"#gallery\"]",40000,2000)] Element condition wasn't satisfied!
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/f22e5baaddea47b8a192113cd3318d71?auth=f6a8d7c4aad62a16e29cfaa191876d94
+------------------------------------------------------------------------
+
+  [Regression Test] [DC-01-Discover] Dashboard
+    ✓ Existing Free User login (10097ms)
+    Dashboard - Discover Test suite P1 test suite starts
+      ✓ Discover - DC-01-001,002 - Access Discover page & We're on a mission to bring awesome websites to everyone. "lead user to manifesto page (2417ms)
+      ✓ Discover - DC-01-003 - Sites thumbnails of template will be changed by toggled site's types (304ms)
+      ✓ Discover - DC-01-010 - Click "Create a site now" button will lead you to select template page (3453ms)
+      ✓ Discover - DC-01-001,002 - Click "Create a site now" button will lead you to select template page (23923ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/5081102ac56e4de79be591c4c98cd328?auth=0276b3c456360c94119b5cd73a685d7a
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/f1728a8e01ed46048798b2cca54dc92d?auth=22fa8e01d5923b2f53f4b8a245f08642
+------------------------------------------------------------------------
+
+  [Regression Test] [MA-01-Accounts] Dashboard
+    ✓ Existing Free User login (10608ms)
+    Dashboard - Accounts - P1 test suite starts
+      ✓ Accounts : MA-01-001, 002 - Can access my accounts & Edit & Save Profile (9106ms)
+      ✓ Accounts : MA-01-003 - Upgrade Plan lead you to pricing & upgrade page (2748ms)
+      ✓ Accounts : MA-01-004 - Can Edit & Save email settings (9207ms)
+      ✓ Accounts : MA-01-003 - Upgrade Plan lead you to pricing & upgrade page (2567ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/736edabed8f54e7099eb1ed909861dcf?auth=2a5022bd858eebfa77ac7bf24a1344de
+------------------------------------------------------------------------
+
+  [Regression Test] [DB-01-005-Store Manager] Editor-Basic
+    1) SimpleStore : Buy product from store section 
+    2) Dashboard : DB-01-005 -  Check Store manager from clicking on "STORE" button on Dashboard 
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/5afa5f9a63c0485ca104c1d1e04b79e4?auth=3caee07c83f87884509bcc82b9752981
+------------------------------------------------------------------------
+
+  [Regression Test] [FT-01-Footer] Dashboard
+    ✓ Existing free User login (13384ms)
+    Dashboard - Footer P1 test suite starts
+      ✓ Footer : FT-01-001- Verify footer links - Discover Sites (3566ms)
+      ✓ Footer - FT-01-002 - Verify footer links - My Sites (1276ms)
+      ✓ Footer : FT-01-003 - Verify footer links - Pricing & Plans (3461ms)
+      ✓ Footer : FT-01-010,011 - Verify footer links - iOS App (8560ms)
+      ✓ Footer : FT-01-012- Verify footer links - Strikingly Blog (4527ms)
+      ✓ Footer - FT-01-014 - Verify footer links- Talk of the Town (1269ms)
+      ✓ Footer - FT-01-015- Verify footer links - Affiliates (4472ms)
+      ✓ Footer - FT-01-016 - Verify footer links - Resellers (956ms)
+      ✓ Footer : FT-01-017 - Verify footer links - We're Hiring! (3466ms)
+      ✓ Footer - FT-01-018 - Verify footer links - Our Manifesto (4329ms)
+      ✓ Footer - FT-01-019 - Verify footer links - Terms (1221ms)
+      ✓ Footer - FT-01-020 - Verify footer links - Privacy (1278ms)
+      ✓ Footer - FT-01-022 - Verify footer links - Contact Us (5982ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/6e091421f7864e869af3ec5dccd4fd01?auth=a96b21afa27480ec72793e1cfc5bf2cb
+------------------------------------------------------------------------
+
+  [Regression Test] [DB-01-Dashboard] Dashboard
+    ✓ Existing Free User login (10727ms)
+    Dashboard - Dashboard test P1 test suite starts
+      ✓ Dashboard : DB-01-001,002,011,012-Verify it shows "under construction" page when clicked the URL under site name if site is unpublished (11119ms)
+      3) Dashboard : DB-01-003 - Verify it shows live site when clicked the URL under site name if site is published
+      ✓ Dashboard - DB-01-007 - Click stats button lead to stats page (3998ms)
+      ✓ Dashboard - DB-01-008 - Click the views counter area lead to stats page (4362ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/151e167b718340269e8e74377f17ac83?auth=72adcf10ec9d6ac9822c2efe4412b965
+------------------------------------------------------------------------
+
+  [Regression Test] [DC-01-New Features! & To-do List] Dashboard
+    Dashboard - New Features! & To-do List & Spread the love P1 test suite starts
+      ✓ New Features! & To-do List : Signup (17311ms)
+      ✓ New Features! & To-do List - DB-01-017 - Click "See more updates", it shows "Welcome Back" window with news update (1624ms)
+      ✓ New Features! & To-do List - DB-01-019 -Publish a site link lead to site editor (5479ms)
+      ✓ New Features! & To-do List - DB-01-020 -Check out App Store link lead to site editor with section selector opened (5321ms)
+      ✓ New Features! & To-do List - DB-01-021 -Grab your site address link lead to "Basic informaiton" tab of Settings (5087ms)
+      ✓ New Features! & To-do List - DB-01-025 -Earn rewards link lead to rewards page (4612ms)
+      ✓ New Features! & To-do List - DB-01-026 -Try pro link lead to "Pricing&Upgrade" page (4727ms)
+      ✓ New Features! & To-do List - DB-01-027 -Manage sites on iOS link lead to "MANAGE YOUR WEBSITE ON THE GO" page (8952ms)
+      ✓ New Features! & To-do List - DB-01-028 -Share strikingly by click tweet button (5420ms)
+      ✓ New Features! & To-do List - DB-01-018 -Create a site link lead to select template page (18228ms)
+      ✓ New Features! & To-do List - DB-01-022 -Publish a site link lead to site editor (12519ms)
+      ✓ New Features! & To-do List - DB-01-023 -Check out App Store link lead to site editor with section selector opened (9972ms)
+      ✓ New Features! & To-do List - DB-01-024 -Grab your site address link lead to "Basic informaiton" tab of Settings (10031ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/dd8c1a42c7dc418c9454cd7216483286?auth=c6f096296a3f3f00b9fb1cc5961c0ba7
+------------------------------------------------------------------------
+
+  [Regression Test] [PP-01-Pricing and Upgrade] Dashboard
+    ✓ Existing Pro User login (10588ms)
+    Pricing and Upgrade - Start free trial
+      ✓ Pricing and Upgrade : PP-01-002, Change subscription info by toggle switching test case (4719ms)
+      ✓ Pricing and Upgrade : PP-01-003 - Start free trial for monthly Pro test cases (4496ms)
+      ✓ Pricing and Upgrade : PP-01-004 - Start free trial for monthly Limited test cases (4448ms)
+      ✓ Pricing and Upgrade : PP-01-005 - Start free trial for yearly Pro test cases (4455ms)
+      ✓ Pricing and Upgrade : PP-01-006 - Start free trial for yearly Limited test cases (4427ms)
+      ✓ Pricing and Upgrade : PP-01-007 - Start free trial for two year Pro test cases (4362ms)
+      ✓ Pricing and Upgrade : PP-01-008 - Start free trial for two year Limited test cases (4406ms)
+    Pricing and Upgrade - Subscription by Credit Card
+      ✓ Pricing and Upgrade : PP-01-009,010 - Start Trial to "Monthly - Pro" subscription by Credit Card (28119ms)
+      ✓ Pricing and Upgrade : PP-01-013,014 - Start Trial to "Yearly - Limited" subscription by Credit Card (26203ms)
+      ✓ Pricing and Upgrade : PP-01-017,018 - Start Trial to "Two years - Limited" subscription by Credit Card (27668ms)
+      ✓ Pricing and Upgrade : PP-01-015,016 - Start Trial to "Yearly - Pro" subscription by Credit Card (29125ms)
+      ✓ Pricing and Upgrade : PP-01-019,020 - Start Trial to "Two years - Pro" subscription by Credit Card (25362ms)
+    Pricing and Upgrade - Upgrade and Downgrade
+      ✓ Pricing and Upgrade : PP-02-001, 002 - Upgrade "Free" to "Monthly-Limited" (20013ms)
+      ✓ Pricing and Upgrade : PP-02-035 - Downgrad "Monthly-LImited" to "Free" (2876ms)
+      ✓ Pricing and Upgrade : PP-02-003, 004 - Upgrade "Free" to "Monthly-Pro" (21449ms)
+      ✓ Pricing and Upgrade : PP-02-040 - Downgrad "Monthly-Pro" to "Free" (2844ms)
+      ✓ Pricing and Upgrade : PP-02-005, 006 - Upgrade "Free" to "Yearly-Limited" (20790ms)
+      ✓ Pricing and Upgrade : PP-02-053 - Downgrad "Yearly-Limited" to "Free" (2756ms)
+      ✓ Pricing and Upgrade : PP-02-007, 008 - Upgrade "Free" to "Yearly-Pro" (21403ms)
+      ✓ Pricing and Upgrade : PP-02-066 - Downgrad "Yearly-Pro" to "Free" (2856ms)
+      ✓ Pricing and Upgrade : PP-02-009, 010 - Upgrade "Free" to "Two years-Limited" (21485ms)
+      ✓ Pricing and Upgrade : PP-02-079 - Downgrad "Two years-Limited" to "Free" (3186ms)
+      ✓ Pricing and Upgrade : PP-02-011, 012 - Upgrade "Free" to "Two years-Pro" (20452ms)
+      ✓ Pricing and Upgrade : PP-02-090 - Downgrad "Two years-Pro" to "Free" (2817ms)
+      ✓ Pricing and Upgrade : PP-02-091, 092 - Coupon code can be applied.(K50q:30%discount) (11528ms)
+      ✓ Pricing and Upgrade : PP-02-093 - "Learn more" link (10226ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/67b317f98300441f9aae0c0d823cef77?auth=c50d7297aeeefd038d920c92b43e0fe9
+------------------------------------------------------------------------
+
+  [Regression Test] [PP-02-Pricing and Upgrade] Dashboard
+    ✓ Existing limited User login (10228ms)
+    Dashboard - Pricing and Upgrade
+      ✓ Pricing and Upgrade : PP-01-009,010 - Start Trial to "Monthly - Limited" subscription by Credit Card (22899ms)
+      ✓ Pricing and Upgrade : PP-02-025, 026 - Upgrade "Monthly-Limited" to "Monthly-Pro" (11546ms)
+      ✓ Pricing and Upgrade : PP-02-038,039 - Downgrade "Monthly-Pro" to "Monthly-Limited" (9929ms)
+      ✓ Pricing and Upgrade : PP-02-027, 028 - Upgrade "Monthly-Limited" to "Yearly-Limited" (10226ms)
+      ✓ Pricing and Upgrade : PP-02-051, 052 - Downgrade "Yearly-Limited" to "Monthly-Limited" (9950ms)
+      ✓ Pricing and Upgrade : PP-02-029, 030 - Upgrade "Monthly-Limited" to "Yearly-Pro" (10685ms)
+      ✓ Pricing and Upgrade : PP-02-064, 065 - Downgrade "Yearly-Pro" to "Monthly-Limited" (9585ms)
+      ✓ Pricing and Upgrade : PP-02-031, 032 - Upgrade "Monthly-Limited" to "Two Year-Limited" (9426ms)
+      ✓ Pricing and Upgrade : PP-02-077, 078 - Downgrade "Two Year-Limited" to "Monthly-Limited" (8770ms)
+      ✓ Pricing and Upgrade : PP-02-033, 034 - Upgrade "Monthly-Limited" to "Pro Two-year" (8790ms)
+      ✓ Pricing and Upgrade : PP-02-088, 089 - Downgrade "Pro Two-year" to "Monthly-Limited" (13565ms)
+      ✓ Pricing and Upgrade : PP-02-036, 037 - Upgrade "Monthly-Pro" to "Yearly-Limited" (10417ms)
+      ✓ Pricing and Upgrade : PP-02-049, 050 - Downgrade "Yearly-Limited" to "Monthly-Pro" (8546ms)
+      ✓ Pricing and Upgrade : PP-02-041, 042 - Upgrade "Monthly-Pro" to "Yearly-Pro" (8945ms)
+      ✓ Pricing and Upgrade : PP-02-062, 063 - Downgrade "Yearly-Pro" to "Monthly-Pro" (9195ms)
+      ✓ Pricing and Upgrade : PP-02-043, 044 - Upgrade "Monthly-Pro" to "Limited Two-year" (10114ms)
+      ✓ Pricing and Upgrade : PP-02-075, 076 - Downgrade "Limited Two-year" to "Monthly-Pro" (8424ms)
+      ✓ Pricing and Upgrade : PP-02-045, 046 - Upgrade "Monthly-Pro" to "Two-year-Pro" (8797ms)
+      ✓ Pricing and Upgrade : PP-02-086, 087 - Downgrade "Two-year-Pro" to "Monthly-Pro" (16689ms)
+      ✓ Pricing and Upgrade : PP-02-047, 048 - Upgrade "Yearly-Limited" to "Yearly-Pro" (8719ms)
+      ✓ Pricing and Upgrade : PP-02-060, 061 - Downgrade "Yearly-Pro" to "Yearly-Limited" (8890ms)
+      ✓ Pricing and Upgrade :PP-02-054, 055 - Upgrade "Yearly-Limited" to "Two Year-Limited" (8553ms)
+      ✓ Pricing and Upgrade : PP-02-073, 074 - Downgrade "2 Year-Limited" to "Yearly-Limited" (8714ms)
+      ✓ Pricing and Upgrade : PP-02-056, 057 - Upgrade "Yearly-Limited" to "Two-Year Pro" (8648ms)
+      ✓ Pricing and Upgrade : PP-02-084, 085 - Downgrade "2 Year-Pro" to "Yearly-Limited" (13965ms)
+      ✓ Pricing and Upgrade : PP-02-058, 059 - Upgrade "Yearly-Pro" to "2Year-Limited" (9702ms)
+      ✓ Pricing and Upgrade : PP-02-071, 072 - Downgrade "2Year-Limited" to "Yearly-Pro" (9335ms)
+      ✓ Pricing and Upgrade : PP-02-067, 068 - Upgrade Upgrade "Yearly-Pro" to "2Year-Pro" (8846ms)
+      ✓ Pricing and Upgrade : PP-02-082, 083 - Downgrade "2Year-Pro" to "Yearly-Pro" (16149ms)
+      ✓ Pricing and Upgrade : PP-02-069, 070 - Upgrade Upgrade "Two-Year Limited" to "Two-Year Pro" (9520ms)
+      ✓ Pricing and Upgrade : PP-02-080, 081 - Downgrade Upgrade "Two-Year Pro" to "Two-Year Limited" (11295ms)
+
+
+  108 passing (8m)
+  3 failing
+
+  1) [Regression Test] [DB-01-005-Store Manager] Editor-Basic SimpleStore : Buy product from store section :
+     Error: [waitForElementByCssSelector(".s-ecommerce-buy .buy-panel.confirm .confirm .title",{"asserter":{}},45000,1000)] Element condition wasn't satisfied!
+      at node_modules/macaca-wd/wd/lib/commands.js:989:12
+      at node_modules/macaca-wd/wd/lib/commands.js:894:11
+      at node_modules/macaca-wd/wd/lib/commands.js:976:13
+      at node_modules/macaca-wd/node_modules/async/lib/async.js:396:17
+      at async.eachSeries (node_modules/macaca-wd/node_modules/async/lib/async.js:177:20)
+      at _asyncMap (node_modules/macaca-wd/node_modules/async/lib/async.js:390:13)
+      at Object.mapSeries (node_modules/macaca-wd/node_modules/async/lib/async.js:373:23)
+      at Object.async.series (node_modules/macaca-wd/node_modules/async/lib/async.js:761:19)
+      at node_modules/macaca-wd/wd/lib/commands.js:974:15
+      at node_modules/macaca-wd/wd/lib/promise-webdriver.js:52:11
+
+  2) [Regression Test] [DB-01-005-Store Manager] Editor-Basic Dashboard : DB-01-005 -  Check Store manager from clicking on "STORE" button on Dashboard :
+     Error: [waitForElementByCssSelector(".bold.first.status",10000,1000)] Element condition wasn't satisfied!
+      at node_modules/macaca-wd/wd/lib/commands.js:989:12
+      at node_modules/macaca-wd/wd/lib/commands.js:894:11
+      at node_modules/macaca-wd/wd/lib/commands.js:976:13
+      at node_modules/macaca-wd/node_modules/async/lib/async.js:396:17
+      at async.eachSeries (node_modules/macaca-wd/node_modules/async/lib/async.js:177:20)
+      at _asyncMap (node_modules/macaca-wd/node_modules/async/lib/async.js:390:13)
+      at Object.mapSeries (node_modules/macaca-wd/node_modules/async/lib/async.js:373:23)
+      at Object.async.series (node_modules/macaca-wd/node_modules/async/lib/async.js:761:19)
+      at node_modules/macaca-wd/wd/lib/commands.js:974:15
+      at node_modules/macaca-wd/wd/lib/promise-webdriver.js:52:11
+
+  3) [Regression Test] [DB-01-Dashboard] Dashboard Dashboard - Dashboard test P1 test suite starts Dashboard : DB-01-003 - Verify it shows live site when clicked the URL under site name if site is published:
+
+      AssertionError: Fail:Element not found in the live site page
+      + expected - actual
+
+      +Gallery
+      
+      at WebTests/Dashboard/TC-01-Dashboard.test.js:121:28
+      at _fulfilled (node_modules/q/q.js:834:54)
+      at self.promiseDispatch.done (node_modules/q/q.js:863:30)
+      at Promise.promise.promiseDispatch (node_modules/q/q.js:796:13)
+      at node_modules/q/q.js:604:44
+      at runSingle (node_modules/q/q.js:137:13)
+      at flush (node_modules/q/q.js:125:13)
+      at _combinedTickCallback (internal/process/next_tick.js:67:7)
+      at process._tickCallback (internal/process/next_tick.js:98:9)
+
+
+
+++ npm bin
+npm info it worked if it ends with ok
+npm info using npm@4.0.2
+npm info using node@v6.9.1
+npm info ok 
++ platform='Windows 7'
++ /builds/strikingly/Bobcat/QA-Automation/node_modules/.bin/mocha-parallel-tests --reporter spec --max-parallel 10 --retry 1 ./WebTests/Simple-Blog/ --verbose
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/2cdbe0bf9f584252be5ed9063b834c42?auth=955b16f67e6f565d2b0771ef8fb90824
+------------------------------------------------------------------------
+
+  [Regression Test] [BL-09-Site editor] Simple-Blog
+    ✓ Site Editor: BL-09-002 - Background (22938ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/902fc9644c5a4f979b77742434029ab4?auth=b1947650df6d60e759281a559263dfb6
+------------------------------------------------------------------------
+
+  [Regression Test] [BL-09-Site editor] Simple-Blog
+    ✓ Existing Free User login and Publish Blog (13639ms)
+    Site-Editor-Blog Layout
+      ✓ Site Editor: BL-09-001 - Layout Change on Blog Section (19125ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/5d9d02c050ed41db97d122c07e2904c7?auth=6f43f4e9e53edaec47e60e4c5f5c1320
+------------------------------------------------------------------------
+
+  [Regression Test] [BL-09-Site editor] Simple-Blog
+    ✓ Existing Free User login (9329ms)
+    Site-Editor-Blog
+      ✓ Simple-Blog: BL-09-003 - Edit blog section's title (3206ms)
+      ✓ Simple-Blog: BL-09-004 - Edit blog section's subtitle (3316ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/29b3cac1dcdd4794a6d38eddee970ba9?auth=874b730ef7f74dd5ec4a559616e8331d
+------------------------------------------------------------------------
+
+  [CI Automation] [BL-01-007-Edit Blog] Editor-Basic
+    ✓ Existing Free User login (9245ms)
+    Editor Basic - Blog Manager
+      ✓ Blog Manager: BL-01-007, BL-01-008 - Edit a post (21564ms)
+      ✓ Blog Manager: BL-01-009, BL-01-010, BL-01-011 - Publish, Unpublish and Delete on blog manager (12386ms)
+
+
+  9 passing (1m)
+
+++ npm bin
+npm info it worked if it ends with ok
+npm info using npm@4.0.2
+npm info using node@v6.9.1
+npm info ok 
++ platform='Windows 7'
++ /builds/strikingly/Bobcat/QA-Automation/node_modules/.bin/mocha-parallel-tests --reporter spec --max-parallel 10 --retry 1 ./WebTests/Reseller/ --verbose
+
+[../../../../../WebTests/Reseller/Reseller-coreflow-09-10.test.js]:[0] try #1 failed: FAIL:Site creation failed with new client
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/db19d6c3d9124f87b1f9a76f3a628aed?auth=5ebd8b1d42ff3d68c2c041154a07a426
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/e15f92991e5842c3bb8564980d9bb104?auth=b2d6dcd9fb2a2cbd7a85d7478d498918
+------------------------------------------------------------------------
+
+  [Smoke Test] [Reseller-Clone Site] Reseller-Dashboard
+    ✓ Reseller-Dashboard : Reseller-coreflow-16 - Clone a Site (16780ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/58a9465503e74dfd84a54d89aaeec7ec?auth=cc22a49aae7d956101a16dfd75cdae6b
+------------------------------------------------------------------------
+
+  [Smoke] [Reseller-SET PASSWORD] Reseller-Dashboard
+    ✓ Existing Reseller Client login and Create new Client  (14619ms)
+    Reseller-Dashboard-Client set Password 1st time 
+      ✓ Reseller-Dashboard : Reseller-coreflow-21 - reseller client set the password 1st time (9410ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/458424122608432b9ac92b4101e69d87?auth=50f695ed7e79ccca89c0ddaaab7080ef
+------------------------------------------------------------------------
+
+  [Smoke] [Reseller-CLIENT LOGIN] Reseller-Dashboard
+    ✓ Existing Reseller Client login (9486ms)
+    Reseller-Dashboard-Create Site 
+      ✓ Create a Site (4996ms)
+      ✓ Reseller-Dashboard : reseller-coreflow-09 Reseller purchases the subscription and Renew the subscription
+      ✓ Reseller-Dashboard : reseller-coreflow-10 Reseller Renew the subscription (38ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/95035a1947744e48be446ff67f5cd8d7?auth=8d12d92bd536fc8d044ef61f3286e56d
+------------------------------------------------------------------------
+
+  [Smoke] [Reseller-RESET PASSWORD] Reseller-Dashboard
+    ✓ Reseller-Dashboard : Reseller-coreflow-22 - Reseller client reset the password for existing client (33678ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/cd86d5e453b2479aad16b12b9697229c?auth=4866287b7fe890c4ab19d26b220f92e0
+------------------------------------------------------------------------
+
+  [Smoke Test] [Reseller-Move/Clone Site] Reseller-Dashboard
+    ✓ Reseller-Dashboard : Reseller-coreflow-01,Reseller-coreflow-02,Reseller-coreflow-03- Reseller logs in and create client (20328ms)
+    ✓ Reseller-Dashboard :Reseller-coreflow-15 -  Move a Site to another client (16617ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/a0e884fb91324979a5b4edb005f86b79?auth=7541e133e295f14cfcfed29cd1d72273
+------------------------------------------------------------------------
+
+  [Smoke] [Reseller-Live Chat] Reseller-Dashboard
+    ✓ Reseller-Dashboard : reseller-coreflow-14 - Live chat on a reseller or client account with offline Message (28822ms)
+    ✓ Reseller-Dashboard : reseller-coreflow-21 - Live chat on a reseller or client account with online agent (24822ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/976d2305c0bd4be8907a367b86071e37?auth=81a034736491d9979f4d31b280b69e03
+------------------------------------------------------------------------
+
+  [Smoke] [Reseller-CLIENT LOGIN] Reseller-Dashboard
+    ✓ Existing Reseller Client login (12961ms)
+    Reseller-Dashboard-Create Site 
+      ✓ Reseller-Dashboard : Reseller-coreflow-04 to 07,reseller-coreflow-13 - Reseller creates a new site (40365ms)
+      ✓ Reseller-Dashboard : Reseller-coreflow-06 - Check whether reseller enters into the editor  (19105ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/27c8eba22101470b81dc05fa3eb2c30f?auth=dfd1bede5c1604aced1d8b007c79dd5c
+------------------------------------------------------------------------
+
+  [Smoke Test] [Reseller-Move/Clone Site] Reseller-Dashboard
+    ✓ Reseller-Dashboard : Reseller-coreflow-01,Reseller-coreflow-02 -Reseller logs in and create client (21101ms)
+    ✓ Reseller-coreflow-03 - Create Site under the client (73074ms)
+
+
+  17 passing (2m)
+
+++ npm bin
+npm info it worked if it ends with ok
+npm info using npm@4.0.2
+npm info using node@v6.9.1
+npm info ok 
++ platform='Windows 7'
++ /builds/strikingly/Bobcat/QA-Automation/node_modules/.bin/mocha-parallel-tests --reporter spec --max-parallel 10 --retry 1 ./WebTests/Ecommerce/ --verbose
+
+[../../../../../WebTests/Ecommerce/EC-03-Ecommerce-Category.test.js]:[0] try #1 failed: [waitForElementByCssSelector("#add-new-section-button",45000,1000)] [elements("css selector","#add-new-section-button")] Error response status: 26, , UnexpectedAlertOpen - A modal dialog was open, blocking this operation Selenium error: unexpected alert open: {Alert text : Oops, a network issue occurred, please refresh and try again.}
+  (Session info: chrome=60.0.3112.78)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64)
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/fbca350248cd42b988a7cad2806e626e?auth=bc48a29a2e8f8c86ea3328679d3fcb93
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/7a1e8ed1a7ee40b4b597fca40260a2f0?auth=f7312e983e7fa97de7a346725bff2076
+------------------------------------------------------------------------
+
+  [Regression Test] [Ecommerce-Add Categories] Store Manager
+    ✓ Existing PRO User login and add product (8678ms)
+    Store Manager Add Category
+      ✓ Ecommerce : ecommerce-category-01: Add new category (7042ms)
+      ✓ Ecommerce : ecommerce-category-02: Set a product into a category (3365ms)
+      1) Ecommerce : ecommerce-category-03: Can add more store section when store have categories
+
+[../../../../../WebTests/Ecommerce/EC-01-01-Ecommerce-Coupon-Seller-Percentage.test.js]:[0] try #1 failed: [element.click()] Error response status: 13, UnknownError - An unknown server-side error occurred while processing the command. Selenium error: unknown error: Element <a class="s-nav-item" href="#store">...</a> is not clickable at point (377, 60). Other element would receive the click: <span class="nav-item">...</span>
+  (Session info: chrome=60.0.3112.78)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64)
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/97524ad772b24d3788a9dd195b075a4b?auth=09c475149b918b6b2166aa9c61f244cf
+------------------------------------------------------------------------
+
+  [Regression Test] [Ecommerce-Shipping Rate] Store Manager
+    ✓ Existing PRO User login and add product (9495ms)
+    Store Manager Shipping Rate
+      ✓ Ecommerce : ecommerce-shipping-01,ecommerce-shipping-02,ecommerce-shipping-03:Add region and delete region (10988ms)
+      ✓ Ecommerce : ecommerce-shipping-04:Check shipping rate for offline payments (37865ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/0acb6d70cd25494e8eea5e0070db0144?auth=85a9d66eee75daf7761a66ce1e953ff9
+------------------------------------------------------------------------
+
+  [Regression Test] [Ecommerce-Offline payments] Store Manager
+    ✓ Existing Free User login (9062ms)
+    Store Manager Offline payments
+      ✓ Ecommerce : ecommerce-offline payment-01: Enable offline payments (9616ms)
+      ✓ Ecommerce : ecommerce-offline payment-03: Buy product via offline payment (25822ms)
+      ✓ Ecommerce : ecommerce-offline payment-02 : Disable offline payments (6917ms)
+      ✓ Ecommerce : ecommerce-offline payment-04,ecommerce-offline payment-06:Check offline payment method and "COMPLETE ORDER" for offline payment orders (6472ms)
+      ✓ Ecommerce : ecommerce-offline payment-05:"CANCEL ORDER" for offline payment orders (8719ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/f74d5d0cf945442e95f1c7839f1ae4db?auth=a999beab7fb7af73cffa47bb4a46923c
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/13004eb7be74455b95dc712a7cc834d2?auth=107372e7580ef88c3bfa87c3da91d6c5
+------------------------------------------------------------------------
+
+  [Regression Test] [Ecommerce-Create Coupons-Free shipping] Store Manager
+    ✓ Ecommerce : ecommerce-strikingly-coupon-06,ecommerce-strikingly-coupon-07 : "Create coupon code  - Discount Type: Free shipping - For all orders/For Over orders" (30190ms)
+    Ecommerce - Buy product with coupon-Free shipping
+      ✓ Ecommerce : ecommerce-strikingly-coupon-13 : "Buy product with coupon - Discount type: Free Shipping - For All order (25957ms)
+      ✓ Ecommerce : ecommerce-strikingly-coupon-14 : "Buy product with coupon - Discount type: Free Shipping - For Over order (19182ms)
+
+[../../../../../WebTests/Ecommerce/EC-01-02-Ecommerce-Coupon-Seller-Flat.test.js]:[0] try #1 failed: [waitForElementByCssSelector("#header-container [href=\"#store\"]",45000,1000)] Element condition wasn't satisfied!
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/659b94761f0648da81ac1c97e8e797d3?auth=150199df0b8c35428e51c6ab607e3070
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/b676b6d6634845dab9729a4658859d56?auth=023597859b30b052594aa15708648792
+------------------------------------------------------------------------
+
+  [Regression Test] [Ecommerce-Create Coupons-Percentage] Store Manager
+    ✓ Ecommerce : ecommerce-strikingly-coupon-01,ecommerce-strikingly-coupon-02,ecommerce-strikingly-coupon-03 :"Create coupon code - Discount type: Percentage - For all orders/For orders over/Specific product" (37906ms)
+    Ecommerce - Buy product with coupon-Percentage
+      2) Ecommerce :ecommerce-strikingly-coupon-08: "Buy product with coupon - Discount type: Percentage - For all orders
+      ✓ Ecommerce :ecommerce-strikingly-coupon-09: "Buy product with coupon - Discount type: Percentage - For Over orders (20229ms)
+      ✓ Ecommerce : ecommerce-strikingly-coupon-10 : "Buy product with coupon - Discount type: Percentage - For specific products (19981ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/19455e8e2de44ca0ae3d164cf12298c8?auth=4c348d37b649f97b6879f25d0d94f082
+------------------------------------------------------------------------
+
+  [Regression Test] [Ecommerce-Create Coupons-Flat] Store Manager
+    ✓ Ecommerce : ecommerce-strikingly-coupon-04,ecommerce-strikingly-coupon-05 : "Create coupon code  - Discount Type: Flat Fee - For all orders/For Over orders" (31611ms)
+    Ecommerce - Buy product with coupon-Flat
+      ✓ Ecommerce : ecommerce-strikingly-coupon-11 : "Buy product with coupon - Discount type: Percentage - For all orders (25415ms)
+      ✓ Ecommerce : ecommerce-strikingly-coupon-12 :"Buy product with coupon - Discount type: Percentage - For Over orders (18984ms)
+
+
+  21 passing (3m)
+  2 failing
+
+  1) [Regression Test] [Ecommerce-Add Categories] Store Manager Store Manager Add Category Ecommerce : ecommerce-category-03: Can add more store section when store have categories:
+     [waitForElementByCssSelector("#add-new-section-button",45000,1000)] [elements("css selector","#add-new-section-button")] Error response status: 26, , UnexpectedAlertOpen - A modal dialog was open, blocking this operation Selenium error: unexpected alert open: {Alert text : Oops, a network issue occurred, please refresh and try again.}
+  (Session info: chrome=60.0.3112.78)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64)
+  Error: [elements("css selector","#add-new-section-button")] Error response status: 26, , UnexpectedAlertOpen - A modal dialog was open, blocking this operation Selenium error: unexpected alert open: {Alert text : Oops, a network issue occurred, please refresh and try again.}
+    (Session info: chrome=60.0.3112.78)
+    (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64)
+      at exports.newError (node_modules/macaca-wd/wd/lib/utils.js:139:13)
+      at node_modules/macaca-wd/wd/lib/callbacks.js:75:19
+      at node_modules/macaca-wd/wd/lib/webdriver.js:179:5
+      at Request._callback (node_modules/macaca-wd/wd/lib/http-utils.js:87:7)
+      at Request.self.callback (node_modules/macaca-wd/node_modules/request/request.js:368:22)
+      at Request.<anonymous> (node_modules/macaca-wd/node_modules/request/request.js:1219:14)
+
+  2) [Regression Test] [Ecommerce-Create Coupons-Percentage] Store Manager Ecommerce - Buy product with coupon-Percentage Ecommerce :ecommerce-strikingly-coupon-08: "Buy product with coupon - Discount type: Percentage - For all orders:
+     Error: [element.click()] Error response status: 13, UnknownError - An unknown server-side error occurred while processing the command. Selenium error: unknown error: Element <a class="s-nav-item" href="#store">...</a> is not clickable at point (378, 65). Other element would receive the click: <span class="nav-item">...</span>
+  (Session info: chrome=60.0.3112.78)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64)
+      at exports.newError (node_modules/macaca-wd/wd/lib/utils.js:139:13)
+      at node_modules/macaca-wd/wd/lib/callbacks.js:33:23
+      at node_modules/macaca-wd/wd/lib/webdriver.js:179:5
+      at Request._callback (node_modules/macaca-wd/wd/lib/http-utils.js:87:7)
+      at Request.self.callback (node_modules/macaca-wd/node_modules/request/request.js:368:22)
+      at Request.<anonymous> (node_modules/macaca-wd/node_modules/request/request.js:1219:14)
+
+
+
+++ npm bin
+npm info it worked if it ends with ok
+npm info using npm@4.0.2
+npm info using node@v6.9.1
+npm info ok 
++ platform='Windows 7'
++ /builds/strikingly/Bobcat/QA-Automation/node_modules/.bin/mocha-parallel-tests --reporter spec --max-parallel 10 --retry 1 ./WebTests/Editor-Basic/ --verbose
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/1ec2a69a3d464921a5c122bdcc376a87?auth=eb47e51d1c122b34816c8ec58dfa454d
+------------------------------------------------------------------------
+
+  [Regression Test] [CP-06-001-Google Map] Editor-basic
+    ✓ Existing Free user login (10812ms)
+    Editor-Basic ContactUs Section
+      ✓ CP-06-001,CP-06-002,CP-06-003 - Add map (ContactUsSection) (10556ms)
+      ✓ CP-07-001,CP-07-002 - Edit "Adress""Hours""Phone""Email" fields (8542ms)
+
+[../../../../../WebTests/Editor-Basic/CP-01-02-Editor-basic-textStyle-HyperLink.test.js]:[0] try #1 failed: [waitForElementByCss("#cke_901",45000,2000)] Element condition wasn't satisfied!
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/a65b69aeb031428c88151bb6d9c9b050?auth=ee672a4553ff2981d766d2d85f061bb0
+------------------------------------------------------------------------
+
+  [Regression Test] [CP-03-001-Gallery] Editor-basic
+    ✓ Existing Free user login (10216ms)
+    Editor Basic - Gallery
+      ✓ Gallery : CP-03-001,CP-03-002,CP-03-008,CP-03-016 - Add images (10959ms)
+      ✓ Gallery : CP-04-001,CP-04-002,CP-04-003 - Add Video (40567ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/07ca343c170e40a89da07ff9041b971c?auth=05122bb5ef409cce630dc60bbfaa63bb
+------------------------------------------------------------------------
+
+  [Regression Test] [CP-02-026-Add Video] Editor-basic
+    ✓ Existing Free User Login (9754ms)
+    Editor Basic - Title - Add Video
+      ✓ Add Video :CP-02-026, #CP-02-027 -Switch image tab to video tab and upload youtube video on section (40930ms)
+      ✓ Verify iTune Screen : CP-02-030- Upload from iOS App (17042ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/ced8d714abef493290975de32069454f?auth=b339a9d95e1de9b704f1b8feca1361f9
+------------------------------------------------------------------------
+
+  [Regression Test] [CP-10-001-Contact Us] Editor-basic
+    ✓ Existing free User login (9866ms)
+    Editor Basic - Contact Us
+      Editor-Basic - Contact Us P1 test suite starts
+        ✓ CP-10-001 - Remove name,email,message fields from the page (12589ms)
+        ✓ CP-10-002 -"Add name,email,phone,message fields and change texts for these fields and submit field" (12537ms)
+        ✓ CP-10-006 - Click View all responses lead you to form manager (8194ms)
+        ✓ CP-10-007 - Click Cancel button to close the Form Fields Component (1849ms)
+      Editor-Basic - Contact Us P2 test suite starts
+        ✓ CP-10-003,CP-10-004 -Change the short message (19877ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/d932dd86594a46e6bee82bf176f2e20a?auth=f77ec4caabd14c6a962f12616da92b53
+------------------------------------------------------------------------
+
+  [Regression Test] [CP-09-004-SignUp] Editor-basic
+    ✓ Existing free User login (10095ms)
+    Editor-Basic Signup section P1 test suite starts
+      ✓ CP-09-004 - Remove name/email fields from page (5855ms)
+      ✓ CP-09-005 - Add name/email fields on page (10582ms)
+      ✓ CP-09-006 - Change the text for name/email field and submit button (6577ms)
+      ✓ CP-09-007,CP-09-008 - Change the short message (21137ms)
+      ✓ CP-09-010 - Click View all responses lead you to form manager (6814ms)
+      ✓ CP-09-011 - Click Cancel button to close the Form Fields Component (1097ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/bada62b38d25480e9d327c3c37fe8f64?auth=848dcb5725f6ba4b890dc6fb2ed05896
+------------------------------------------------------------------------
+
+  [Regression Test] [CP-13-001-Slider] Editor-basic
+    ✓ Existing free User login (8072ms)
+    Editor-Basic - Slider
+      ✓ CP-13-001 - Can add slide (1694ms)
+      ✓ CP-13-004 -Can delete slide (2045ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/95d21ddd20174c13a9ab5ccaf89943c9?auth=c34d4d9025cc47e4253b9bc54127e761
+------------------------------------------------------------------------
+
+  [Regression Test] [CP-08-001 - Footer] Editor-basic
+    ✓ Existing Free user login (8670ms)
+    Editor-Basic Footer section test suite starts
+      ✓ CP-08-004 - Can remove social sites share icon with customize URL on site (9304ms)
+      ✓ CP-08-001,CP-08-002,CP-08-003 -"Can add social sites share icon with customize URL on site (17370ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/f31f762c02524b6eaba54e5bf5ca9a4d?auth=36bb2563a62bec92721cf8663acf5c16
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/9ab0806fcb034622a7401b41e44115f7?auth=2bca53e461aa4ce35cc16ef6c7905a8a
+------------------------------------------------------------------------
+
+  [Regression Test] [CP-05-001-Button] Editor-basic
+    ✓ Existing Free User login (9357ms)
+    Editor Basic - Button
+      ✓ Button : CP-05-004,005,006- Can set email address to button (19865ms)
+      ✓ Button : CP-05-007,008,009- Can set section location to button (17994ms)
+      ✓ Button : CP-05-013,014,015- "Open in new tab?" when checkbox is selected (21390ms)
+      ✓ Button : CP-05-016,017,18,019,020- Can cancel the component and Change button text (11484ms)
+
+[../../../../../WebTests/Editor-Basic/CP-01-01-Editor-basic-textStyle.test.js]:[0] try #1 failed: Timeout of 180000ms exceeded. For async tests and hooks, ensure "done()" is called; if returning a Promise, ensure it resolves.
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/b65d32aa50de437b95e32cfe2123fde7?auth=f49a3dd8838d9ec72d53ebae674198bc
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/bd9e130648584b4b8ca245ffdd47c2b1?auth=763360c8ceed9485a7edc7153d90f70b
+------------------------------------------------------------------------
+
+  [Regression Test] [CP-02-001-Add Image] Editor-basic
+    ✓ Existing free User login (10303ms)
+    Editor Basic - Title - Add Image
+      ✓ Add Image : CP-02-001, 002, 003, 004,005 - Verify the image uploader window is appear? and upload an image (8860ms)
+      ✓ Add Image : CP-02-006, 009 - Toggle three image uploader window tabs and By Entering URL to upload an image  (16997ms)
+      ✓ Add Image : CP-02-015, 016 - Select any category of image from Strikingly Library Tab and verify all SL-category images (53082ms)
+      ✓ Add Image : CP-02-017 - Redirecting Pricing and Plan page for Limited/Free account user (23572ms)
+      ✓ Add Image : CP-02-018, CP-02-019 - verify uploader window is appear? and close the window (2861ms)
+      ✓ Add Image : CP-02-022 - Select existing for uploaded image tab (7428ms)
+      ✓ Add Image : CP-02-025-Delete uploaded image from the Uploaded Images Tab (8810ms)
+
+[../../../../../WebTests/Editor-Basic/CP-14-Editor-basic-appStore.test.js]:[0] try #1 failed: [waitForElementByCssSelector(".s-html-section .s-component-content>iframe",35000,1000)] Element condition wasn't satisfied!
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/a169cc148ac3442e9fbaf0c5ce2fc691?auth=ed81da3bb15fa399d828392e29f00a89
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/6998d64df7264bd386ab972553e85dc7?auth=6d216b215cb8c9ec1e0a1da391f63b30
+------------------------------------------------------------------------
+
+  [Regression Test] [CP-01-001-Editor-Component-Text] Editor-basic
+    ✓ Existing free User login (9148ms)
+    Editor Basic-Editor Component Text
+      1) Editor-Component-Text:CP-01-005--CP-01-008-Verify you can add/remove hypelink to your text
+      2) Editor-Component-Text:CP-01-009--CP-01-012-Verify you can add/remove email link to your text
+      3) Editor-Component-Text:CP-01-013--CP-01-016-Verify you can add/remove documents to your text for download files
+      4) Editor-Component-Text:CP-01-018,CP-01-019-Verify you can add/remove numbered and bullet  list style to your text
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/518a25e6eb80423bb20b7e1ce750dd0e?auth=ac03ba090ae1f5145748dd23e53fb41c
+------------------------------------------------------------------------
+
+  [Regression Test] [CP-11-001-Button Background] Editor-basic
+    ✓ Existing Free user login (8387ms)
+    Editor-Basic - Button Background
+      ✓ CP-11-002 - Can switch image/video (7687ms)
+      ✓ CP-11-003,CP-11-004 - Verify can add image through Strikingly Library (4135ms)
+      ✓ CP-11-010,CP-11-014 - Verify you can add image by "Enter URL to upload from web" (15125ms)
+      ✓ CP-11-015 - Click "Edit image" will open "Photo editor" (7233ms)
+      ✓ CP-11-017 - Verify text style (13384ms)
+      ✓ CP-11-018 - Click "Remove" button to remove the background (1753ms)
+      ✓ CP-11-020,CP-11-021 - Click "More" in video tab will open video library (12911ms)
+      ✓ CP-11-022 - Verify can add video background via emmbed video (26038ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/320a41ba797f4b4e9647aa78adb6fcbf?auth=75a3b7f5706401c42de307746ce16e2f
+------------------------------------------------------------------------
+
+  [Regression Test] [CP-01-001-Editor-Component-Text] Editor-basic
+    ✓ Existing free User login (8136ms)
+    Editor Basic-Editor Component Text
+      5) Editor-Component-Text:CP-01-002,003,004-Verify you can add/remove bold-Italic-Underline style to text 
+      6) "before each" hook for "Editor-Component-Text:CP-01-020-Verify you can add/remove align left/right/center/justify to your text"
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/c3eac02ffb6644509be61e895177fff2?auth=704883c03561445a861d071e5b6bb919
+------------------------------------------------------------------------
+
+  [Regression Test] [Section - App store & Html] - Editor Basic
+    Editor Basic -  App store & Html
+      ✓ App store: ES-01-001-Embed "HTML" with PRO user (32357ms)
+      ✓ App store: ES-01-002 -Embed "HTML" with Limited user (23368ms)
+      ✓ App store: ES-01-003 -Embed "HTML" with Free user (21724ms)
+      7) App store: ES-01-015 -Embed "Gooogle Form"
+
+
+  55 passing (8m)
+  7 failing
+
+  1) [Regression Test] [CP-01-001-Editor-Component-Text] Editor-basic Editor Basic-Editor Component Text Editor-Component-Text:CP-01-005--CP-01-008-Verify you can add/remove hypelink to your text:
+     Error: [waitForElementByCss("#cke_901",45000,2000)] Element condition wasn't satisfied!
+      at node_modules/macaca-wd/wd/lib/commands.js:989:12
+      at node_modules/macaca-wd/wd/lib/commands.js:894:11
+      at node_modules/macaca-wd/wd/lib/commands.js:976:13
+      at node_modules/macaca-wd/node_modules/async/lib/async.js:396:17
+      at async.eachSeries (node_modules/macaca-wd/node_modules/async/lib/async.js:177:20)
+      at _asyncMap (node_modules/macaca-wd/node_modules/async/lib/async.js:390:13)
+      at Object.mapSeries (node_modules/macaca-wd/node_modules/async/lib/async.js:373:23)
+      at Object.async.series (node_modules/macaca-wd/node_modules/async/lib/async.js:761:19)
+      at node_modules/macaca-wd/wd/lib/commands.js:974:15
+      at node_modules/macaca-wd/wd/lib/promise-webdriver.js:52:11
+
+  2) [Regression Test] [CP-01-001-Editor-Component-Text] Editor-basic Editor Basic-Editor Component Text Editor-Component-Text:CP-01-009--CP-01-012-Verify you can add/remove email link to your text:
+     Error: [waitForElementByCss("#cke_901",15000,2000)] Element condition wasn't satisfied!
+      at node_modules/macaca-wd/wd/lib/commands.js:989:12
+      at node_modules/macaca-wd/wd/lib/commands.js:894:11
+      at node_modules/macaca-wd/wd/lib/commands.js:976:13
+      at node_modules/macaca-wd/node_modules/async/lib/async.js:396:17
+      at async.eachSeries (node_modules/macaca-wd/node_modules/async/lib/async.js:177:20)
+      at _asyncMap (node_modules/macaca-wd/node_modules/async/lib/async.js:390:13)
+      at Object.mapSeries (node_modules/macaca-wd/node_modules/async/lib/async.js:373:23)
+      at Object.async.series (node_modules/macaca-wd/node_modules/async/lib/async.js:761:19)
+      at node_modules/macaca-wd/wd/lib/commands.js:974:15
+      at node_modules/macaca-wd/wd/lib/promise-webdriver.js:52:11
+
+  3) [Regression Test] [CP-01-001-Editor-Component-Text] Editor-basic Editor Basic-Editor Component Text Editor-Component-Text:CP-01-013--CP-01-016-Verify you can add/remove documents to your text for download files:
+     Error: [waitForElementByCssSelector("#cke_901",15000,2000)] Element condition wasn't satisfied!
+      at node_modules/macaca-wd/wd/lib/commands.js:989:12
+      at node_modules/macaca-wd/wd/lib/commands.js:894:11
+      at node_modules/macaca-wd/wd/lib/commands.js:976:13
+      at node_modules/macaca-wd/node_modules/async/lib/async.js:396:17
+      at async.eachSeries (node_modules/macaca-wd/node_modules/async/lib/async.js:177:20)
+      at _asyncMap (node_modules/macaca-wd/node_modules/async/lib/async.js:390:13)
+      at Object.mapSeries (node_modules/macaca-wd/node_modules/async/lib/async.js:373:23)
+      at Object.async.series (node_modules/macaca-wd/node_modules/async/lib/async.js:761:19)
+      at node_modules/macaca-wd/wd/lib/commands.js:974:15
+      at node_modules/macaca-wd/wd/lib/promise-webdriver.js:52:11
+
+  4) [Regression Test] [CP-01-001-Editor-Component-Text] Editor-basic Editor Basic-Editor Component Text Editor-Component-Text:CP-01-018,CP-01-019-Verify you can add/remove numbered and bullet  list style to your text:
+     Error: [waitForElementByCssSelector("#cke_902",15000,2000)] Element condition wasn't satisfied!
+      at node_modules/macaca-wd/wd/lib/commands.js:989:12
+      at node_modules/macaca-wd/wd/lib/commands.js:894:11
+      at node_modules/macaca-wd/wd/lib/commands.js:976:13
+      at node_modules/macaca-wd/node_modules/async/lib/async.js:396:17
+      at async.eachSeries (node_modules/macaca-wd/node_modules/async/lib/async.js:177:20)
+      at _asyncMap (node_modules/macaca-wd/node_modules/async/lib/async.js:390:13)
+      at Object.mapSeries (node_modules/macaca-wd/node_modules/async/lib/async.js:373:23)
+      at Object.async.series (node_modules/macaca-wd/node_modules/async/lib/async.js:761:19)
+      at node_modules/macaca-wd/wd/lib/commands.js:974:15
+      at node_modules/macaca-wd/wd/lib/promise-webdriver.js:52:11
+
+  5) [Regression Test] [CP-01-001-Editor-Component-Text] Editor-basic Editor Basic-Editor Component Text Editor-Component-Text:CP-01-002,003,004-Verify you can add/remove bold-Italic-Underline style to text :
+     Error: Timeout of 180000ms exceeded. For async tests and hooks, ensure "done()" is called; if returning a Promise, ensure it resolves.
+  
+
+  6) [Regression Test] [CP-01-001-Editor-Component-Text] Editor-basic Editor Basic-Editor Component Text "before each" hook for "Editor-Component-Text:CP-01-020-Verify you can add/remove align left/right/center/justify to your text":
+     Error: [get("https://www.qa.strikingly.com/t/go?scmd=user_top_edit_page&locale=en&ci=1")] Unexpected data in simpleCallback.
+      at exports.newError (node_modules/macaca-wd/wd/lib/utils.js:139:13)
+      at node_modules/macaca-wd/wd/lib/callbacks.js:42:12
+      at node_modules/macaca-wd/wd/lib/webdriver.js:179:5
+      at Request._callback (node_modules/macaca-wd/wd/lib/http-utils.js:87:7)
+      at Request.self.callback (node_modules/macaca-wd/node_modules/request/request.js:368:22)
+      at Request.<anonymous> (node_modules/macaca-wd/node_modules/request/request.js:1219:14)
+
+  7) [Regression Test] [Section - App store & Html] - Editor Basic Editor Basic -  App store & Html App store: ES-01-015 -Embed "Gooogle Form":
+     Error: [waitForElementByCssSelector(".s-html-section .s-component-content>iframe",35000,1000)] Element condition wasn't satisfied!
+      at node_modules/macaca-wd/wd/lib/commands.js:989:12
+      at node_modules/macaca-wd/wd/lib/commands.js:894:11
+      at node_modules/macaca-wd/wd/lib/commands.js:976:13
+      at node_modules/macaca-wd/node_modules/async/lib/async.js:396:17
+      at async.eachSeries (node_modules/macaca-wd/node_modules/async/lib/async.js:177:20)
+      at _asyncMap (node_modules/macaca-wd/node_modules/async/lib/async.js:390:13)
+      at Object.mapSeries (node_modules/macaca-wd/node_modules/async/lib/async.js:373:23)
+      at Object.async.series (node_modules/macaca-wd/node_modules/async/lib/async.js:761:19)
+      at node_modules/macaca-wd/wd/lib/commands.js:974:15
+      at node_modules/macaca-wd/wd/lib/promise-webdriver.js:52:11
+
+
+
+++ npm bin
+npm info it worked if it ends with ok
+npm info using npm@4.0.2
+npm info using node@v6.9.1
+npm info ok 
++ platform='Windows 7'
++ /builds/strikingly/Bobcat/QA-Automation/node_modules/.bin/mocha-parallel-tests --reporter spec --max-parallel 10 --retry 1 ./WebTests/Editor-Settings/ --verbose
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/e389352505c74562bc0fa4e1dab1d2c9?auth=a04671f1634d27ba5b2bf17f9997416c
+------------------------------------------------------------------------
+
+  [Regression] [SE-02-001-Domain-Free user]-Editor Settings
+    ✓ Domain:SE-02-001 - Check Register domain with free user login (32100ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/21227bd6463c4a5db3ddb5b5df3a1772?auth=cc3410469dbc5f487e968a0777e53978
+------------------------------------------------------------------------
+
+  [Regression Test] [SE-03-Change social image icon] Editor-Settings
+    ✓ Existing Free user login (14489ms)
+    ✓ Sharing Info : SE-03-006 - Special card test case of sharing info (23163ms)
+
+[../../../../../WebTests/Editor-Settings/SE-06-Editor-Settings-Multiple-Pages.test.js]:[0] try #1 failed: LIMITED Text not found in the page
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/7d87f19429cb4765868c27b01227f39a?auth=6ddd15644f782b07a7643f20f6b5fafc
+------------------------------------------------------------------------
+
+  [Regression] [SE-02-Domain- Pro user]- Dashboard
+    ✓ Existing Pro user login (11533ms)
+    Dashboard - Register Domain from Dashboard
+      ✓ Domain : SE-02-025,SE-02-026:Check availability with existing domain name and validate error message (4023ms)
+      ✓ Domain : SE-02-027:Search an non-used domain and check congratulation message shows (3983ms)
+      ✓ Domain:SE-02-033,SE-02-034,SE-02-035:Register Domain and confirm purchase (41945ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/d77f9006848647429486b29007fd4459?auth=c4c2b6e320e43a86f63e92edd1199684
+------------------------------------------------------------------------
+
+  [Regression Test] [SE-04-Add Mobile Actions] Editor-Settings 
+    ✓ Existing Pro User login (30978ms)
+    ✓ Mobile Actions : SE-04-001, Mobile Actions Simple-Store for "Try these out" test case (3212ms)
+    ✓ Mobile Actions : SE-04-002, 003 - Mobile Actions test case (5050ms)
+    ✓ Mobile Actions : SE-04-004, 005, 006, 007 - "Home" Add, Rename, Preview and Delete test cases (4843ms)
+    ✓ Mobile Actions : SE-04-008, 009, 010, 011 - "Phone" Add, Rename, Preview and Delete test cases (4186ms)
+    ✓ Mobile Actions : SE-04-012, 013, 014, 015 - "Map" Add, Rename, Preview and Delete test cases (4020ms)
+    ✓ Mobile Actions : SE-04-016, 017, 018, 019 - "Email" Add, Rename, Preview and Delete test cases (4578ms)
+    ✓ Mobile Actions : SE-04-020, 021, 022, 023 - "URL" Add, Rename, Preview and Delete test cases (4751ms)
+    ✓ Mobile Actions : SE-04-024, 025, 026, 027 - "Simple Store" Add, Rename, Preview and Delete test cases (4239ms)
+    ✓ Mobile Actions : SE-04-028, 029, 030, 031 - "Simple Blog" Add, Rename, Preview and Delete test cases (4218ms)
+    ✓ Mobile Actions : SE-04-032, 33 - Change unselected option verify in preview area test cases (2339ms)
+
+[../../../../../WebTests/Editor-Settings/SE-02-02-Editor-Settings-Domain-Limited.test.js]:[0] try #1 failed: [waitForElementByCssSelector(".domains-tab .register-domain .field-hint>a",45000,1000)] Element condition wasn't satisfied!
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/80fbdeb1f152493294a94767a049f5e9?auth=febf68f85bde0a3f7d4d65c32985783a
+------------------------------------------------------------------------
+
+  [Regression Test] [SE-07-Analytics] Editor-Settings 
+    ✓ Existing free User login (23736ms)
+    ✓ Analytics : SE-07-001, ANALYTICS test case (14825ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/77c7cdd7915c46099ecab5b811ef8397?auth=1779515138572ddc0c69c9b0c9fc9af4
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/1e64b226d89a4dd3855ec549f38035f9?auth=5deaa721cf941171df60f6fabf3c3b92
+------------------------------------------------------------------------
+
+  [Regression Test] [SE-08-Show and Hide Option] Editor-Settings 
+    ✓ Existing free User login (26830ms)
+    ✓ Show Advance : SE-08-001, SE-08-002 Editor Settings Show and Hide Advanced options test case (3144ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/4563ff1824db4e10895763096f4683b4?auth=32f52b4e344dd4166e0fef187ca8d34c
+------------------------------------------------------------------------
+
+  [Regression] [SE-02-Domain-Pro user]-Editor Settings
+    ✓ Existing PRO user login and fill billing info (31116ms)
+    Editor-Settings - Register Domain with Pro user
+      ✓ Domain:SE-02-040,SE-02-041:Check availability with existing domain name and validate error message (5693ms)
+      ✓ Domain:SE-02-042:Search an non-used domain and check congratulation message shows (3791ms)
+      ✓ Domain:SE-02-047,SE-02-048,SE-02-049,SE-02-050:Register Domain and confirm purchase (27243ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/05a51b38051240a7a83aad9cf1730685?auth=1940aa10c52dff49b3b08fe6078a8dff
+------------------------------------------------------------------------
+
+  [Regression Test] [SE-10-Enable, Disable Terms and Condition] Editor-Settings 
+    ✓ Existing limited User login (11229ms)
+    Editor-Setting - Legal 
+      ✓ Legal : SE-10-002, Enable terms and conditons of Legal test case (16565ms)
+      ✓ Legal : SE-10-003, Disable terms and condition of Legal test case (7878ms)
+
+[../../../../../WebTests/Editor-Settings/SE-09-Editor-Settings-Privacy.test.js]:[0] try #1 failed: FREE Text not found in the page
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/8a330bb547c44b51a10febdbd65be12a?auth=6f518a21a0c8341630c35839d3d70120
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/511484dd320e4c75a853b63587e073f6?auth=48714a26743e38d25ef1ab9ce9f8192e
+------------------------------------------------------------------------
+
+  [Regression Test] [SE-01-Change Language] Editor-Settings 
+    ✓ Existing Free User login (23780ms)
+    Editor-Settings - Basic Info
+      ✓ Basic Info : SE-01-001, SE-01-002 - Change Site Title to Happy (22481ms)
+      ✓ Basic Info : SE-01-004 - Language changed to Simplified Chinese (19434ms)
+      ✓ Basic Info : SE-01-005 - Language changed to Traditional Chinese (18689ms)
+      ✓ Basic Info : SE-01-006 - Language changed to Japanese (19576ms)
+      ✓ Basic Info : SE-01-008 - Language changed to French (18718ms)
+      ✓ Basic Info : SE-01-009 - Language changed to Espanol (18713ms)
+      ✓ Basic Info : SE-01-007 - Language changed to English (19294ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/cc8a3bbe41924a07a0622658cc240108?auth=90f3f721ca5bb6f58ebc7a55e115a3ee
+------------------------------------------------------------------------
+
+  [Regression Test] [SE-06-Add Multiple Pages] Editor-Settings 
+    ✓ Multiple Pages : SE-06-001 - FREE User, Multiple pages is only available for pro user (32524ms)
+    ✓ Multiple Pages : SE-06-002 - LIMITED User, Multiple pages is only available for pro user (29567ms)
+    ✓ Multiple Pages : SE-06-003 - Add multiple page as a PRO user (25275ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/e670cca3d05345bc856374609e2a5c96?auth=b8d4175ab3f4e1880c248a50accce889
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/d0143a1da4f641d5b760d4a49ee9f587?auth=a6dbf68ec05d177e8b7ecdeeb7bbdabf
+------------------------------------------------------------------------
+
+  [Regression Test] [SE-13-Set a title] Editor-Settings 
+    ✓ Existing limited User login (23102ms)
+    ✓ SEO : SE-13-001, Set a title for your site (11772ms)
+    ✓ SEO : SE-13-002, Set strikingly URL or custom domain (9430ms)
+    ✓ SEO : SE-13-003, Set a meta description (9408ms)
+    ✓ SEO : SE-13-004, Set a category (8166ms)
+    ✓ SEO : SE-13-007, Verification of SEO links redirecting to particular tab (14476ms)
+    ✓ SEO : SE-13-012,SE-13-013,SE-13-014, Verification of SEO links redirecting to article help center page (39034ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/34414018fba144039b365fa37b85ddb5?auth=3e8583bc61a543c6bb4d98ba9d2cb99c
+------------------------------------------------------------------------
+
+  [Regression Test] [SE-12-Add Header Code] Editor-Settings 
+    ✓ Existing limited User login (11596ms)
+    ✓ Custome Code : SE-12-001, Upgrade limited user to pro user and access the custom code (38360ms)
+    ✓ Custome Code : SE-12-002, Upgrade free user to pro user and access the custom code (45624ms)
+    ✓ Custome Code : SE-12-003, Add Header code and view in preview, live page (56937ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/18b015dc8e9144f7b5c96bc8b1311f90?auth=eac9faf9641ba5ca183cef73df7058b1
+------------------------------------------------------------------------
+
+  [Regression Test] [SE-09-Password Protection] Editor-Settings 
+    ✓ Privacy : SE-09-002, SE-09-003 Set Password and Site is opened with correct password (58636ms)
+    ✓ Privacy : SE-09-004-Password Protection option for limited user (40728ms)
+    ✓ Privacy : SE-09-004-Password Protection option for free user (34827ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/4ca44d1ee681490b8118944bdc2ebf1f?auth=aa99c55a2ae02f594d8eca7a4225ab45
+------------------------------------------------------------------------
+
+  [Regression] [SE-02-Domain-Limited user]-Editor Settings
+    ✓ Existing Limited user login (8881ms)
+    Editor-Settings - Register Domain with Limited user
+      1) Domain:SE-02-002:Click "purchase a yearly subscription plan " to navigate to pricing and upgrade page
+      ✓ Domain:SE-02-003,SE-02-004:Check availability with existing domain name and validate error message (3147ms)
+      ✓ Domain:SE-02-005:Search an non-used domain and check congratulation message shows (3220ms)
+      2) Domain:SE-02-010,SE-02-011,SE-02-012,SE-02-013,SE-02-014:Register Domain and confirm purchase
+      ✓ Domain:SE-02-020,SE-02-021,SE-02-022,:Validate back button on "REGISTER NEW DOMAIN" page and "OWNER INFO" page (16261ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/285b6cacb9ad4818b133022bf0a17846?auth=d293a665a1ace11508d2611a8816d300
+------------------------------------------------------------------------
+
+  [Regression Test] [SE-05-Enable, Disable Header Footer] Editor-Settings 
+    ✓ Existing limited User login (11288ms)
+    Editor-Settings - Header and Footer
+      ✓ Header Footer : SE-05-001, SE-05-015, SE-05-023 - Enable all check boxes and verify in header footer display screen (26723ms)
+      ✓ Header Footer : SE-05-002, SE-05-016, SE-05-024 - Enable all check boxes and verfy all fields in site editor page (6164ms)
+      ✓ Header Footer : SE-05-004, SE-05-017, SE-05-025, SE-05-026 - Enable all check boxes and verify all fields in Preview and Live  site pages (49538ms)
+      ✓ Header Footer : SE-05-005, SE-05-019, SE-05-027 - Disable all check boxes and verfy in header footer display screen (26558ms)
+      ✓ Header Footer : SE-05-006, SE-05-020, SE-05-028 - Disable all check boxes and verfy all fields in site editor page (6128ms)
+      ✓ Header Footer : SE-05-008, SE-05-021, SE-05-029 - Disable all check boxes and verify all fields in Preview pages (36027ms)
+      ✓ Header Footer : SE-05-009 - Enable Display navigation bar in editor site page (26289ms)
+      ✓ Header Footer : SE-05-010 - Enable Display navigation bar in preview and live pages (13574ms)
+      ✓ Header Footer : SE-05-012 - Disable and verify navigation bar in editor site page (31738ms)
+      ✓ Header Footer : SE-05-013 - Disable and verify navigation bar in preview page (18701ms)
+    Editor-Settings - Header and Footer
+      ✓ Header Footer : SE-05-039 - "Show Strikingly logo on the page?"option with limited user (30624ms)
+      ✓ Header Footer : SE-05-040 - "Show Strikingly logo on the page?"option with free user (41637ms)
+      ✓ Header Footer : SE-05-031, 032 - Enable "Show Strikingly logo on the page?" for pro user (27633ms)
+      ✓ Header Footer : SE-05-033, 034 - Enable "Show Strikingly logo on the page?" in preview and live pages (35700ms)
+      ✓ Header Footer : SE-05-035, 036 - Disable and verify Display a footer at the bottom of the page? in editor site page (9431ms)
+      ✓ Header Footer : SE-05-037, 038 - Disable and verify Display a footer at the bottom of the page? in preview and live pages (31789ms)
+
+
+  75 passing (9m)
+  2 failing
+
+  1) [Regression] [SE-02-Domain-Limited user]-Editor Settings Editor-Settings - Register Domain with Limited user Domain:SE-02-002:Click "purchase a yearly subscription plan " to navigate to pricing and upgrade page:
+     Error: [waitForElementByCssSelector(".domains-tab .register-domain .field-hint>a",45000,1000)] Element condition wasn't satisfied!
+      at node_modules/macaca-wd/wd/lib/commands.js:989:12
+      at node_modules/macaca-wd/wd/lib/commands.js:894:11
+      at node_modules/macaca-wd/wd/lib/commands.js:976:13
+      at node_modules/macaca-wd/node_modules/async/lib/async.js:396:17
+      at async.eachSeries (node_modules/macaca-wd/node_modules/async/lib/async.js:177:20)
+      at _asyncMap (node_modules/macaca-wd/node_modules/async/lib/async.js:390:13)
+      at Object.mapSeries (node_modules/macaca-wd/node_modules/async/lib/async.js:373:23)
+      at Object.async.series (node_modules/macaca-wd/node_modules/async/lib/async.js:761:19)
+      at node_modules/macaca-wd/wd/lib/commands.js:974:15
+      at node_modules/macaca-wd/wd/lib/promise-webdriver.js:52:11
+
+  2) [Regression] [SE-02-Domain-Limited user]-Editor Settings Editor-Settings - Register Domain with Limited user Domain:SE-02-010,SE-02-011,SE-02-012,SE-02-013,SE-02-014:Register Domain and confirm purchase:
+     Error: [waitForElementByCssSelector(".custom-domain-update .s-box-tag",45000,1000)] Element condition wasn't satisfied!
+      at node_modules/macaca-wd/wd/lib/commands.js:989:12
+      at node_modules/macaca-wd/wd/lib/commands.js:894:11
+      at node_modules/macaca-wd/wd/lib/commands.js:976:13
+      at node_modules/macaca-wd/node_modules/async/lib/async.js:396:17
+      at async.eachSeries (node_modules/macaca-wd/node_modules/async/lib/async.js:177:20)
+      at _asyncMap (node_modules/macaca-wd/node_modules/async/lib/async.js:390:13)
+      at Object.mapSeries (node_modules/macaca-wd/node_modules/async/lib/async.js:373:23)
+      at Object.async.series (node_modules/macaca-wd/node_modules/async/lib/async.js:761:19)
+      at node_modules/macaca-wd/wd/lib/commands.js:974:15
+      at node_modules/macaca-wd/wd/lib/promise-webdriver.js:52:11
+
+
+
+++ npm bin
+npm info it worked if it ends with ok
+npm info using npm@4.0.2
+npm info using node@v6.9.1
+npm info ok 
++ platform='Windows 7'
++ PRODUCT_NAME=sxl
++ /builds/strikingly/Bobcat/QA-Automation/node_modules/.bin/mocha-parallel-tests --reporter spec --max-parallel 10 --retry 1 ./WebTests/SXL/SmokeTest/Blog_Mini-Program/Miniprogram-smoke-27.test.js ./WebTests/SXL/SmokeTest/Blog_Mini-Program/Miniprogram-smoke-28.test.js ./WebTests/SXL/SmokeTest/Blog_Mini-Program/Miniprogram-smoke-29.test.js ./WebTests/SXL/SmokeTest/Blog_Mini-Program/Miniprogram-smoke-30.test.js ./WebTests/SXL/SmokeTest/Blog_Mini-Program/Miniprogram-smoke-31.test.js ./WebTests/SXL/SmokeTest/Blog_Mini-Program/Miniprogram-smoke-32.test.js ./WebTests/SXL/SmokeTest/Blog_Mini-Program/Miniprogram-smoke-33.test.js ./WebTests/SXL/SmokeTest/Blog_Mini-Program/Miniprogram-smoke-34.test.js ./WebTests/SXL/SmokeTest/Blog_Mini-Program/Miniprogram-smoke-35.test.js ./WebTests/SXL/SmokeTest/Blog_Mini-Program/Miniprogram-smoke-36.test.js ./WebTests/SXL/SmokeTest/Booking-Mini-Program/Miniprogram-smoke-37.test.js ./WebTests/SXL/SmokeTest/Booking-Mini-Program/Miniprogram-smoke-38.test.js ./WebTests/SXL/SmokeTest/Booking-Mini-Program/Miniprogram-smoke-39.test.js ./WebTests/SXL/SmokeTest/Booking-Mini-Program/Miniprogram-smoke-42.test.js ./WebTests/SXL/SmokeTest/Booking-Mini-Program/Miniprogram-smoke-45.test.js ./WebTests/SXL/SmokeTest/Booking-Mini-Program/Miniprogram-smoke-47.test.js ./WebTests/SXL/SmokeTest/Booking-Mini-Program/Miniprogram-smoke-48.test.js ./WebTests/SXL/SmokeTest/Ecommerce-Membership/Ecommerce-membership-01,02.test.js ./WebTests/SXL/SmokeTest/Ecommerce-Membership/Ecommerce-membership-03.test.js ./WebTests/SXL/SmokeTest/Ecommerce-Membership/Ecommerce-membership-04-05.test.js ./WebTests/SXL/SmokeTest/Ecommerce-Membership/Ecommerce-membership-06.test.js ./WebTests/SXL/SmokeTest/Ecommerce-Membership/Ecommerce-membership-07.test.js ./WebTests/SXL/SmokeTest/Ecommerce-Membership/Ecommerce-membership-08.test.js ./WebTests/SXL/SmokeTest/Ecommerce-Membership/Ecommerce-membership-09.test.js ./WebTests/SXL/SmokeTest/Ecommerce-Membership/Ecommerce-membership-11-12.test.js ./WebTests/SXL/SmokeTest/Ecommerce-Membership/Ecommerce-membership-13.test.js ./WebTests/SXL/SmokeTest/Ecommerce/EC-01-Ecommerce-sxl-wechat.test.js ./WebTests/SXL/SmokeTest/Ecommerce/EC-02-Ecommerce-sxl-alipay.test.js ./WebTests/SXL/SmokeTest/Ecommerce/EC-03-01-Ecommerce-sxl-Coupon-Percent.test.js ./WebTests/SXL/SmokeTest/Ecommerce_Mini-Program/Miniprogram-smoke-01.test.js ./WebTests/SXL/SmokeTest/Ecommerce_Mini-Program/Miniprogram-smoke-02.test.js ./WebTests/SXL/SmokeTest/Ecommerce_Mini-Program/Miniprogram-smoke-03.test.js ./WebTests/SXL/SmokeTest/Ecommerce_Mini-Program/Miniprogram-smoke-04.test.js ./WebTests/SXL/SmokeTest/Hotel-Mini-Program/Miniprogram-smoke-18.test.js ./WebTests/SXL/SmokeTest/Hotel-Mini-Program/Miniprogram-smoke-19.test.js ./WebTests/SXL/SmokeTest/Hotel-Mini-Program/Miniprogram-smoke-20.test.js ./WebTests/SXL/SmokeTest/Hotel-Mini-Program/Miniprogram-smoke-23.test.js ./WebTests/SXL/SmokeTest/Hotel-Mini-Program/Miniprogram-smoke-25.test.js ./WebTests/SXL/SmokeTest/Landingpage/Landingpage-01.test.js ./WebTests/SXL/SmokeTest/Landingpage/Landingpage-02.test.js ./WebTests/SXL/SmokeTest/Landingpage/Landingpage-03.test.js ./WebTests/SXL/SmokeTest/Landingpage/Landingpage-05.test.js ./WebTests/SXL/SmokeTest/Landingpage/Landingpage-06.test.js ./WebTests/SXL/SmokeTest/Landingpage/Landingpage-07.test.js ./WebTests/SXL/SmokeTest/Landingpage/Landingpage-08.test.js ./WebTests/SXL/SmokeTest/Landingpage/Landingpage-10.test.js ./WebTests/SXL/SmokeTest/Landingpage/Landingpage-11-12-13.test.js ./WebTests/SXL/SmokeTest/PricingUpgrade/SX-01-Subscription-Monthly-Basic.test.js ./WebTests/SXL/SmokeTest/PricingUpgrade/SX-02-Subscription-Monthly-Pro.test.js ./WebTests/SXL/SmokeTest/PricingUpgrade/SX-03-Subscription-Monthly-EnterPrise.test.js ./WebTests/SXL/SmokeTest/PricingUpgrade/SX-04-Subscription-Yearly-Basic.test.js ./WebTests/SXL/SmokeTest/PricingUpgrade/SX-05-Subscription-Yearly-Pro.test.js ./WebTests/SXL/SmokeTest/PricingUpgrade/SX-06-Subscription-Yearly-Enterprise.test.js ./WebTests/SXL/SmokeTest/Reseller/Reseller-coreflow-17.test.js ./WebTests/SXL/SmokeTest/Restaurant_Mini-Program/Miniprogram-smoke-07.test.js ./WebTests/SXL/SmokeTest/Restaurant_Mini-Program/Miniprogram-smoke-08.test.js ./WebTests/SXL/SmokeTest/Restaurant_Mini-Program/Miniprogram-smoke-09.test.js ./WebTests/SXL/SmokeTest/Restaurant_Mini-Program/Miniprogram-smoke-12.test.js ./WebTests/SXL/SmokeTest/Restaurant_Mini-Program/Miniprogram-smoke-15.test.js --verbose
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/ba073cfba6714adeada8426eee5efcfb?auth=6d210bc49e742227c8b90a884fb653a0
+------------------------------------------------------------------------
+
+  [Smoke test] [mini-program-blog-editor-basic]
+    ✓ miniprogram-smoke-28, edit blog miniprogram and save (30724ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/c732c1f97522464ba85aa3c4c2be21af?auth=9e02e055f86a6bbb0a7d7789d46bb838
+------------------------------------------------------------------------
+
+  [Smoke test] [mini-program-blog-onboarding]
+    ✓ miniprogram-smoke-27 - create blog miniprogram as default (35821ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/01ea875bc38a45d8b669fc1dec6e832a?auth=e7d2e192a5a44713fe9fad7108f17da3
+------------------------------------------------------------------------
+
+  [Smoke] [mini-program-blog-editor-deletecategory]
+    ✓ miniprogram-smoke-34, open mini program editor, and delete a category (41147ms)
+
+[../../../../../WebTests/SXL/SmokeTest/Blog_Mini-Program/Miniprogram-smoke-29.test.js]:[0] try #1 failed: [waitForElementByCssSelector("div[class=\"s-tab-pane blog-posts\"]>div:first-child div.title",{"asserter":{}},15000,500)] Element condition wasn't satisfied!
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/961cf90136134689ab08e8ad06cfb2c5?auth=93011368b9216a6ff68c2577fcd0517d
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/8bd8fed856724cdea5ba0b1ef08335bd?auth=18553d4b1f3dd2dcec5625f309431ff4
+------------------------------------------------------------------------
+
+  [Smoke] [mini-program-blog-editor-unpublishblog]
+blog count:  1
+blog count after offline:  1
+    ✓ miniprogram-smoke-32, open blog mini program editor, and unpublish a blog article (49865ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/fbbf027178aa4d548e9c6d399c27f06c?auth=78b34ccc6b25a2903ee66af5cb6f45c2
+------------------------------------------------------------------------
+
+  [Smoke] [mini-program-blog-editor-deleteblog]
+blog count: 1
+blog count after removed: 0
+    ✓ miniprogram-smoke-31, open blog mini program editor, and delete a blog article (54138ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/378a4104ff3246739e81b2619332818d?auth=30857cd93fe9bb564ec85659e3a627b9
+------------------------------------------------------------------------
+
+  [Smoke] [mini-program-blog-editor-editblog]
+    ✓ miniprogram-smoke-30, open blog mini program editor, and update a blog article (58612ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/60c70f7e942e4687b878dd376a4e6c6e?auth=6298195aa69aff65e019ca08863f488e
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/3c936461c3294c48a8e2f7bdaae1978e?auth=80a0567288efa17a8179cf1b2da5f052
+------------------------------------------------------------------------
+
+  [Smoke Test] [Booking-mini-program-Editor] Miniprogram
+    ✓ miniprogram-smoke-38 - mini program booking editor basic (29742ms)
+
+
+  [Smoke Test] [mini-program-booking-onboarding] MiniProgram
+    ✓ miniprogram-smoke-37 - mini program booking onboarding (32647ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/279c9ee3bd98484294c5955b32636a2d?auth=fd6780844dbeb6b2a5cff7fb71bdb1b8
+------------------------------------------------------------------------
+
+  [Smoke] [mini-program-blog-editor-style]
+    ✓ miniprogram-smoke-35, open blog miniprogram editor, change color theme for blog style (76365ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/417fee6740f9407da93f786f1d28b932?auth=3f94e6ff2318d0ab71c532a60354e122
+------------------------------------------------------------------------
+
+  [Smoke Test] [Booking-mini-program-Add Item] Miniprogram
+    ✓ miniprogram-smoke-39,40,41 - mini program booking add item,edit item and delete item (38084ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/64a15061cb924d0886582a4bc57177f7?auth=8bd39a6a7945e0bc9509fc50ab5ab7c1
+------------------------------------------------------------------------
+
+  [Smoke Test] [mini-program-booking-editor-style] Miniprogram
+    ✓ miniprogram-smoke-47 - Change color and preview (25583ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/2ec89d2d44614172a12abbd412bf875d?auth=b45a0a05317c2a4bfe8d1ce8d0598546
+------------------------------------------------------------------------
+
+  [Smoke Test] [Booking-mini-program-Add Staff] Miniprogram
+    ✓ miniprogram-smoke-42,43,44 - mini program booking add staff,edit staff and delete staff (36998ms)
+
+[../../../../../WebTests/SXL/SmokeTest/Ecommerce-Membership/Ecommerce-membership-06.test.js]:[0] try #1 failed: [waitForElementByCssSelector(".fa-shopping-cart",{"asserter":{}},10000,1000)] Element condition wasn't satisfied!
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/68aaec1d20ef466aaf5056f552a933eb?auth=9b39016dce76a491d64da43e229d084b
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/b5e046fd28ed41a787084b309c01946a?auth=995e8ad3437294cacc50f63581d77a96
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/d52feaaec35c4a2fb4fc8f6d9b34ccef?auth=bfca26b5b9b030880d12beb7713dc4e4
+------------------------------------------------------------------------
+
+  [Smoke] [mini-program-blog-editor-style]
+    ✓ miniprogram-smoke-36, open blog miniprogram editor, change layout for blog style (112020ms)
+
+
+  [Smoke Test] [mini-program-booking-editor-Layout] Miniprogram
+    ✓ miniprogram-smoke-48 - Change item view layout and verify in preview screen (34903ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/b41e1c4d641e49838ac1582602f14855?auth=c625565b4d9284ec89bf84a382b07f77
+------------------------------------------------------------------------
+
+  [Smoke Test] [Ecommerce-membership-optional Registration] Signup
+    ✓ ecommerce-membership-01,02 : "Registration Optional" - Sign up with a new account on "SIGN UP" window (41334ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/9310caba708f441a8babd073bb1c89ca?auth=2c3e7b9266dd31f634b2c0edfd75f236
+------------------------------------------------------------------------
+
+  [Smoke] [mini-program-blog-editor-addcategory]
+    ✓ miniprogram-smoke-33, open mini program editor, and add a blog category (92028ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/895b862464e446a590be24c01427312f?auth=af82e456cb8dd6f081058d6a307843b6
+------------------------------------------------------------------------
+
+  [Smoke Test] [Ecommerce-membership-optional Registration] Guest while purchase
+    ✓ ecommerce-membership-07 : "Registration Optional" - Can proceed purchasing by click "Continue as a guest" on "LOG IN" window (30336ms)
+    ✓ ecommerce-membership-07 : "Registration Optional" - Can proceed purchasing by click "Continue as a guest" on "LOG IN TO CHECKOUT" window (15561ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/565d2fb2b92542e792325ffa2efdcb02?auth=37d0da7a4339518d26454af2879153e5
+------------------------------------------------------------------------
+
+  [Smoke Test] [Booking-mini-program-Category] Miniprogram
+    ✓ miniprogram-smoke-45,46 - mini program booking add category and delete Category (88657ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/f7f955cdc45e450ba9454d11a6c3483c?auth=8ce362aa587209f8e605838bb55f0576
+------------------------------------------------------------------------
+
+  [Smoke Test] [Ecommerce-membership-mandatory Registration] Login
+    ✓ ecommerce-membership-8,10 : "Registration Required" - Log In with an existing account on "LOG IN" window (40386ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/e4cd9cb9b5b645079f9fa573ac597b2e?auth=b8811b29c37b30edd4bfef4098ea01f5
+------------------------------------------------------------------------
+
+  [Smoke Test] [Ecommerce-membership-mandatory Registration] Signup
+    ✓ ecommerce-membership-09 : "Registration Required" - Sign up with a new account on "SIGN UP" window (36669ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/b6da4e4ba6e5498e8c44fb7612d9dc06?auth=83117c8bf9b095fb9b59d6df442c3e52
+------------------------------------------------------------------------
+
+  [Smoke Test] [Ecommerce-sxl] wechat
+    ✓ ecommerce-sxl-wechat-02 : Disable wechat payment method (20616ms)
+    ✓ ecommerce-sxl-wechat-01 : Enable wechat payment method (7664ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/d3c6aa3a2db243389f2ceb767d16dcbf?auth=28a3c1d7103255c73bf1b6a1ea2ce3bb
+------------------------------------------------------------------------
+
+  [Smoke Test] [Ecommerce-membership-mandatory Registration] Login while purchase
+    ✓ ecommerce-membership-13 : "Registration Required" - Log In with an existing account on "LOG IN TO CHECKOUT" window (48306ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/904563c4f4b74a909aa22e7f43887fb9?auth=19692985a7f62c19cb1fcc6f5b3413d5
+------------------------------------------------------------------------
+
+  [Smoke Test] [Ecommerce-membership-mandatory Registration] Signup while purchase
+    ✓ ecommerce-membership-11,12 : "Registration Required" - Sign up with a new account on "SIGN UP TO CONTINUE YOUR ORDER" window (49333ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/7fa653edabae4a2db6eb5404b0c3bda1?auth=9baa20d80ad544abab0369aa92871af6
+------------------------------------------------------------------------
+
+  [Smoke Test] [Ecommerce-SXL-Create Coupons-Percentage] Store Manager
+    ✓ Ecommerce : ecommerce-sxl-coupon-01,ecommerce-sxl-coupon-02,ecommerce-sxl-coupon-03 :"Create coupon code - Discount type: Percentage - For all orders/For orders over/Specific product" (32376ms)
+
+[../../../../../WebTests/SXL/SmokeTest/Ecommerce/EC-02-Ecommerce-sxl-alipay.test.js]:[0] try #1 failed: [waitForElementByCssSelector("#payment-manager .payment-gateway >div:nth-child(2) .panel-status span",10000,1000)] Element condition wasn't satisfied!
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/3817492b71a44a2f9f13e4ba5d677b17?auth=ff77b44f1cb66b3731457915d2f9e883
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/b06850465a8a44a0a6caf13c12d1505c?auth=6a9a74582f7619963f3665a6f0c4f72d
+------------------------------------------------------------------------
+
+  [Smoke Test] [mini-program-ecommerce-onboarding]
+    ✓ miniprogram-smoke-01 - Create an ecommerce miniprogram (35267ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/5e0bf2b2446f4d9085898b562b6b277f?auth=055b8f33e0bf986e3e63703e43b50c26
+------------------------------------------------------------------------
+
+  [Smoke Test] [mini-program-ecommerce-editor-style]
+    ✓ miniprogram-smoke-04 - Change color and preview (23882ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/57e0ef5b24e748cf8290439766628040?auth=9b7d01605390e9e3f45e9a37bc976b0c
+------------------------------------------------------------------------
+
+  [Smoke Test] [mini-program-ecommerce-editor-basic]
+    ✓ miniprogram-smoke-02 - create, edit basic info and preview the miniprogram (49449ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/c174229cd2894fd6b269934ba93a54f5?auth=ed3dafb2b3ab79f5ed810a804ba24c8c
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/977ddd10e7e645d38712b253d00116d9?auth=30d3bef938c90cb3d1a7fbc86facfaf2
+------------------------------------------------------------------------
+
+  [Smoke Test] [mini-program-ecommerce-editor-addproduct]
+    ✓ miniprogram-smoke-03,06 - add product and preview the miniprogram and delete product (41711ms)
+
+
+  [Smoke Test] [Landing page link] Signup
+    ✓ Landingpage-01 - Access landing page and signup (11691ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/478564f2f4174a9cad8834abc840382c?auth=4ecaa6390059b3774f37cb18fb0e775d
+------------------------------------------------------------------------
+
+  [Smoke Test] [Hotel-mini-program-onboarding]
+    ✓ miniprogram-smoke-18 - mini program hotel onboarding (33172ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/b63a0758e5df4f6195f1444b18fdee87?auth=af6109de836272c6bd538d194e471587
+------------------------------------------------------------------------
+
+  [Smoke Test] [Hotel-mini-program-Add Price Rule] MiniProgram
+    ✓ miniprogram-smoke-23 - add price rule in hotel miniprogram (31196ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/b970839105884fc8aac6e2f1b008f3b5?auth=12c86d987d78ead1322d382be53378ba
+------------------------------------------------------------------------
+
+  [Smoke Test] [Hotel-mini-program-editor style] Miniprogram
+    ✓ miniprogram-smoke-24,25 - Change slogan and color of miniprogram (30897ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/88a54d94468b46c1bc50b20f4ec2c60e?auth=ddabcbaaf42d4b1a288d2209e6fd67c4
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/b53c95a0e2ff46f3b43ca51b1c5f92ee?auth=27326c48209b6ca21208666d9030cee2
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/6d24e79cb72d42d99fe6ee926f04b314?auth=38ef9176647e63d96ef43542bc3613aa
+------------------------------------------------------------------------
+
+  [Smoke Test] [Landing page link] Reseller
+    ✓ Landingpage-05 - Access 代理合作 page and verify reseller details (13564ms)
+
+
+  [Smoke Test] [Landing page link] Helpcenter
+    ✓ Landingpage-06 - Access 帮助中心 page and verify search result (10342ms)
+
+
+  [Smoke Test] [Landing page link] Package and Price
+    ✓ Landingpage-03 - Access 套餐及价格 and check pricing (12805ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/e7c4d58232224b869958e7944707963e?auth=d5fdb9a66421cd354467ad5d3471b195
+------------------------------------------------------------------------
+
+  [Smoke Test] [Landing page link] Discover
+    ✓ Landingpage-02 - Access 发现 page and select each template (20343ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/74d7511a037941b8b31ade3467b8a500?auth=155b931ba2520127c58e3b744ff9c077
+------------------------------------------------------------------------
+
+  [Smoke Test] [Landing page footer link] DIY
+    ✓ Landingpage-07 - Access landing page footer link 为你建站 (13840ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/1ea39dbdb4554a8b89b8ac244adf375d?auth=3b647df5c53ee436e589659279e1780c
+------------------------------------------------------------------------
+
+  [Smoke Test] [Landing page footer link] more button
+    ✓ Landingpage-10 - Access 更多 and check Terms and Legal notice (15559ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/e315d65edebe467b83ddead09ff149a4?auth=20294993c677ea2e9ebf40316ae7cac1
+------------------------------------------------------------------------
+
+  [Smoke Test] [SXL Pricing-Basic-Monthly] Dashboard-Subscription
+    ✓ Subscription :Subscription-03 - Start free trial for monthly Basic (22208ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/2609e5181b0f47a4a3b9508d19a718a9?auth=1a89ddc89180e12d050ba65fe806a7ce
+------------------------------------------------------------------------
+
+  [Smoke Test] [Landing page footer link] app download
+    ✓ Landingpage-08 - Access 下载App and check app download (30258ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/3b4336b977494904810aaea4a229d164?auth=4ef0d72e3f11337e385bb31316c24b0c
+------------------------------------------------------------------------
+
+  [Smoke Test] [SXL Pricing-PRO-Monthly] Dashboard-Subscription
+    ✓ Subscription:Subscription-04 - Start free trial for monthly Pro test cases (22614ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/9a011226fd7b4645a4f5f495034366e0?auth=876ef347ebd7b0b270d8b827924d1233
+------------------------------------------------------------------------
+
+  [Smoke Test] [Landing page link] Mail,Weibo and Wechat
+    ✓ Landingpage-11,12,13 - Check the Mail,Weibo and Wechat functionality (28273ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/60663ff4b7cc42ae8a311dfeab019eb5?auth=14f0cee03da2f287b6bc2a916cd1bde3
+------------------------------------------------------------------------
+
+  [Smoke Test] [SXL Pricing-Enterprice-Monthly] Dashboard-Subscription
+    ✓ Subscription:Subscription-05 - Start free trial for monthly Enterprise test cases (22535ms)
+
+[../../../../../WebTests/SXL/SmokeTest/Ecommerce-Membership/Ecommerce-membership-03.test.js]:[0] try #1 failed: Timeout of 180000ms exceeded. For async tests and hooks, ensure "done()" is called; if returning a Promise, ensure it resolves.
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/0bb9d260b9fc4d5d9a5d9ef4a565625c?auth=130871e2023850dd564f09c3648bc2a7
+------------------------------------------------------------------------
+[../../../../../WebTests/SXL/SmokeTest/Reseller/Reseller-coreflow-17.test.js]:[0] try #1 failed: FAIL:Login Failed: expected false to equal true
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/f2c98d03c07345ef989b8ff077829de8?auth=4ce43649ca374dac9b0fda1b94d8feee
+------------------------------------------------------------------------
+[../../../../../WebTests/SXL/SmokeTest/Ecommerce-Membership/Ecommerce-membership-04-05.test.js]:[0] try #1 failed: Timeout of 180000ms exceeded. For async tests and hooks, ensure "done()" is called; if returning a Promise, ensure it resolves.
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/5ab0df3079b24f5e935bfc31f525f334?auth=b681dfd782e33fff7175bef7c07014de
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/74777451d4224736ac094bd6f90e3af6?auth=ab5d0bcf19d616f22c4ce0ccf2a9c17b
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/5c5e989ca0c741e2b0a1789a7814d6c3?auth=af6c0001d17ceca234400d40f6414f48
+------------------------------------------------------------------------
+
+  [Smoke Test] [SXL Pricing-Basic-Yearly] Dashboard-Subscription
+    ✓ Subscription :Subscription-06 - Start free trial for yearly Basic (29630ms)
+
+
+  [Smoke Test] [SXL Pricing-Pro-Yearly] Dashboard-Subscription
+    ✓ Subscription :Subscription-07 - Start free trial for Yearly Pro (22807ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/c6354b9703a14d5ea9828fa29f6a1456?auth=e3a6e409df899bbc60aecfcf35e13de0
+------------------------------------------------------------------------
+
+  [Smoke Test] [Hotel-mini-program-addroom ,edit room and delete room] MiniProgram
+    ✓ miniprogram-smoke-20 - add room and edit room in hotel miniprogram (89571ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/c069dd078a0244f597be99499d62f1e7?auth=2e29515772b7e3a2f87969f97a037113
+------------------------------------------------------------------------
+
+  [Smoke Test] [SXL Pricing-Enterprise-Yearly] Dashboard-Subscription
+    ✓ Subscription :Subscription-08 - Start free trial for Yearly Enterprise (26998ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/08cfbb75634541eea1c0dd524cc74a42?auth=02b1ccc1231a4f4de6d4ecb739faeb13
+------------------------------------------------------------------------
+
+  [Smoke Test] [mini-program-restaurant-editor-basic]
+    ✓ miniprogram-smoke-08 - Edit basic info and preview the miniprogram (32531ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/dd7f90ea7e5348cd9e7d6fc6e86f6db9?auth=25e968940d714fad2e2c3cbbb1db3005
+------------------------------------------------------------------------
+[../../../../../WebTests/SXL/SmokeTest/Restaurant_Mini-Program/Miniprogram-smoke-12.test.js]:[0] try #1 failed: [element.click()] Error response status: 11, ElementNotVisible - An element command could not be completed because the element is not visible on the page. Selenium error: element not visible
+  (Session info: chrome=60.0.3112.78)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64)
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/295d84e7ffbd402a9b0d1c1018ec6fe9?auth=6cf1a5588c921c9a8db9a12984eeac31
+------------------------------------------------------------------------
+
+  [Smoke Test] [mini-program-restaurant-onboarding]
+    ✓ miniprogram-smoke-07 - Create a restaurant miniprogram (37735ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/ca0583218aa143fa9c00053980fa18d6?auth=c257dae92872592344245d9f81f917a2
+------------------------------------------------------------------------
+
+  [Smoke Test] [Ecommerce-sxl] alipay
+    ✓ ecommerce-sxl-alipay-02 : Disable alipay payment method (16841ms)
+    ✓ ecommerce-sxl-alipay-01 : Enable alipay payment method (3756ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/910e1be5307546fbb2119cf75d384a32?auth=dccc3ff32d6325908c53a64da448054c
+------------------------------------------------------------------------
+
+  [Regression Test] [Reseller-SXL-Upgrade Site] Reseller
+    1) Reseller-Dashboard : reseller-coreflow-17 - site plan change, upgrade(SXL)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/4b4c80fbd17b47998da38d8fa45b4c0e?auth=5b5f001e833ee2d037e77d439efe50f0
+------------------------------------------------------------------------
+
+  [Smoke] [mini-program-blog-editor-addblog]
+    ✓ miniprogram-smoke-29, open blog mini program editor, and add a blog article (36477ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/eec616d05c81474ea0a6f7e347db292f?auth=09e4c1ba8d0e6d30dafc956fd8326630
+------------------------------------------------------------------------
+
+  [Smoke Test] [Hotel-mini-program-Editor]
+    ✓ miniprogram-smoke-19 - mini program hotel editor basic (137006ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/5895ca3f603a48429208cb2639e0d3a7?auth=9ea538a993c545844f6c16f984f8a931
+------------------------------------------------------------------------
+
+  [Smoke Test] [Ecommerce-membership-optional Registration] Login
+    ✓ ecommerce-membership-03 : "Registration Optional" - Log In with an existing account on "LOG IN" window (37616ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/fd47fa9a28be46718b0f4679628c9dbd?auth=b513f550ec28b67d9d00212673afa425
+------------------------------------------------------------------------
+
+  [Smoke Test] [mini-program-restaurant-editor-add,edit,delete dish]
+    2) miniprogram-smoke-12,13,14 - add,edit dish and preview the restaurant miniprogram
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/51efbf233741459da967d28ab1b7f046?auth=f21db1af599add6f3c4e197e41e22c76
+------------------------------------------------------------------------
+
+  [Smoke Test] [Ecommerce-membership-optional Registration] Login while purchase
+    ✓ ecommerce-membership-06 : "Registration Optional" - Log In with an existing account on "LOG IN TO CHECKOUT" window (50751ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/5b3f17c3db444decb9266eb90bab43bc?auth=46ce4a92f21df07831891c74203a1e81
+------------------------------------------------------------------------
+
+  [Smoke Test] [Ecommerce-membership-optional Registration] Signup while purchase
+    ✓ ecommerce-membership-04,05 : "Registration Optional" - Sign up with a new account on "SIGN UP TO CONTINUE YOUR ORDER" window (51218ms)
+
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/0e338c66843843428c1b1182d33f81e3?auth=22e908d4fd89f7c19cbb06cea9795901
+------------------------------------------------------------------------
+
+  [Smoke Test] [mini-program-restaurant-editor-addstore-edit-delete]
+    ✓ miniprogram-smoke-09 - add a store (76908ms)
+    ✓ miniprogram-smoke-10,11 - edit,delete a store (12953ms)
+
+[../../../../../WebTests/SXL/SmokeTest/Restaurant_Mini-Program/Miniprogram-smoke-15.test.js]:[0] try #1 failed: [waitForElementByCssSelector(".s-modal button span",10000,1000)] Element condition wasn't satisfied!
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/db6f8b075b2f47b383dc8760d7597f30?auth=8d674cf0b756f9d94af472d9bf1bb27c
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+https://saucelabs.com/jobs/f40cb7b33b3f42aea709b4b776b12191?auth=5444fda333a79c4de16e78201ffc7efc
+------------------------------------------------------------------------
+
+  [Smoke Test] [mini-program-restaurant-editor-add-delete-category]
+    ✓ miniprogram-smoke-15,16 - add a category and delete (35823ms)
+
+
+  61 passing (8m)
+  2 failing
+
+  1) [Regression Test] [Reseller-SXL-Upgrade Site] Reseller Reseller-Dashboard : reseller-coreflow-17 - site plan change, upgrade(SXL):
+
+      AssertionError: FAIL:Login Failed: expected false to equal true
+      + expected - actual
+
+      -false
+      +true
+      
+  
+
+  2) [Smoke Test] [mini-program-restaurant-editor-add,edit,delete dish] miniprogram-smoke-12,13,14 - add,edit dish and preview the restaurant miniprogram:
+     Error: [waitForElementByCssSelector(".s-modal .s-modal-content .s-modal-body .s-form .s-form-field:nth-child(1) .field-content input",10000,1000)] Element condition wasn't satisfied!
+      at node_modules/macaca-wd/wd/lib/commands.js:989:12
+      at node_modules/macaca-wd/wd/lib/commands.js:894:11
+      at node_modules/macaca-wd/wd/lib/commands.js:976:13
+      at node_modules/macaca-wd/node_modules/async/lib/async.js:396:17
+      at async.eachSeries (node_modules/macaca-wd/node_modules/async/lib/async.js:177:20)
+      at _asyncMap (node_modules/macaca-wd/node_modules/async/lib/async.js:390:13)
+      at Object.mapSeries (node_modules/macaca-wd/node_modules/async/lib/async.js:373:23)
+      at Object.async.series (node_modules/macaca-wd/node_modules/async/lib/async.js:761:19)
+      at node_modules/macaca-wd/wd/lib/commands.js:974:15
+      at node_modules/macaca-wd/wd/lib/promise-webdriver.js:52:11
+
+
+
++ set -e +x
+Uploading artifacts...
+WARNING: QA-Automation/reports.html: no matching files 
+Uploading artifacts to coordinator... ok            id=96330 responseStatus=201 Created token=xYatpy-R
+Job succeeded
+
+test_desktop_automation
+Duration:  55 minutes 33 seconds
+Runner:  #130
+Tags:  heavy-load strikingly docker
+Job artifacts
+Download	Browse
+Commit f019cf71 
+
+include hawkeye ci jobs
+ Pipeline #19672 from QA-Regression
+test_qa_web
+ hawk_eye_part5
+ test_desktop_automation
+ fe_integration_strikingly
+ hawk_eye_part4
+ hawk_eye_part2
+ hawk_eye_part1
+ hawk_eye_part3

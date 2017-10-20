@@ -137,6 +137,36 @@ let testSelfRunFun = function () {
     })();
 };
 
+let testGetTcNameByRegExp1 = function () {
+    const tmpStr = `Log 2) [Smoke test] [SE-02-Settings-Domain]: 
+    3) [CI Automation] [MP-01-001-Add Multiple Pages]:
+    4) Editor-Basic:
+    Job succeeded`;
+    const reg = /\d\)\s\[.+:/g;
+
+    let m = tmpStr.match(reg);
+    for (let tc of m) {
+        console.log(tc);
+    }
+}
+
+let testGetTcNameByRegExp2 = function () {
+    const fs = require('fs');
+    fs.readFile('./testdata/runlog_1020.log', function (err, data) {
+        if (err) {
+            console.error(err);
+            return;
+        }
+
+        const reg = /\d\)\s\[.+:/g;
+        let m = data.toString().match(reg);
+        for (let tc of m) {
+            console.log(tc);
+        }
+    });
+}
+
+
 if (require.main === module) {
     // testPrintVar();
     // testPath();
@@ -151,5 +181,7 @@ if (require.main === module) {
     // testArrayDestruct();
     // testArgsJoin();
 
-    testSelfRunFun();
+    // testSelfRunFun();
+    // testGetTcNameByRegExp1();
+    testGetTcNameByRegExp2();
 }
