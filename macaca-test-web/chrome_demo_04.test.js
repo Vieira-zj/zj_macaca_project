@@ -119,7 +119,7 @@ let testGroup4 = function (driver) {
   describe('Macaca test group 4', function () {
     const url = 'https://www.baidu.com';
 
-    it('#7, test case 08, window handles', function () {
+    xit('#7, test case 08, window handles', function () {
       return driver
         .get(url)
         .title()
@@ -135,24 +135,24 @@ let testGroup4 = function (driver) {
         .then(window => console.log('current window handle:', window));
     });
 
-    xit('#8, test case 09, iframe in sxl', function () {
+    it('#8, test case 09, iframe in sxl', function () {
       return driver
         .get('https://www.qa.sxl.cn/s/login')
-        // login
+        .writeLog('Step1: login by user id and password, and submit.')
         .waitForElementByCssSelectorByDefault('div.input>input#user_email')
         .sendKeys('autoqa_sxl_mp_blog_27@sxl.cn')
         .elementByCssSelector('div.input>input#user_password')
         .sendKeys('testtest')
         .elementByCssSelector('div[class="submit center"]>input[class="submit s-btn"]')
         .click()
-        // navigate to preview iframe
+        .writeLog('Step2: navigate to the preview page, and open the preview iframe.')
         .waitForElementByCssSelectorByDefault('a[class="my-miniprogram s-link"]')
         .click()
         .waitForElementByCssSelectorByDefault('ul.pages>li:first-child a.s-btn')
         .click()
         .waitForElementByCssSelectorByDefault('div.preview-iframe')
         .click()
-        // check preview iframe
+        .writeLog('Step3: verify preview iframe.')
         .sleep(testConsts.waitTime.wait)
         .windowHandles()
         .then(windows => {
@@ -170,7 +170,7 @@ let testGroup4 = function (driver) {
         .then(els => {
           console.log('span count:', els.length); // 0
         })
-        // exit preview
+        .writeLog('Step4: exit preview iframe.')
         .elementByCssSelector('div.preview-button button[class="s-btn gray"]')
         .click()
         .sleep(testConsts.waitTime.shortWait);

@@ -233,6 +233,11 @@ module.exports = (wd, isIOS) => {
     `);
   });
 
+  wd.addPromiseChainMethod('writeLog', function (logText) {
+    console.log(logText);
+    return this;
+  });
+
   // do not support method overload, 2nd method will override 1st one, 
   // and use different method name instead
   wd.addPromiseChainMethod('helloMessageWithoutArgs', function () {
