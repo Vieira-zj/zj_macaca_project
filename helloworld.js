@@ -4,8 +4,7 @@
  */
 'use strict';
 
-let testPrintVar = function () {
-    let name = 'zheng jin';
+let testPrintVar = function (name = 'zhengjin') {
     console.log(`hello world, ${name}`);
 };
 
@@ -168,7 +167,9 @@ let testGetTcNameByRegExp2 = function () {
 
 
 if (require.main === module) {
-    // testPrintVar();
+    testPrintVar();
+    testPrintVar('henry');
+
     // testPath();
     // testObject();
     // testFnName(testPath);
@@ -183,5 +184,5 @@ if (require.main === module) {
 
     // testSelfRunFun();
     // testGetTcNameByRegExp1();
-    testGetTcNameByRegExp2();
+    // testGetTcNameByRegExp2();
 }

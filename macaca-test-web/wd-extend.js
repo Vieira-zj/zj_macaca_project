@@ -245,13 +245,9 @@ module.exports = (wd, isIOS) => {
     return this.helloMessageWithArgs();
   });
 
-  wd.addPromiseChainMethod('helloMessageWithArgs', function (text) {
+  wd.addPromiseChainMethod('helloMessageWithArgs', function (text = 'guest') {
     console.log('call helloMessage with args');
-    if (text) {
-      console.log('hello', text);
-    } else {
-      console.log('hello guest');
-    }
+    console.log('hello', text);
     return this;
   });
 
