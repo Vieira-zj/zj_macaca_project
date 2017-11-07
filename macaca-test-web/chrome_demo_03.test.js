@@ -4,7 +4,7 @@
  * 
  */
 const testConsts = require('./test_consts');
-const runner = require('./macaca_tc_template');
+const runner = require('./web_tc_template');
 
 // tc without description
 let testCasesGroup1 = [];

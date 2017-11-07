@@ -4,7 +4,7 @@
  * 
  */
 const testConsts = require('./test_consts');
-const runner = require('./macaca_tc_template');
+const runner = require('./web_tc_template');
 
 let testGroups = [];
 
@@ -180,5 +180,5 @@ let testGroup4 = function (driver) {
 testGroups2.push(testGroup4);
 
 
-// runner.macacaTestGroups(testGroups);
+runner.macacaTestGroups(testGroups);
 runner.macacaTestGroups(testGroups2);

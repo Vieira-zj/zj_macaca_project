@@ -43,6 +43,13 @@ let quitDriver = function (driver) {
   return driver;
 };
 
+// global test context
+let testContext = {
+  totalTcs: 0,
+  passedTcs: 0,
+  failedTcs: 0,
+};
+
 let macacaTestCases = function (testCases, isTcWithDesc = true) {
   describe('Macaca test cases from macaca_tc_template.js', function () {
     this.timeout(5 * testConsts.timeUnit.minute);
@@ -59,6 +66,7 @@ let macacaTestCases = function (testCases, isTcWithDesc = true) {
     });
 
     for (let i = 0, length = testCases.length; i < length; i++) {
+      driver.totalTcs += 1;
       let tc = testCases[i];
       if (isTcWithDesc) {
         tc(driver);
@@ -77,12 +85,17 @@ let macacaTestGroups = function (testGroups) {
     this.timeout(5 * testConsts.timeUnit.minute);
     this.slow(testConsts.timeUnit.minute);
 
-    var driver = buildDriver();
+    let driver = buildDriver();
+
+    after(function () {
+      console.log('TOTAL TEST CASES:', testContext.totalTcs);
+    });
 
     beforeEach(() => {
       return initDriver(driver);
     });
     afterEach(() => {
+      testContext.totalTcs += 1;
       return quitDriver(driver);
     });
 
