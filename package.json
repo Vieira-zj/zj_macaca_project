@@ -27,5 +27,8 @@
     "mocha": "^3.5.3",
     "should": "^13.0.1"
   },
+  "dependencies": {
+    "benchmark": "^2.1.4"
+  },
   "license": "MIT"
 }
