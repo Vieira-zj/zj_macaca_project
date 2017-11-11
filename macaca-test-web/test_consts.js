@@ -58,6 +58,11 @@ const waitTime = {
   intervalForSearch: 500,
 }
 
+// wd apis: macaca-wd/lib/macaca-wd.js
+
+// wd.asserters: macaca-wd/wd/lib/asserters.js
+// isDisplayed, isNotDisplayed, onEmptyText, textInclude(content), jsCondition(jsConditionExpr)
+
 module.exports = {
   envVars,
   keyCodes,
