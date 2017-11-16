@@ -238,6 +238,29 @@ module.exports = (wd, isIOS) => {
     return this;
   });
 
+  wd.addPromiseChainMethod('safeClick', function (cssSelector) {
+    let timeout = 15; // seconds
+    let driver = this;
+
+    let fnIsDisplayed = async function () {
+      return driver.execute(`return $('${cssSelector}').is(':visible');`);
+    }
+    let fnSafeClick = async function () {
+      for (let i = 1; i <= timeout; i++) {
+        if (await fnIsDisplayed()) {
+          return driver
+            .waitForElementByCssSelectorByDefault(cssSelector)
+            .click();
+        }
+        console.log(`wait for element visible: ${i} seconds`);
+        await driver.sleep(testConsts.waitTime.shortWait);
+      }
+      throw new Error(`The element (${cssSelector}) is unavailable when do click!`);
+    }
+
+    return fnSafeClick();
+  });
+
   // TEST CHAIN METHOD
   // do not support method overload, 1st method will be overrided
   wd.addPromiseChainMethod('helloMsg', function () {
@@ -251,7 +274,7 @@ module.exports = (wd, isIOS) => {
     return this;
   });
 
-  // return string
+  // only return string
   wd.addPromiseChainMethod('retHelloMsg', function () {
     return 'hello world';
   });

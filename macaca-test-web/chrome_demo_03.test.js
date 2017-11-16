@@ -106,7 +106,20 @@ let testCase07 = function (driver) {
       .then(console.log('getComputedCss done.'));
   });
 };
-testCasesGroup2.push(testCase07);
+// testCasesGroup2.push(testCase07);
+
+let testCase08 = function (driver) {
+  it('#8, safe click demo', function () {
+    return driver
+      .get('https://www.baidu.com')
+      .waitForElementByCssSelectorByDefault('#kw')
+      .click()
+      .sleep(testConsts.waitTime.wait)
+      .safeClick('.setpref')
+      .then(() => console.log('safe click demo finished.'));
+  });
+};
+testCasesGroup2.push(testCase08);
 
 // runner.macacaTestCases(testCasesGroup1, false);
 runner.macacaTestCases(testCasesGroup2);
