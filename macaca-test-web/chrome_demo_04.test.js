@@ -84,7 +84,7 @@ let testGroup3 = function (driver) {
     xit('#5, test case 06, chain method by promise', function () {
       return driver
         .get(url)
-        .sleepByPromise(testConsts.waitTime.shortWait)
+        .waitByPromise(testConsts.waitTime.shortWait)
         .then(function (val) {
           console.log('sleep:', val);
           val.should.be.true('FAIL, sleep by promise');
@@ -104,7 +104,7 @@ let testGroup3 = function (driver) {
         .get(url)
         .title()
         .then(title => console.log('page title:', title))
-        .returnHelloMessage()
+        .retHelloMsg()
         .then(val => console.log('message:', val))
         .waitForElementByCssSelector('input[class="submit s-btn"]')
         .click();

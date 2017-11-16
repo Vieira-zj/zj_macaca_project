@@ -96,7 +96,7 @@ test-mocha-default:
 # chromedriver_version=2.33 for Chrome v62.0
 test-desktop-chrome-single-custom:
 #	CHROMEDRIVER_VERSION=2.33 browser=chrome macaca run --verbose --reporter macaca-reporter -d ./macaca-test/chrome_demo_02.test.js
-	CHROMEDRIVER_VERSION=2.33 BROWSER_CLOSE=true browser=chrome macaca run -d ./macaca-test-web/chrome_demo_04.test.js
+	CHROMEDRIVER_VERSION=2.33 BROWSER_CLOSE=true browser=chrome macaca run -d ./macaca-test-web/chrome_demo_03.test.js
 test-desktop-chrome-all-custom:
 	CHROMEDRIVER_VERSION=2.33 browser=chrome macaca run --verbose --reporter macaca-simple-reportor -d ./macaca-test-web/
 

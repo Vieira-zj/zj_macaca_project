@@ -238,27 +238,26 @@ module.exports = (wd, isIOS) => {
     return this;
   });
 
-  // do not support method overload, 2nd method will override 1st one, 
-  // and use different method name instead
-  wd.addPromiseChainMethod('helloMessageWithoutArgs', function () {
-    console.log('call helloMessage without args');
-    return this.helloMessageWithArgs();
+  // TEST CHAIN METHOD
+  // do not support method overload, 1st method will be overrided
+  wd.addPromiseChainMethod('helloMsg', function () {
+    console.log('call helloMessage without args.');
+    return this.helloMsgWithDefaultText();
   });
 
-  wd.addPromiseChainMethod('helloMessageWithArgs', function (text = 'guest') {
-    console.log('call helloMessage with args');
+  wd.addPromiseChainMethod('helloMsgWithDefaultText', function (text = 'guest') {
+    console.log('call helloMessage with args.');
     console.log('hello', text);
     return this;
   });
 
-  // TEST
-  // chain method test
-  wd.addPromiseChainMethod('returnHelloMessage', function () {
+  // return string
+  wd.addPromiseChainMethod('retHelloMsg', function () {
     return 'hello world';
   });
 
-  // chain method by promise
-  wd.addPromiseChainMethod('sleepByPromise', function (wait) {
+  // sync wait by promise
+  wd.addPromiseChainMethod('waitByPromise', function (wait) {
     return new Promise(function (resolve, reject) {
       if (wait < 1000) {
         reject('invalid wait time');
@@ -269,6 +268,30 @@ module.exports = (wd, isIOS) => {
         resolve(true);
       }, wait);
     });
+  });
+
+  // sync wait
+  wd.addPromiseChainMethod('syncWaitByPromise', function (seconds) {
+    let driver = this;
+    async function syncWait() {
+      for (let i = 1; i <= seconds; i++) {
+        console.log('wait for seconds:', i);
+        await driver.waitByPromise(testConsts.waitTime.shortWait);
+      }
+    }
+    return syncWait(); // return promise
+  });
+
+  // sync wait
+  wd.addPromiseChainMethod('syncWaitBySleep', function (seconds) {
+    let driver = this;
+    let syncWait = async function () {
+      for (let i = 1; i <= seconds; i++) {
+        console.log('sleep for seconds:', i);
+        await driver.sleep(testConsts.waitTime.shortWait);
+      }
+    }
+    return syncWait();
   });
 
   // UI TASKS

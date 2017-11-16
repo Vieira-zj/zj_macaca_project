@@ -197,7 +197,7 @@ const keyCodes = {
 大家可以看到，Macaca JS是使用函数式编程，因此不能用传统的方式来添加自定义函数。添加自定义函数要使用如下方式：
 
 ```javascript
-  wd.addPromiseChainMethod('returnHelloMessage', function () {
+  wd.addPromiseChainMethod('retHelloMsg', function () {
     return 'hello world';
   });
 ```

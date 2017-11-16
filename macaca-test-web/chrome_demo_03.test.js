@@ -95,15 +95,18 @@ let testCase07 = function (driver) {
 
     return driver
       .get('https://www.baidu.com')
+      .syncWaitByPromise(5)
       .waitForElementByCssSelector(cssSelector)
       .text()
       .then(val => console.log('link text:', val))
       .elementByCssSelector(cssSelector)
       .getComputedCss('color')
-      .then(val => console.log('css color:', val));
+      .then(val => console.log('css color:', val))
+      .syncWaitBySleep(5)
+      .then(console.log('getComputedCss done.'));
   });
 };
 testCasesGroup2.push(testCase07);
 
-runner.macacaTestCases(testCasesGroup1, false);
+// runner.macacaTestCases(testCasesGroup1, false);
 runner.macacaTestCases(testCasesGroup2);

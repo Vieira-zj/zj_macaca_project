@@ -163,8 +163,8 @@ describe('macaca-test/chrome_demo02.test.js', function () {
 
     it('#1, call overload extend method', function () {
       return driver
-        .helloMessageWithoutArgs()
-        .helloMessageWithArgs('zhengjin')
+        .helloMsg()
+        .helloMsgWithDefaultText('zhengjin')
         .then(() => console.log('test1'))
         .then(() => console.log('test2'));
     });
