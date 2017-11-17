@@ -96,8 +96,9 @@ let testAddFn = function () {
 };
 
 let testObjectDestruct = function () {
-    // must match the properties' name in object
-    let getFullName = function ({
+    // matched by the property name in object
+    // example 01, pass as arguments
+    let printFullName = function ({
         firstName,
         lastName
     }) {
@@ -110,7 +111,23 @@ let testObjectDestruct = function () {
         lastName: 'jin',
         age: 30
     };
-    getFullName(tmpName);
+    printFullName(tmpName);
+
+    // example 02, as return
+    let getUserInfo = function () {
+        return {
+            national: 'China',
+            firstName: 'zheng',
+            lastName: 'jin',
+            age: 30
+        };
+    };
+
+    const {
+        firstName,
+        lastName
+    } = getUserInfo();
+    console.log('user name: ' + firstName + ' ' + lastName);
 };
 
 let testArrayDestruct = function () {
@@ -167,8 +184,8 @@ let testGetTcNameByRegExp2 = function () {
 
 
 if (require.main === module) {
-    testPrintVar();
-    testPrintVar('henry');
+    // testPrintVar();
+    // testPrintVar('henry');
 
     // testPath();
     // testObject();
@@ -178,7 +195,7 @@ if (require.main === module) {
     // testFnParams();
     // testAddFn();
 
-    // testObjectDestruct();
+    testObjectDestruct();
     // testArrayDestruct();
     // testArgsJoin();
 
