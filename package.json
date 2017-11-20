@@ -1,11 +1,11 @@
 {
   "name": "sample-nodejs",
   "version": "1.0.0",
-  "description": "Macaca sample for Node.js",
+  "description": "Macaca sample base on Node.js",
   "keywords": [
-    "macaca",
-    "sample",
-    "automation"
+    "macaca sample",
+    "demo",
+    "ui automation"
   ],
   "repository": {
     "type": "git",
@@ -28,7 +28,8 @@
     "should": "^13.0.1"
   },
   "dependencies": {
-    "benchmark": "^2.1.4"
+    "benchmark": "^2.1.4",
+    "lodash": "^4.17.4"
   },
   "license": "MIT"
 }
