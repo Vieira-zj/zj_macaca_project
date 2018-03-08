@@ -5,7 +5,7 @@ custom_port = `${npm_bin}/detect-port 3458 -s`
 
 all: test # run target "test" instead
 install:
-	@npm i  # run command without print command
+	@npm i # run command without print command
 test: # print usage
 	@echo ""
 	@echo "make test-ios               Test sample for iOS"
@@ -94,13 +94,14 @@ test-mocha-default:
 # chromedriver_version=2.30 for Chrome v59.0
 # chromedriver_version=2.32 for Chrome v61.0
 # chromedriver_version=2.33 for Chrome v62.0
+# chromedriver_version=2.35 for Chrome v64.0
 test-desktop-chrome-single-custom:
 #	CHROMEDRIVER_VERSION=2.33 browser=chrome macaca run --verbose --reporter macaca-reporter -d ./macaca-test/chrome_demo_02.test.js
-	CHROMEDRIVER_VERSION=2.33 BROWSER_CLOSE=true browser=chrome macaca run -d ./macaca-test-web/chrome_demo_03.test.js
+	CHROMEDRIVER_VERSION=2.35 BROWSER_CLOSE=true browser=chrome macaca run -d ./macaca-test-web/chrome_demo_01.test.js
 test-desktop-chrome-all-custom:
-	CHROMEDRIVER_VERSION=2.33 browser=chrome macaca run --verbose --reporter macaca-simple-reportor -d ./macaca-test-web/
+	CHROMEDRIVER_VERSION=2.35 browser=chrome macaca run --verbose --reporter macaca-simple-reportor -d ./macaca-test-web/
 
 test-android-custom:
-	CHROMEDRIVER_VERSION=2.33 platform=android macaca run --verbose -d ./macaca-test-mobile/mobile-app-sample.test.js
+	CHROMEDRIVER_VERSION=2.35 platform=android macaca run --verbose -d ./macaca-test-mobile/mobile-app-sample.test.js
 
 .PHONY: test test-ios # fix the conflict with same file name

@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "benchmark": "^2.1.4",
+    "jshint": "^2.9.5",
     "lodash": "^4.17.4"
   },
   "license": "MIT"
