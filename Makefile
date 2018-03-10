@@ -85,11 +85,8 @@ test-env-var:
 test-mocha-default:
 	${cur_npm_bin}/mocha --opts mocha.opts
 
-# macaca cli:
-# https://macacajs.github.io/cli-usage
-
 # CHROMEDRIVER_VERSION (default 2.20), set process.env.CHROMEDRIVER_VERSION
-# for chromedriver bin path: 
+# chromedriver bin path: 
 # /usr/local/lib/node_modules/macaca-chrome/node_modules/macaca-chromedriver/exec/chromedriver2.xx
 # chromedriver_version=2.30 for Chrome v59.0
 # chromedriver_version=2.32 for Chrome v61.0

@@ -53,6 +53,7 @@ const asyncByPromise = function () {
     .catch(reason => console.warn(reason)); // end with catch block
 };
 
+/* jshint ignore:start */
 const asyncByAwait = function () {
   let asyncFn = function (wait) {
     return new Promise(function (resolve, reject) {
@@ -82,6 +83,7 @@ const asyncByAwait = function () {
 
   asyncTest();
 };
+/* jshint ignore:end */
 
 if (require.main === module) {
   // asyncByCallback1();

@@ -14,8 +14,24 @@ elif [ "$1" == "all" ]; then
 else
   target=${default}
 fi
-echo "run target: "${target}
-make ${target}
+echo "run target: ${target}"
+# make ${target}
+
+
+# Mocha cli:
+# https://mochajs.org/
+# ./node_modules/.bin/mocha -h
+# ./node_modules/.bin/mocha -V
+
+# -R, --reporter: specify the reporter to use.
+# -u, --ui: specify user-interface (bdd|tdd|qunit|exports).
+# ./node_modules/.bin/mocha --opts mocha.opts -R list -u tdd -g "part 2"
+# ./node_modules/.bin/mocha --opts mocha.opts --grep "part 3"
+
+
+# Macaca cli:
+# https://macacajs.github.io/quick-start
+# macaca run -h
 
 
 # SHELL SCRIPT SAMPELS

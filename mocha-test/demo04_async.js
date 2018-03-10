@@ -38,6 +38,7 @@ class TestApi {
   }
 }
 
+/* jshint ignore:start */
 // EXAMPLE 01
 function callbackHell() {
   const api = new TestApi();
@@ -173,6 +174,7 @@ async function awaitUserInfo() {
     photo
   });
 }
+/* jshint ignore:end */
 
 if (require.main === module) {
   // callbackHell();
