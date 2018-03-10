@@ -238,6 +238,7 @@ module.exports = (wd, isIOS) => {
     return this;
   });
 
+  /* jshint ignore:start */
   wd.addPromiseChainMethod('safeClick', function (cssSelector) {
     let timeout = 15; // seconds
     let driver = this;
@@ -260,6 +261,7 @@ module.exports = (wd, isIOS) => {
 
     return fnSafeClick();
   });
+  /* jshint ignore:end */
 
   // TEST CHAIN METHOD
   // do not support method overload, 1st method will be overrided
@@ -293,6 +295,7 @@ module.exports = (wd, isIOS) => {
     });
   });
 
+  /* jshint ignore:start */
   // sync wait
   wd.addPromiseChainMethod('syncWaitByPromise', function (seconds) {
     let driver = this;
@@ -316,6 +319,7 @@ module.exports = (wd, isIOS) => {
     }
     return syncWait();
   });
+  /* jshint ignore:end */
 
   // UI TASKS
   wd.addPromiseChainMethod('openBaiduLoginDialog', function () {
@@ -333,5 +337,5 @@ module.exports = (wd, isIOS) => {
   wd.addPromiseChainMethod('customOpenBaiduLoginDialog', function () {
     return testTasks.openBaiduLoginDialog(this);
   });
-
+  
 };

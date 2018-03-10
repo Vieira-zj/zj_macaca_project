@@ -16,7 +16,7 @@ const wd = require('macaca-wd');
 
 require('./wd-extend')(wd, false);
 
-const diffImage = require('./utils.js').diffImage;
+const {diffImage, diffImageByPath} = require('./utils.js');
 
 const testConsts = require('./test_consts');
 
@@ -58,9 +58,7 @@ describe('macaca-test/chrome_demo01.test.js', function () {
     describe('Macaca demos, group 1', function () {
         const initialURL = 'https://www.baidu.com';
 
-        after(function () {});
-
-        xit('#1, access BaiDu', function () {
+        it('#01-01, access BaiDu', function () {
             return driver
                 .get(initialURL)
                 // get request url
@@ -86,7 +84,7 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                 });
         });
 
-        xit('#2, do search Macaca', function () {
+        it('#01-02, do search Macaca', function () {
             const testKeyword = 'Macaca';
 
             return driver
@@ -108,7 +106,7 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                         element.should.be.a.Object();
                     });
                 })
-                // verify "Macaca" is included in search results
+                // verify "Macaca" is included in search results list
                 // Note: before run js script, make sure ui element is dislayed
                 .execute(`
                     var links = document.getElementsByTagName('em');
@@ -121,7 +119,7 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                 .then(value => console.log('verify search results:', value ? 'pass' : 'fail'));
         });
 
-        xit('#3, run js script', function () {
+        it('#01-03, run js script', function () {
             return driver
                 .get(initialURL)
                 // verify element exist
@@ -130,10 +128,10 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                 // run JS script to change link background and return text
                 .execute(`
                     var uiElement = document.getElementById('setf');
-                    uiElement.style.backgroundColor="#000000";
+                    uiElement.style.backgroundColor="yellow";
                     return uiElement.innerText;`)
                 .then(value => console.log('link text by JS return:', value))
-                // get link text
+                // get link text by api
                 .waitForElementByIdByDefault('setf')
                 .text()
                 .then(value => console.log('link text by Macaca:', value));
@@ -142,7 +140,7 @@ describe('macaca-test/chrome_demo01.test.js', function () {
             // .then(value => console.log('search button text:', value));
         });
 
-        xit('#4, change text by keycode', function () {
+        it('#01-04, change input text by keycode', function () {
             return driver
                 .get(initialURL)
                 // input search string
@@ -163,7 +161,7 @@ describe('macaca-test/chrome_demo01.test.js', function () {
 
         after(() => {});
 
-        xit('#0, do login by keycode', function () {
+        it('#01-05, do login by keycode', function () {
             return driver
                 .get(initialURL)
                 // check text for setting link
@@ -197,7 +195,7 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                 .then(value => console.log('error message is show:', value));
         });
 
-        xit('#1, check error message on user login dialog', function () {
+        it('#01-06, check error message on user login dialog', function () {
             // print env variables set from command 'macaca run'
             console.log('chrome driver version:', process.env.CHROMEDRIVER_VERSION);
             console.log('browser:', process.env.browser);
@@ -237,7 +235,7 @@ describe('macaca-test/chrome_demo01.test.js', function () {
     describe('Macaca demos, gropu 3', function () {
         const initialURL = 'https://www.baidu.com';
 
-        xit('#0, call custom methods', function () {
+        it('#01-07, call custom methods', function () {
             return driver
                 .get(initialURL)
                 .openBaiduLoginDialog()
@@ -255,7 +253,7 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                 });
         });
 
-        xit('#1, call custom tasks', function () {
+        it('#01-08, call custom tasks', function () {
             return driver
                 .get(initialURL)
                 .customOpenBaiduLoginDialog()
@@ -264,7 +262,7 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                 .then(value => console.log('login dialog title:', value));
         });
 
-        xit('#2, wait after each action', function () {
+        it('#01-09, wait after each action', function () {
             return driver
                 .get(initialURL)
                 .waitForElementByIdByDefault('kw')
@@ -274,38 +272,49 @@ describe('macaca-test/chrome_demo01.test.js', function () {
                 .clickAndWait();
         });
 
-        xit('#3, verification by diff image', function () {
+        it('#01-10, verification ui by diff image', function () {
             return driver
                 .get(initialURL)
                 .sleep(testConsts.waitTime.shortWait)
-                // .customSaveScreenshot(this) // save error baseline
-                .sleep(testConsts.waitTime.shortWait)
                 .openBaiduLoginDialog()
-                // .customSaveScreenshot(this) // save origin baseline
+                // .customSaveScreenshot(this) // save base baseline
                 .takeScreenshot()
                 .then(imgData => {
                     const screenshotFolder = path.resolve(__dirname, '../screenshots');
-                    const originImgPath = path.join(screenshotFolder, 'origin.png');
-                    fs.exists(originImgPath, function (exists) {
-                        exists.should.be.ok('origin image exist.');
+                    const baseImgPath = path.join(screenshotFolder, 'base.png');
+                    fs.exists(baseImgPath, function (exists) {
+                        exists.should.be.ok('base image found.');
                     }); // Warn: sync function
 
-                    const newImg = new Buffer(imgData, 'base64');
+                    const currImg = new Buffer(imgData, 'base64');
                     fs.writeFileSync(
-                        path.join(screenshotFolder, 'new.png'),
-                        newImg.toString('binary'), 'binary'
+                        path.join(screenshotFolder, 'curr.png'), currImg.toString('binary'), 'binary'
                     );
 
                     const diffImgPath = path.join(screenshotFolder, 'diff.png');
-                    return diffImage(originImgPath, newImg, 0.1, diffImgPath);
+                    return diffImage(baseImgPath, currImg, 0.01, diffImgPath);
                 })
                 .then(result => {
+                    console.log('image diff results:', result)
                     result.should.be.true('image diff.');
                 })
                 .catch(e => {
                     console.error(e);
                 });
         });
+
+    });
+});
+
+describe('macaca-test/chrome_demo01.test.js, api test', function () {
+    this.timeout(0)
+
+    it('#01-11, test image diff', function () {
+        const screenshotFolder = path.resolve(__dirname, '../screenshots');
+        const currImgPath = path.join(screenshotFolder, 'curr.png');
+        const baseImgPath = path.join(screenshotFolder, 'base.png');
+        const diffImgPath = path.join(screenshotFolder, 'diff.png');
+        return diffImageByPath(baseImgPath, currImgPath, 0.01, diffImgPath).should.eventually.be.true();
     });
 
-});
+})

@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 
 target=""
 default="test-desktop-chrome-single-custom"
@@ -32,6 +33,13 @@ echo "run target: ${target}"
 # Macaca cli:
 # https://macacajs.github.io/quick-start
 # macaca run -h
+test="./macaca-test-web/chrome_demo_01.test.js"
+# CHROMEDRIVER_VERSION=2.35 BROWSER_CLOSE=true browser=chrome macaca run -d ${test}
+
+# run macaca tests by mocha cmd
+# pre-condition: start server => "$ CHROMEDRIVER_VERSION=2.35 macaca server --verbose"
+mocha_bin="./node_modules/.bin/mocha"
+CHROMEDRIVER_VERSION=2.35 BROWSER_CLOSE=false browser=chrome ${mocha_bin} ${test} -g "#01-10" -R list
 
 
 # SHELL SCRIPT SAMPELS
@@ -194,3 +202,5 @@ echo "run target: ${target}"
 # }
 # cpBackup ~/Documents/vim_test.log
 # echo "results: $?"
+
+set +x
