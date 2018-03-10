@@ -46,17 +46,18 @@ describe('macaca-test/chrome_demo02.test.js', function () {
 
   describe('Macaca api test demo for waitForElement()', function () {
     /**
-     * function waitForElement(using, value, asserter, timeout, interval) {}
+     * waitForElement(using, value, asserter, timeout, interval) {}
      * default timeout=1000ms, interval=200ms
      * example waitForElementByClassName('btn', 2000, 100) 
      * Search for element which class name is 'btn' at intervals of 100ms, last for 2000ms.
+     * 
      */
 
     const initUrl = 'https://www.baidu.com';
     const timeOut = 10 * testConsts.timeUnit.second;
     const interval = 500;
 
-    xit('#0, waitForElement() by default', function () {
+    it('#02-01, waitForElement() by default', function () {
       return driver.get(initUrl)
         .sleep(2 * testConsts.second)
         .waitForElementById('kw')
@@ -69,7 +70,7 @@ describe('macaca-test/chrome_demo02.test.js', function () {
         .then(value => console.log('1st result text:', value));
     });
 
-    xit('#1, waitForElement() by wd.asserters=isDisplayed', function () {
+    it('#02-02, waitForElement() by wd.asserters=isDisplayed', function () {
       return driver
         .get(initUrl)
         .waitForElementById('kw', wd.asserters.isDisplayed, timeOut, interval)
@@ -82,7 +83,7 @@ describe('macaca-test/chrome_demo02.test.js', function () {
         .then(value => console.log('1st result text:', value));
     });
 
-    xit('#2, waitForElement() by wd.asserters=textInclude', function () {
+    it('#02-03, waitForElement() by wd.asserters=textInclude', function () {
       return driver
         .get(initUrl)
         .customOpenBaiduLoginDialog()
@@ -92,7 +93,7 @@ describe('macaca-test/chrome_demo02.test.js', function () {
         .then(value => console.log('login dialog title:', value));
     });
 
-    xit('#3, waitForElement() by wd.asserters=jsCondition', function () {
+    it('#02-04, waitForElement() by wd.asserters=jsCondition', function () {
       // Error: pending on execute jsConditionExpr
       const jsConditionExpr = `return true;`;
 
@@ -114,7 +115,7 @@ describe('macaca-test/chrome_demo02.test.js', function () {
     const settingBtnSelector = 'div#u1>a[name="tj_settingicon"]';
     const searchSettingMenuItemSelector = 'div.bdpfmenu a.setpref';
 
-    xit('#0, mouse hover over for dyn element, and click', function () {
+    it('#02-05, mouse hover over for dyn element, and click', function () {
       console.log('testing browser:', testConsts.envVars.browser);
       console.log('is browser close after done:', testConsts.envVars.browserClose);
 
@@ -144,7 +145,7 @@ describe('macaca-test/chrome_demo02.test.js', function () {
   describe('Macaca test demo, group 2', function () {
     const url = 'https://www.baidu.com';
 
-    xit('#0, set and get env variable', function () {
+    it('#02-06, set and get env variable', function () {
       if (process.env.INIT_URL) {
         console.log('env variable INIT_URL from chrome_demo_01.test.js');
       } else {
@@ -161,7 +162,7 @@ describe('macaca-test/chrome_demo02.test.js', function () {
         .then(value => console.log('title:', value));
     });
 
-    it('#1, call overload extend method', function () {
+    it('#02-07, call overload extend method', function () {
       return driver
         .helloMsg()
         .helloMsgWithDefaultText('zhengjin')
@@ -169,7 +170,7 @@ describe('macaca-test/chrome_demo02.test.js', function () {
         .then(() => console.log('test2'));
     });
 
-    xit('#2, read external test data', function () {
+    it('#02-08, read external test data', function () {
       const testdata = require('../testdata/testdata_01'); // json object
 
       return driver
@@ -182,7 +183,6 @@ describe('macaca-test/chrome_demo02.test.js', function () {
         .clear()
         .sendkeysAndWait(testdata.searchKey2);
     });
-
   });
 
 });

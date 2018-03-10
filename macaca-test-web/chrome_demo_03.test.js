@@ -32,27 +32,27 @@ testCasesGroup1.push(testCase02);
 let testCasesGroup2 = [];
 
 let testCase03 = function (driver) {
-  it('#3, open strikingly page', function () {
+  it('#03-01, open strikingly page', function () {
     return driver
       .get('https://www.qa.strikingly.com/')
       .title()
       .then(value => console.log('page title:', value));
   });
 };
-// testCasesGroup2.push(testCase03);
+testCasesGroup2.push(testCase03);
 
 let testCase04 = function (driver) {
-  it('#4, open strikingly sxl page', function () {
+  it('#03-02, open strikingly sxl page', function () {
     return driver
       .get('https://www.qa.sxl.cn/s#/')
       .title()
       .then(value => console.log('page title:', value));
   });
 };
-// testCasesGroup2.push(testCase04);
+testCasesGroup2.push(testCase04);
 
 let testCase05 = function (driver) {
-  it('#5, JQuery test demo 01', function () {
+  it('#03-03, JQuery test demo 01', function () {
     return driver
       .get('https://www.baidu.com')
       // get element property
@@ -72,10 +72,10 @@ let testCase05 = function (driver) {
       .execute(`$('p#lh>a').each(function(i){this.style.backgroundColor=['#ccc','#fff'][i%2]});`)
   });
 };
-// testCasesGroup2.push(testCase05);
+testCasesGroup2.push(testCase05);
 
 let testCase06 = function (driver) {
-  it('#6, JQuery test demo 02', function () {
+  it('#03-04, JQuery test demo 02', function () {
     return driver
       .get('https://www.baidu.com')
       // action: mouseover and click
@@ -87,10 +87,10 @@ let testCase06 = function (driver) {
       .execute(`$('input#kw').val('macaca');`);
   });
 };
-// testCasesGroup2.push(testCase06);
+testCasesGroup2.push(testCase06);
 
 let testCase07 = function (driver) {
-  it('#7, getComputedCss', function () {
+  it('#03-05, getComputedCss', function () {
     const cssSelector = 'a#setf'
 
     return driver
@@ -106,10 +106,10 @@ let testCase07 = function (driver) {
       .then(console.log('getComputedCss done.'));
   });
 };
-// testCasesGroup2.push(testCase07);
+testCasesGroup2.push(testCase07);
 
 let testCase08 = function (driver) {
-  it('#8, safe click demo', function () {
+  it('#03-06, safe click demo', function () {
     return driver
       .get('https://www.baidu.com')
       .waitForElementByCssSelectorByDefault('#kw')
@@ -121,5 +121,5 @@ let testCase08 = function (driver) {
 };
 testCasesGroup2.push(testCase08);
 
-// runner.macacaTestCases(testCasesGroup1, false);
+runner.macacaTestCases(testCasesGroup1, false);
 runner.macacaTestCases(testCasesGroup2);

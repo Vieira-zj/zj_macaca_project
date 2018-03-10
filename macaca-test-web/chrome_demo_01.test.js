@@ -317,4 +317,4 @@ describe('macaca-test/chrome_demo01.test.js, api test', function () {
         return diffImageByPath(baseImgPath, currImgPath, 0.01, diffImgPath).should.eventually.be.true();
     });
 
-})
+});

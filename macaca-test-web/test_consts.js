@@ -1,5 +1,6 @@
 /**
- * const varabiles for testing.
+ * Constant varabiles for testing.
+ * 
  */
 'use strict';
 

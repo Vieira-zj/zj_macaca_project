@@ -21,25 +21,33 @@ echo "run target: ${target}"
 
 # Mocha cli:
 # https://mochajs.org/
-# ./node_modules/.bin/mocha -h
-# ./node_modules/.bin/mocha -V
+mocha_bin="./node_modules/.bin/mocha"
+# ${mocha_bin} -h
+# ${mocha_bin} -V
 
 # -R, --reporter: specify the reporter to use.
 # -u, --ui: specify user-interface (bdd|tdd|qunit|exports).
-# ./node_modules/.bin/mocha --opts mocha.opts -R list -u tdd -g "part 2"
-# ./node_modules/.bin/mocha --opts mocha.opts --grep "part 3"
+# ${mocha_bin} --opts mocha.opts -R list -u tdd -g "part 2"
+# ${mocha_bin} --opts mocha.opts --grep "part 3"
 
 
 # Macaca cli:
 # https://macacajs.github.io/quick-start
 # macaca run -h
-test="./macaca-test-web/chrome_demo_01.test.js"
+# test="./macaca-test-web/desktop-browser-sample.test.js"
 # CHROMEDRIVER_VERSION=2.35 BROWSER_CLOSE=true browser=chrome macaca run -d ${test}
 
-# run macaca tests by mocha cmd
+# run macaca chrome tests by mocha cmd
 # pre-condition: start server => "$ CHROMEDRIVER_VERSION=2.35 macaca server --verbose"
-mocha_bin="./node_modules/.bin/mocha"
-CHROMEDRIVER_VERSION=2.35 BROWSER_CLOSE=false browser=chrome ${mocha_bin} ${test} -g "#01-10" -R list
+# chrome_test="./macaca-test-web/chrome_demo_01.test.js"
+# CHROMEDRIVER_VERSION=2.35 BROWSER_CLOSE=true browser=chrome ${mocha_bin} ${chrome_test} -g "#01-01" -R list
+
+# run macaca andorid tests by mocha cmd
+# env setup: $ cnpm i macaca-android -g
+# for dependency apks:
+# /usr/local/lib/node_modules/macaca-android/node_modules/uiautomatorwd/scripts/build.js
+android_test="./macaca-test-mobile/mobile-app-sample.test.js"
+platform=android ${mocha_bin} ${android_test} --reporter macaca-reporter --colors -g "#01"
 
 
 # SHELL SCRIPT SAMPELS

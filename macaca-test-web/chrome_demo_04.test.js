@@ -13,7 +13,7 @@ let testGroup1 = function (driver) {
     before(() => console.log('Start: run test group 1'));
     after(() => console.log('End: run test group 1'));
 
-    it('#0, test case 01', function () {
+    it('#04-01, test case 01', function () {
       return driver
         .get('https://www.baidu.com')
         .sleep(testConsts.waitTime.shortWait)
@@ -21,7 +21,7 @@ let testGroup1 = function (driver) {
         .then(value => console.log('page title:', value));
     });
 
-    it('#1, test case 02', function () {
+    it('#04-02, test case 02', function () {
       return driver
         .get('https://www.sogou.com')
         .sleep(testConsts.waitTime.shortWait)
@@ -37,7 +37,7 @@ let testGroup2 = function (driver) {
     before(() => console.log('Start: run test group 2'));
     after(() => console.log('End: run test group 2'));
 
-    it('#2, test case 03', function () {
+    it('#04-03, test case 03', function () {
       console.log('driver session id:', driver.sessionID);
 
       return driver
@@ -46,7 +46,7 @@ let testGroup2 = function (driver) {
         .then(value => console.log('page title:', value));
     });
 
-    it('#3, test case 04', function () {
+    it('#04-04, test case 04', function () {
       const jsGetTitle = 'document.title';
 
       return driver
@@ -66,7 +66,7 @@ let testGroup3 = function (driver) {
     const timeOut = 10 * testConsts.timeUnit.second;
     const interval = 500;
 
-    xit('#4, test case 05, waitForElements', function () {
+    it('#04-05, test case 05, waitForElements', function () {
       return driver
         .get(url)
         .waitForElementsByCssSelector('input[type="text"]')
@@ -81,7 +81,7 @@ let testGroup3 = function (driver) {
         .sendKeys('strikingly');
     });
 
-    xit('#5, test case 06, chain method by promise', function () {
+    it('#04-06, test case 06, chain method by promise', function () {
       return driver
         .get(url)
         .waitByPromise(testConsts.waitTime.shortWait)
@@ -99,7 +99,7 @@ let testGroup3 = function (driver) {
         .catch(reason => console.error(reason));
     });
 
-    it('#6, test case 07, chain method', function () {
+    it('#04-07, test case 07, chain method', function () {
       return driver
         .get(url)
         .title()
@@ -119,7 +119,7 @@ let testGroup4 = function (driver) {
   describe('Macaca test group 4', function () {
     const url = 'https://www.baidu.com';
 
-    xit('#7, test case 08, window handles', function () {
+    it('#04-08, test case 08, window handles (browser tabs)', function () {
       return driver
         .get(url)
         .title()
@@ -135,7 +135,7 @@ let testGroup4 = function (driver) {
         .then(window => console.log('current window handle:', window));
     });
 
-    it('#8, test case 09, iframe in sxl', function () {
+    it('#04-09, test case 09, iframe in sxl', function () {
       return driver
         .get('https://www.qa.sxl.cn/s/login')
         .writeLog('Step1: login by user id and password, and submit.')

@@ -1,6 +1,6 @@
 git_version = `git branch 2>/dev/null | sed -e '/^[^*]/d'-e's/* \(.*\)/\1/'`
 npm_bin= `npm bin`
-cur_npm_bin=./node_modules/.bin
+curr_npm_bin=./node_modules/.bin
 custom_port = `${npm_bin}/detect-port 3458 -s`
 
 all: test # run target "test" instead
@@ -83,7 +83,7 @@ test-env-var:
 
 # unit test
 test-mocha-default:
-	${cur_npm_bin}/mocha --opts mocha.opts
+	${curr_npm_bin}/mocha --opts mocha.opts
 
 # CHROMEDRIVER_VERSION (default 2.20), set process.env.CHROMEDRIVER_VERSION
 # chromedriver bin path: 

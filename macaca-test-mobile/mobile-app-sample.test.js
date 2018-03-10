@@ -89,7 +89,7 @@ describe('macaca-test/mobile-app-sample.test.js', function() {
 
   describe('login page test', function() {
 
-    it('#0 should login success', function() {
+    it('#01-01 should login success', function() {
       return driver
         /*
         .title()
@@ -108,7 +108,7 @@ describe('macaca-test/mobile-app-sample.test.js', function() {
 
   describe('home page test', function() {
 
-    it('#0 should display home', function() {
+    it('#01-02 should display home', function() {
       return driver
         .source()
         .then(res => {
@@ -120,7 +120,7 @@ describe('macaca-test/mobile-app-sample.test.js', function() {
 
   describe('list page test', function() {
 
-    it('#0 should scroll tableview', function() {
+    it('#01-03 should scroll tableview', function() {
       return driver
         .testGetProperty()
         .waitForElementByName('HOME')
@@ -134,7 +134,7 @@ describe('macaca-test/mobile-app-sample.test.js', function() {
 
   describe('gestrure page test', function() {
 
-    it('#0 should cover gestrure', function() {
+    it('#01-04 should cover gestrure', function() {
       return driver
         .waitForElementByName('Alert')
         .click()
@@ -206,7 +206,7 @@ describe('macaca-test/mobile-app-sample.test.js', function() {
 
   describe('webview page test', function() {
 
-    it('#0 should go into webview', function() {
+    it('#02-01 should go into webview', function() {
       return driver
         .customback()
         .sleep(3000)
@@ -222,7 +222,7 @@ describe('macaca-test/mobile-app-sample.test.js', function() {
         .sleep(5000);
     });
 
-    it('#1 should go into test', function() {
+    it('#02-02 should go into test', function() {
       return driver
         .changeToNativeContext()
         .waitForElementByName('Baidu')
@@ -230,7 +230,7 @@ describe('macaca-test/mobile-app-sample.test.js', function() {
         .sleep(5000);
     });
 
-    it('#2 should works with web', function() {
+    it('#02-03 should works with web', function() {
       return driver
         .changeToWebviewContext()
         .title()
@@ -264,7 +264,7 @@ describe('macaca-test/mobile-app-sample.test.js', function() {
 
   describe('logout page test', function() {
 
-    it('#0 should logout success', function() {
+    it('#01-05 should logout success', function() {
       return driver
         .changeToNativeContext()
         .waitForElementByName('PERSONAL')

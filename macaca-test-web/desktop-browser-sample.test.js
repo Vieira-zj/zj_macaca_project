@@ -42,7 +42,7 @@ describe('macaca-test/desktop-browser-sample.test.js', function() {
   });
 
   after(function() {
-    opn(path.join(__dirname, '..', 'reports', 'index.html'));  // test report path
+    opn(path.join(__dirname, '..', 'reports', 'index.html')); // test report path
   });
 
   describe.skip('macaca desktop sample', function() {
