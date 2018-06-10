@@ -21,6 +21,7 @@ let testPath = function () {
 };
 
 let testObject = function testObject() {
+    // #1
     let tmpBoolean = true;
 
     let testObject = {
@@ -32,6 +33,23 @@ let testObject = function testObject() {
     }
     console.log('Object boolean1 value:', testObject.testBoolean1);
     console.log('Object boolean2 value:', testObject.testBoolean2());
+
+    // #2
+    function Student(name, age) {
+        this.name = name
+        this.age = age
+        this.getName = function () {
+            return this.name
+        }
+    }
+
+    Student.prototype.sayHello = function () {
+        console.log(`Hello, my name is ${this.name}, I am ${this.age} years old.`)
+    }
+
+    let s = new Student('Henry', 21)
+    console.log('name:', s.getName())
+    s.sayHello()
 };
 
 let testFnName = function (fn) {
@@ -195,7 +213,7 @@ if (require.main === module) {
     // testFnParams();
     // testAddFn();
 
-    testObjectDestruct();
+    // testObjectDestruct();
     // testArrayDestruct();
     // testArgsJoin();
 
