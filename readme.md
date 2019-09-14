@@ -1,4 +1,4 @@
-# **Macaca学习笔记**
+# Macaca学习笔记
 
 ## 前言
 
@@ -6,7 +6,7 @@
 
 因工作关系，最近开始学习Macaca, 在网上找了一下，没有文章详细地介绍Macaca, 自己主要是参考官方的例子（很全面，但入门有点难），所以在此总结一下。
 
-## **环境**
+## 环境
 
 开发环境：Mac OS + Visual Studio Code + Macaca 2.0.9 + Chrome 61.0.xxxx
 
@@ -18,11 +18,9 @@ Macaca环境配置确实是有些麻烦，但不难，网上介绍文章很多�
 
 项目中比较重要目录和文件（Git库地址见文章最后）：
 
-Mocha-test: 包括Mocha和Should的测试demo. 因为Macaca默认是基于Mocha来执行的，断言我使用的是Should.
-
-Macaca-test: 包括Macaca测试用例demo. 
-
-run-test.sh: 测试执行脚本，具体配置在Makefile中。
+- Mocha-test: 包括Mocha和Should的测试demo. 因为Macaca默认是基于Mocha来执行的，断言我使用的是Should.
+- Macaca-test: 包括Macaca测试用例demo. 
+- run-test.sh: 测试执行脚本，具体配置在Makefile中。
 
 下面直接上代码。
 
@@ -33,23 +31,23 @@ run-test.sh: 测试执行脚本，具体配置在Makefile中。
 从wd (web driver)获得一个driver对象。
 
 ```javascript
-    var driver = wd.promiseChainRemote({
-        host: 'localhost',
-        port: process.env.MACACA_SERVER_PORT || 3456
-    });
+var driver = wd.promiseChainRemote({
+    host: 'localhost',
+    port: process.env.MACACA_SERVER_PORT || 3456
+});
 ```
 
 初始化driver对象。
 
 ```javascript
-        return driver
-            .init({
-                platformName: 'desktop',
-                browserName: testConsts.envVars.browser,
-                userAgent: 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0 Safari/537.36 Macaca Custom UserAgent',
-                deviceScaleFactor: 2
-            })
-            .setWindowSize(1280, 800);
+return driver
+    .init({
+        platformName: 'desktop',
+        browserName: testConsts.envVars.browser,
+        userAgent: 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0 Safari/537.36 Macaca Custom UserAgent',
+        deviceScaleFactor: 2
+    })
+    .setWindowSize(1280, 800);
 ```
 
 以上直接从官方例子中copy过来的，大家知道这么用就行了。
@@ -97,16 +95,16 @@ asserters条件包括：isDisplayed, nonEmptyText, textInclude(text), jsConditio
 
 ```javascript
 // 使用原生JS
-    .execute(
-        `
-        var element = document.querySelector('${cssSelector}');
-        var event = document.createEvent('MouseEvent');
-        event.initMouseEvent('mouseover', true, true);
-        element.dispatchEvent(event);
-        `
-      )
+.execute(
+    `
+    var element = document.querySelector('${cssSelector}');
+    var event = document.createEvent('MouseEvent');
+    event.initMouseEvent('mouseover', true, true);
+    element.dispatchEvent(event);
+    `
+    )
 // 使用JQuery
-    .execute(`$('a[name="tj_settingicon"]').mouseover();`);
+.execute(`$('a[name="tj_settingicon"]').mouseover();`);
 ```
 
 另外一个比较好用的功能是执行JS脚本后，可获得返回值。如下脚本取一个元素的text并打印。
@@ -160,34 +158,34 @@ const keyCodes = {
 下面是一个使用图片对比验证的例子。
 
 ```javascript
-        const diffImage = require('./utils.js').diffImage;
-        it('#3, verification by diff image', function () {
-            return driver
-                .get(initialURL)
-                .sleep(testConsts.waitTime.shortWait)
-                // .customSaveScreenshot(this) // save error baseline
-                .sleep(testConsts.waitTime.shortWait)
-                .openBaiduLoginDialog()
-                // .customSaveScreenshot(this) // save origin baseline
-                .takeScreenshot()
-                .then(imgData => {
-                    const screenshotFolder = path.resolve(__dirname, '../screenshots');
-                    const originImgPath = path.join(screenshotFolder, 'origin.png');
-                    fs.exists(originImgPath, function (exists) {
-                        exists.should.be.ok('origin image exist.');
-                    }); // Warn: sync function
-                    const newImg = new Buffer(imgData, 'base64');
-                    fs.writeFileSync(path.join(screenshotFolder, 'new.png'), newImg.toString('binary'), 'binary');
-                    const diffImgPath = path.join(screenshotFolder, 'diff.png');
-                    return diffImage(originImgPath, newImg, 0.1, diffImgPath);
-                })
-                .then(result => {
-                    result.should.be.true('image diff.');
-                })
-                .catch(e => {
-                    console.error(e);
-                });
+const diffImage = require('./utils.js').diffImage;
+it('#3, verification by diff image', function () {
+    return driver
+        .get(initialURL)
+        .sleep(testConsts.waitTime.shortWait)
+        // .customSaveScreenshot(this) // save error baseline
+        .sleep(testConsts.waitTime.shortWait)
+        .openBaiduLoginDialog()
+        // .customSaveScreenshot(this) // save origin baseline
+        .takeScreenshot()
+        .then(imgData => {
+            const screenshotFolder = path.resolve(__dirname, '../screenshots');
+            const originImgPath = path.join(screenshotFolder, 'origin.png');
+            fs.exists(originImgPath, function (exists) {
+                exists.should.be.ok('origin image exist.');
+            }); // Warn: sync function
+            const newImg = new Buffer(imgData, 'base64');
+            fs.writeFileSync(path.join(screenshotFolder, 'new.png'), newImg.toString('binary'), 'binary');
+            const diffImgPath = path.join(screenshotFolder, 'diff.png');
+            return diffImage(originImgPath, newImg, 0.1, diffImgPath);
+        })
+        .then(result => {
+            result.should.be.true('image diff.');
+        })
+        .catch(e => {
+            console.error(e);
         });
+});
 ```
 
 结果是基于对比origin图片和actual图片差异的diff图片。图片对比为像素级别，个人觉得是非常强大，非常方便的一个功能。
@@ -197,9 +195,9 @@ const keyCodes = {
 大家可以看到，Macaca JS是使用函数式编程，因此不能用传统的方式来添加自定义函数。添加自定义函数要使用如下方式：
 
 ```javascript
-  wd.addPromiseChainMethod('retHelloMsg', function () {
-    return 'hello world';
-  });
+wd.addPromiseChainMethod('retHelloMsg', function () {
+return 'hello world';
+});
 ```
 
 第一个参数为自定义函数的名称；第二个参数是一个回调函数，里面为具体的函数功能。
@@ -212,4 +210,5 @@ const keyCodes = {
 
 最后贴上Git项目地址：
 
-https://github.com/Vieira-zj/ZjJsAutomation
+<https://github.com/Vieira-zj/zj_macaca_project>
+
